@@ -1,3 +1,3 @@
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint"],
+  modules: ["@nuxt/eslint", "@hebilicious/vue-query-nuxt"],
 });
