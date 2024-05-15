@@ -4,8 +4,6 @@
 name: MagasinConnecte4.0 CI
 
 on:
-  push:
-    branches: [ "master", "CI" ]
   pull_request:
     branches: [ "master" ]
 

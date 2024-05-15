@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "semantic-release": "semantic-release --branches CI"
+    "semantic-release": "semantic-release --branches master"
   },
   "dependencies": {
     "@nuxt/eslint": "^0.3.12",
