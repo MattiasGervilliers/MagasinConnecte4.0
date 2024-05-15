@@ -7,11 +7,20 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@nuxt/eslint": "^0.3.12",
+    "@nuxt/ui": "^2.16.0",
+    "chart.js": "^4.4.2",
     "nuxt": "^3.11.2",
     "vue": "^3.4.27",
+    "vue-chartjs": "^5.3.1",
     "vue-router": "^4.3.2"
+  },
+  "devDependencies": {
+    "prettier": "3.2.5"
   }
 }
