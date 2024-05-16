@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@hebilicious/vue-query-nuxt", "@vite-pwa/nuxt"],
+  modules: ["@nuxt/eslint", "@hebilicious/vue-query-nuxt", "@vite-pwa/nuxt", '@nuxt/ui'],
   pwa: {
     manifest: {
       name: "My Awesome App",
