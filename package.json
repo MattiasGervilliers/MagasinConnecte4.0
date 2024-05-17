@@ -16,7 +16,7 @@
     "@hebilicious/vue-query-nuxt": "^0.3.0",
     "@nuxt/eslint": "^0.3.12",
     "@nuxt/ui": "^2.16.0",
-    "@tanstack/vue-query": "^5.36.0",
+    "@tanstack/vue-query": "^5.36.1",
     "chart.js": "^4.4.2",
     "nuxt": "^3.11.2",
     "semantic-release": "^23.1.1",
