@@ -1,9 +1,10 @@
 import {fetchCommandNumber, fetchStationList, fetchWeatherData} from './queries.js';
+import {findClosestStation} from "~/utils/distanceCalculator";
 
 async function getClosestStation(departmentId: number): Promise<string> {
     try {
         const station = await fetchStationList(departmentId);
-        return station[6].id;
+        return (await findClosestStation(station)).id;
     } catch (error) {
         console.error('Failed to fetch stations:', error);
         return '';
