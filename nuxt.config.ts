@@ -27,4 +27,10 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+  plugins: [
+    '~/plugins/vue-query.ts'
+  ],
+  runtimeConfig: {
+    API_KEY: process.env.API_KEY
+  },
 });
