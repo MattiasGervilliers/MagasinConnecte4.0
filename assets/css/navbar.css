@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 15%;
+}
+
+.navbar-menu-container {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  transform: translateX(-120%);
+  gap: 10px;
+  width: max-content;
+  padding: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .menu {
+    flex-direction: column;
+    transform: translate(-50%, 70px);
+    top: 0;
+    left: 50%;
+    width: 100%;
+    /* bottom box shadow */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+}
