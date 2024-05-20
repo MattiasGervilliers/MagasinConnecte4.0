@@ -1,6 +1,6 @@
-import {type Station} from "~/models/weatherReport";
+import type {Station} from "~/models/weatherReport";
 
-export async function findClosestStation(station: Station[]) {
+export const findClosestStation = (station: Station[]) => {
     let index = 0;
     for (let i = 0; i < station.length; i++) {
         if (!station[i].isOpen) continue;
@@ -18,7 +18,8 @@ export async function findClosestStation(station: Station[]) {
     }
     return closest;
 }
-function calculateDistance(latitude: number, longitude: number) {
+
+const calculateDistance = (latitude: number, longitude: number) => {
     const R = 6371; // Radius of the Earth in kilometers
     const dLat = (43.3186 - latitude) * Math.PI / 180;
     const dLon = (5.4084 - longitude) * Math.PI / 180;
