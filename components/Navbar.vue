@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 const isMenuOpen = useState("isMenuOpen", () => false);
 
 const toggleMenu = () => {
@@ -23,21 +24,23 @@ const links = [
 
 <template>
   <nav class="navbar">
-    <h1>Magasin Connecté 4.0</h1>
+    <h1 class="animate__animated animate__fadeInLeft animate__fast">Magasin Connecté 4.0</h1>
 
     <div class="navbar-menu-container">
       <ul class="menu" v-if="isMenuOpen">
-        <li v-for="link in links" :key="link.name">
+        <li class="animate__animated animate__fadeInDown animate__faster" v-for="link in links" :key="link.name">
           <UButton :to="link.path" variant="link">{{ link.name }}</UButton>
         </li>
       </ul>
 
-      <UIcon @click="toggleMenu" v-if="!isMenuOpen" name="i-heroicons-bars-3" />
-      <UIcon @click="toggleMenu" v-if="isMenuOpen" name="i-heroicons-x-mark" />
+      <UIcon @click="toggleMenu" v-if="!isMenuOpen" name="i-heroicons-bars-3" class="cursor-pointer animate__animated animate__flipInX animate__fast" />
+      <UIcon @click="toggleMenu" v-if="isMenuOpen" name="i-heroicons-x-mark" class="cursor-pointer animate__animated animate__flipInX animate__fast"/>
     </div>
   </nav>
 </template>
 
-<style>
-@import url("~/assets/css/navbar.css");
+<style scoped>
+@import url('~/assets/css/navbar.css');
+@import url('animate.css');
+
 </style>
