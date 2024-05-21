@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import 'animate.css';
+
 const isMenuOpen = useState("isMenuOpen", () => false);
 
 const toggleMenu = () => {
@@ -40,7 +42,5 @@ const links = [
 </template>
 
 <style scoped>
-@import url('~/assets/css/navbar.css');
-@import url('animate.css');
-
+  @import url('~/assets/css/navbar.css');
 </style>
