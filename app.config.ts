@@ -7,6 +7,12 @@ export default defineAppConfig({
     primary: "_primary",
     gray: "_secondary",
 
+    breadcrumb: {
+      active: "text-primary dark:text-primary-600",
+      inactive:
+        "text-neutral-700 dark:text-neutral-300 hover:text-neutral-700 dark:hover:text-neutral-300 hover:underline transition-all",
+    },
+
     button: {
       color: {
         prim: {
