@@ -1,14 +1,8 @@
 export default defineNuxtConfig({
+  modules: ["@nuxt/eslint", "@vite-pwa/nuxt", "@nuxt/ui", "nuxt-time"],
   runtimeConfig: {
     apiKey: "",
   },
-  modules: [
-    "@nuxt/eslint",
-    "@hebilicious/vue-query-nuxt",
-    "@vite-pwa/nuxt",
-    "@nuxt/ui",
-    "nuxt-time",
-  ],
   pwa: {
     manifest: {
       name: "Magasin Connecté 4.0",
@@ -54,5 +48,5 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
-  plugins: ["~/plugins/vue-query.ts"],
+  plugins: [],
 });
