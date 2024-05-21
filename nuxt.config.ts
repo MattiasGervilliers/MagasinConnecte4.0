@@ -1,10 +1,13 @@
 export default defineNuxtConfig({
+  runtimeConfig: {
+    apiKey: "",
+  },
   modules: [
     "@nuxt/eslint",
     "@hebilicious/vue-query-nuxt",
     "@vite-pwa/nuxt",
     "@nuxt/ui",
-    "nuxt-time"
+    "nuxt-time",
   ],
   pwa: {
     manifest: {
@@ -51,4 +54,5 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+  plugins: ["~/plugins/vue-query.ts"],
 });
