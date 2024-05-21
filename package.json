@@ -17,7 +17,6 @@
     "@hebilicious/vue-query-nuxt": "^0.3.0",
     "@nuxt/eslint": "^0.3.12",
     "@nuxt/ui": "^2.16.0",
-    "@tanstack/vue-query": "^5.36.0",
     "animate.css": "^4.1.1",
     "chart.js": "^4.4.2",
     "nuxt": "^3.11.2",
@@ -25,8 +24,7 @@
     "semantic-release": "^23.1.1",
     "vue": "^3.4.27",
     "vue-chartjs": "^5.3.1",
-    "vue-router": "^4.3.2",
-    "zod": "^3.23.8"
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@vite-pwa/nuxt": "^0.7.0",
