@@ -6,6 +6,8 @@ name: MagasinConnecte4.0 CI
 on:
   pull_request:
     branches: [ "master" ]
+  push:
+    branches: [ "master" ]
 
 jobs:
   build:
