@@ -1,12 +1,20 @@
 import { $fetch } from "ofetch";
 
-// TODO: manage headers
-export const fetchWeatherData = async (params: {
-  commandId: number
-}): Promise<any> => {
+export const fetchWeatherData = async (
+  params: {
+    commandId: number;
+  },
+  headers?: HeadersInit,
+): Promise<any> => {
   const { commandId } = params;
 
-  return await $fetch(`https://public-api.meteofrance.fr/public/DPClim/v1/commande/fichier?id-cmde=${commandId}`, {
-    method: 'GET',
-  });
+  const response = await fetch(
+    `https://public-api.meteofrance.fr/public/DPClim/v1/commande/fichier?id-cmde=${commandId}`,
+    {
+      method: "GET",
+      headers: headers ?? {},
+    },
+  );
+
+  return response.json();
 };

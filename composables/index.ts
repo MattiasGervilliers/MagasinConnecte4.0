@@ -1,1 +1,1 @@
-export { useFetchWeatherReport } from './queries/useFetchWeatherReport'
+export { fetchWeatherReport } from "./queries/fetchWeatherReport";

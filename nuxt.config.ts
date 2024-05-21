@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
   modules: ["@nuxt/eslint", "@hebilicious/vue-query-nuxt", "@vite-pwa/nuxt"],
+  runtimeConfig: {
+    apiKey: "",
+  },
   pwa: {
     manifest: {
       name: "My Awesome App",
@@ -27,10 +30,5 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
-  plugins: [
-    '~/plugins/vue-query.ts'
-  ],
-  runtimeConfig: {
-    API_KEY: process.env.API_KEY
-  },
+  plugins: ["~/plugins/vue-query.ts"],
 });
