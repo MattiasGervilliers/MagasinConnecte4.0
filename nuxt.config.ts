@@ -1,5 +1,11 @@
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@vite-pwa/nuxt", "@nuxt/ui", "nuxt-time"],
+  modules: [
+    "@nuxt/eslint",
+    "@vite-pwa/nuxt",
+    "@nuxt/ui",
+    "nuxt-time",
+    "@nuxt/image",
+  ],
   runtimeConfig: {
     apiKey: "",
   },

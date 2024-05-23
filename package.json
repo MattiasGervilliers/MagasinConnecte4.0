@@ -16,6 +16,7 @@
   "dependencies": {
     "@hebilicious/vue-query-nuxt": "^0.3.0",
     "@nuxt/eslint": "^0.3.12",
+    "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.16.0",
     "animate.css": "^4.1.1",
     "chart.js": "^4.4.2",

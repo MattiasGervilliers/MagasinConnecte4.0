@@ -1,0 +1,10 @@
+.background {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-image: url("~/assets/images/background.webp");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
