@@ -2,6 +2,9 @@ export default defineNuxtConfig({
   modules: ["@nuxt/eslint", "@vite-pwa/nuxt", "@nuxt/ui", "nuxt-time"],
   runtimeConfig: {
     apiKey: "",
+    solarPanelApiUrl: "",
+    solarPanelApiKey: "",
+    solarPanelSiteId: "",
   },
   pwa: {
     manifest: {
