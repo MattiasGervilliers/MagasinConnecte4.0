@@ -13,6 +13,12 @@ export default defineAppConfig({
         "text-neutral-700 dark:text-neutral-300 hover:text-neutral-700 dark:hover:text-neutral-300 hover:underline transition-all",
     },
 
+    divider: {
+      border: {
+        base: "flex border-gray-500 dark:border-gray-500",
+      },
+    },
+
     button: {
       color: {
         prim: {

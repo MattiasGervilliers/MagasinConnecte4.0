@@ -1,7 +1,11 @@
 <script setup></script>
 
 <template>
-  <nav>
+  <footer class="footer">
     <p>Footer</p>
-  </nav>
+  </footer>
 </template>
+
+<style>
+@import url("~/assets/css/footer.css");
+</style>
