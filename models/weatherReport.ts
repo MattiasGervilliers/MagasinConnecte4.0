@@ -27,5 +27,5 @@ export type CommandNumberDto = {
 };
 
 export type CommandNumber = {
-  value: number;
+  value: string;
 };
