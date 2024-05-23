@@ -1,0 +1,15 @@
+.card-navigation {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border: 1px solid theme("colors.gray.500");
+  border-radius: 4px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}

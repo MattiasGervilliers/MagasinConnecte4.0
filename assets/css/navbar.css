@@ -4,6 +4,28 @@
   align-items: center;
   height: 70px;
   padding: 0 15%;
+  transition: 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.navbar-scrolled {
+  background-color: theme("colors.white");
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-scrolled h1 {
+  color: theme("colors.black");
+}
+
+.navbar-scrolled .menu-icon {
+  color: theme("colors.black");
+}
+
+.menu-icon {
+  color: theme("colors.white");
 }
 
 .navbar-menu-container {
@@ -16,19 +38,28 @@
   justify-content: space-around;
   align-items: center;
   position: absolute;
-  transform: translateX(-120%);
+  transform: translateX(-100%);
   gap: 10px;
   width: max-content;
   padding: 10px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1264px) {
+  .navbar {
+    padding: 0 10%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
   .menu {
     flex-direction: column;
     transform: translate(-50%, 70px);
     top: 0;
     left: 50%;
     width: 100%;
+    position: fixed;
+    background-color: theme("colors.white");
+    z-index: 10;
     /* bottom box shadow */
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   }
