@@ -1,9 +1,7 @@
 import type { Overview } from '~/models/solarPanel/overview';
 import { parseOverview } from '~/models/solarPanel/overview';
 
-export const fetchOverview = async (
-
-): Promise<Overview> => {
+export const fetchOverview = async (): Promise<Overview> => {
 
   const config = useRuntimeConfig();
   const apiUrl = config.solarPanelApiUrl;
