@@ -18,8 +18,6 @@ export const fetchEnergyDetails = async (
     },
   );
 
-  console.log(`${apiUrl}/site/${siteId}/energyDetails?meters=PRODUCTION,CONSUMPTION&timeUnit=${timeUnit}&startTime=${startTime}&endTime=${endTime}&api_key=${apiKey}`)
-
   const data: { energyDetails: EnergyDetails } = await response.json();
 
   return data.energyDetails;
