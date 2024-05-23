@@ -8,6 +8,9 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     apiKey: "",
+    solarPanelApiUrl: "",
+    solarPanelApiKey: "",
+    solarPanelSiteId: "",
   },
   pwa: {
     manifest: {
