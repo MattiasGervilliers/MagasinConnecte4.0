@@ -1,6 +1,6 @@
 <script setup lang="ts">
 async function onButtonClick() {
-  const { data, pending, error, refresh } = await useFetch('/api/solarPanel/v1/dataPeriod', {
+  const { data, pending, error, refresh } = await useFetch('/api/solarPanel/v1/overview', {
     query: {
     }
   })

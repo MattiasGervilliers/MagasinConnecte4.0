@@ -1,5 +1,5 @@
 import type { Overview } from '~/models/solarPanel/overview';
-import { parseOverview } from '~/models/solarPanel/overview';
+import { parseOverview } from "~/models/solarPanel/overview";
 
 export const fetchOverview = async (): Promise<Overview> => {
 

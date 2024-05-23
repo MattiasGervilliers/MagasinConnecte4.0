@@ -1,5 +1,4 @@
 import type { Power } from '~/models/solarPanel/power';
-import { parsePower } from '~/models/solarPanel/power';
 
 export const fetchPower = async (
   startTime: string,
@@ -18,7 +17,7 @@ export const fetchPower = async (
     },
   );
 
-  const data = await response.json();
+  const data: {power: Power} = await response.json();
 
-  return parsePower(data);
+  return data.power;
 }

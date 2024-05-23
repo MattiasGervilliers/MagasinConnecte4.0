@@ -1,5 +1,4 @@
 import type { DataPeriod } from "~/models/solarPanel/dataPeriod";
-import { parseDataPeriod } from "~/models/solarPanel/dataPeriod";
 
 export const fetchDataPeriod = async (): Promise<DataPeriod> => {
   const config = useRuntimeConfig();
@@ -15,7 +14,7 @@ export const fetchDataPeriod = async (): Promise<DataPeriod> => {
     },
   );
 
-  const data = await response.json();
+  const data: {dataPeriod: DataPeriod} = await response.json();
 
-  return parseDataPeriod(data);
+  return data.dataPeriod;
 }

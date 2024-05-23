@@ -1,5 +1,4 @@
 import type { Energy } from "~/models/solarPanel/energy";
-import { parseEnergy } from "~/models/solarPanel/energy";
 
 export const fetchEnergy = async (
   timeUnit: string,
@@ -19,7 +18,7 @@ export const fetchEnergy = async (
     },
   );
 
-  const data = await response.json();
+  const data: { energy: Energy } = await response.json();
 
-  return parseEnergy(data);
+  return data.energy;
 }

@@ -8,14 +8,3 @@ export type Energy = {
   unit: string,
   values: EnergyData[],
 }
-
-export function parseEnergy(data: any): Energy {
-  return {
-    timeUnit: data.energy.timeUnit,
-    unit: data.energy.unit,
-    values: data.energy.values.map((value: any) => ({
-      date: value.date,
-      value: value.value,
-    })),
-  };
-}
