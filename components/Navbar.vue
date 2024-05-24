@@ -1,9 +1,11 @@
 <script setup lang="ts">
+const route = useRoute();
+
 //TODO: refactor this function and optimize it
 onMounted(() => {
   const navbar = document.querySelector(".navbar");
 
-  if (document.documentElement.scrollTop > 0) {
+  if (document.documentElement.scrollTop > 0 || route.path !== "/") {
     if (navbar) {
       navbar.classList.add("navbar-scrolled");
     }
