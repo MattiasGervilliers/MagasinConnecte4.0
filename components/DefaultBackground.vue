@@ -2,10 +2,10 @@
 
 <template>
   <div class="background">
-    <h2 class="text-white text-4xl font-bold text-center">
+    <h1 class="text-white text-4xl font-bold text-center">
       Bienvenue dans le <br />
       magasin connectée 4.0
-    </h2>
+    </h1>
   </div>
 </template>
 
