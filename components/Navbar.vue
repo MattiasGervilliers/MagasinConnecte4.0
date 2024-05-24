@@ -1,8 +1,15 @@
 <script setup lang="ts">
-//TODO: refactor this function
+//TODO: refactor this function and optimize it
 onMounted(() => {
+  const navbar = document.querySelector(".navbar");
+
+  if (document.documentElement.scrollTop > 0) {
+    if (navbar) {
+      navbar.classList.add("navbar-scrolled");
+    }
+  }
+
   window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(".navbar");
     if (navbar) {
       if (window.scrollY > 0) {
         navbar.classList.add("navbar-scrolled");
