@@ -1,6 +1,6 @@
 <script setup>
 
-import tailwindConfig from "~/tailwind.config";
+import tailwindConfig from "~/tailwind.config.js";
 
 const { energyData } = defineProps({
   energyData: {
