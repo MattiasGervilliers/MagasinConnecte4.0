@@ -21,12 +21,6 @@ const cardsNavigationInfos: CardNavigationInfos[] = [
     path: "/epicerie-solidaire",
     iconUrl: "i-heroicons-camera-solid",
   },
-  {
-    title: "Epicerie-solidaire",
-    description: "Découvrez notre épicerie solidaire",
-    path: "/epicerie-solidaire",
-    iconUrl: "i-heroicons-camera-solid",
-  },
 ];
 
 const cardsInfos: CardInfos[] = [
