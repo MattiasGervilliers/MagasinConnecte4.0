@@ -1,4 +1,4 @@
-import { useMultipleFetch } from "~/composables/useMultipleFetch";
+import { useFetchWeatherReport } from "~/composables/useFetchWeatherReport";
 
 type Query = {
   departmentId: string;
@@ -7,11 +7,10 @@ type Query = {
 };
 
 export default defineEventHandler(async (event) => {
-  const { departmentId, beginningDate, endDate } = getQuery<Query>(event);
+  const { departmentId, beginningDate, endDate} = getQuery<Query>(event);
 
   const config = useRuntimeConfig();
 
   const apiKey = config.apiKey;
-  console.log('apiKey', apiKey);
-  return await useMultipleFetch(apiKey);
+  return await useFetchWeatherReport({queryParams: {departmentId, beginningDate, endDate}, apiKey});
 });
