@@ -16,7 +16,7 @@ export function parseStation(stationDto: StationDto): Station {
 
 export function parseCommandNumber(commandNumberDto: CommandNumberDto): CommandNumber {
   return {
-    value: +commandNumberDto.elaboreProduitAvecDemandeResponse.return,
+    value: commandNumberDto.elaboreProduitAvecDemandeResponse.return,
   };
 }
 
