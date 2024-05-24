@@ -1,9 +1,5 @@
-import {
-  type StationDto,
-  type Station,
-  type CommandNumberDto,
-  type CommandNumber,
-} from "./weatherReport";
+import type {StationDto, Station, CommandNumberDto, CommandNumber, WeatherData} from './weatherReport';
+import Papa from 'papaparse';
 
 export function parseStation(stationDto: StationDto): Station {
   return {
@@ -18,15 +14,42 @@ export function parseStation(stationDto: StationDto): Station {
   };
 }
 
-export function parseCommandNumber(
-  commandNumberDto: CommandNumberDto | null,
-): CommandNumber {
-  if (commandNumberDto === null) {
-    return {
-      value: "",
-    };
-  }
+export function parseCommandNumber(commandNumberDto: CommandNumberDto): CommandNumber {
   return {
-    value: commandNumberDto.elaboreProduitAvecDemandeResponse.return,
+    value: +commandNumberDto.elaboreProduitAvecDemandeResponse.return,
   };
+}
+
+export function parseWeatherData(weatherData: string): WeatherData[] {
+  const weatherDataParsed = Papa.parse(weatherData, {delimiter: ';'});
+  let weatherDataArray = [];
+  for (let i = 1; i < weatherDataParsed.data.length-1; i++) {
+    let averageTemp = "";
+    let averageTemp10cm = "";
+    let averageTemp50cm= "";
+    let date = "";
+    for (let y = 0; y < weatherDataParsed.data[0].length; y++) {
+      switch (weatherDataParsed.data[0][y]) {
+        case 'DATE':
+          date = weatherDataParsed.data[i][y];
+          break;
+        case 'TM':
+          averageTemp = weatherDataParsed.data[i][y];
+          break;
+        case 'TNSOL':
+          averageTemp10cm = weatherDataParsed.data[i][y];
+          break;
+        case 'TN50':
+          averageTemp50cm = weatherDataParsed.data[i][y];
+          break;
+      }
+    }
+    weatherDataArray.push({
+      date: date,
+      averageTemp: averageTemp,
+      averageTemp10cm: averageTemp10cm,
+      averageTemp50cm: averageTemp50cm,
+    });
+  }
+  return weatherDataArray;
 }

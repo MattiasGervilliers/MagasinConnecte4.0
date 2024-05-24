@@ -27,5 +27,12 @@ export type CommandNumberDto = {
 };
 
 export type CommandNumber = {
-  value: string;
+  value: number;
+};
+
+export type WeatherData = {
+  date: string,
+  averageTemp: string,
+  averageTemp10cm: string,
+  averageTemp50cm: string;
 };
