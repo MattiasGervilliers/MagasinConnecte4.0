@@ -8,3 +8,38 @@
   background-position: center;
   z-index: -1;
 }
+
+.background h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  z-index: 1;
+  animation: moveUpDown 5s ease-in-out infinite;
+}
+
+.background h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(
+    10px
+  ); /* Ajustez la valeur pour plus ou moins de flou */
+  background-color: rgba(0, 0, 0, 0.5); /* Couleur de superposition sombre */
+  z-index: -1;
+  border-radius: 10px; /* Ajoute des coins arrondis si désiré */
+}
+
+@keyframes moveUpDown {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, calc(-50% + 20px));
+  }
+}
