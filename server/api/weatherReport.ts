@@ -1,4 +1,4 @@
-import { fetchWeatherReport } from "~/composables";
+import { useFetchWeatherReport } from "~/composables/useFetchWeatherReport";
 
 type Query = {
   departmentId: string;
@@ -6,23 +6,11 @@ type Query = {
   endDate: string;
 };
 
-export default defineEventHandler((event) => {
-  const { departmentId, beginningDate, endDate } = getQuery<Query>(event);
+export default defineEventHandler(async (event) => {
+  const { departmentId, beginningDate, endDate} = getQuery<Query>(event);
 
   const config = useRuntimeConfig();
 
   const apiKey = config.apiKey;
-
-  const weatherReport = fetchWeatherReport({
-    apiKey: apiKey,
-    queriesParams: {
-      departmentId: ~~departmentId,
-      beginningDate: beginningDate,
-      endDate: endDate,
-    },
-  });
-
-  return {
-    hello: weatherReport,
-  };
+  return await useFetchWeatherReport({queryParams: {departmentId, beginningDate, endDate}, apiKey});
 });
