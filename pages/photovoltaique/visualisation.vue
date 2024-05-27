@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Overview from "~/components/solarPanel/Overview.vue";
 const links = [
   {
     label: "Magasin Connecté 4.0",
@@ -15,10 +16,16 @@ const links = [
 </script>
 
 <template>
-  <h1>test</h1>
-  <UBreadcrumb :links="links">
-    <template #divider>
-      <span class="w-8 h-1 rounded-full bg-neutral-700 dark:bg-neutral-300" />
-    </template>
-  </UBreadcrumb>
+  <div class="visualization">
+    <div class="overview">
+      <Overview/>
+    </div>
+  </div>
 </template>
+
+<style scoped>
+  .visualization {
+    margin-top: 70px;
+    padding: 0 10%;
+  }
+</style>
