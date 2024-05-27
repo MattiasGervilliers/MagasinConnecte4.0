@@ -1,0 +1,55 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 110px 15% 40px 15%;
+  gap: 40px;
+  transition: 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 1264px) {
+  .wrapper {
+    margin: 110px 10% 40px 10%;
+  }
+}
+
+#map {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.close-button {
+  margin-left: auto;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.marker {
+  display: block;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tab-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.tab-description {
+  display: flex;
+  padding: 0 20px;
+  flex: 1;
+}
+
+.tab-image {
+  overflow: hidden;
+  border-radius: 4px;
+}

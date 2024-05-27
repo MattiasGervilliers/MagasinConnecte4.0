@@ -5,12 +5,14 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "nuxt-time",
     "@nuxt/image",
+    "nuxt-mapbox",
   ],
   runtimeConfig: {
     apiKey: "",
     solarPanelApiUrl: "",
     solarPanelApiKey: "",
     solarPanelSiteId: "",
+    mapboxglAccessToken: "",
   },
   pwa: {
     manifest: {

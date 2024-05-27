@@ -1,3 +1,5 @@
+/* TODO: global wrapper for width */
+
 .navbar {
   display: flex;
   justify-content: space-between;

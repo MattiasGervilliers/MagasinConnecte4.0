@@ -19,6 +19,29 @@ export default defineAppConfig({
       },
     },
 
+    tabs: {
+      list: {
+        background: "bg-transparent dark:bg-transparent",
+        padding: "p-0",
+        tab: {
+          inactive:
+            "bg-white text-dark border-2 border-primary-500 dark:border-primary-600 dark:text-primary-600",
+          active: "bg-primary-500 text-white",
+          font: "font-bold",
+        },
+      },
+    },
+
+    card: {
+      ring: "ring-0",
+    },
+
+    slideover: {
+      overlay: {
+        background: "bg-black/75 dark:bg-black/75",
+      },
+    },
+
     button: {
       color: {
         prim: {
