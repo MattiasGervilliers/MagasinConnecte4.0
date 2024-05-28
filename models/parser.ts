@@ -5,7 +5,7 @@ export function parseWeatherData(weatherDataDto: WeatherDataDto[]): WeatherData[
   return weatherDataDto.map((data) => {
     return {
       date: data.datetime,
-      solar_radiation: data.t_solar_rad,
+      solarRadiation: data.t_solar_rad ?? data.solar_rad,
     };
   });
 }

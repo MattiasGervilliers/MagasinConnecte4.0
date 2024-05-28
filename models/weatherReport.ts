@@ -7,9 +7,15 @@ export type WeatherDataRaw = {
 export type WeatherDataDto = {
   datetime: string;
   t_solar_rad: number;
+  solar_rad: number;
 };
 
 export type WeatherData = {
   date: string;
-  solar_radiation: number;
+  solarRadiation: number;
 };
+
+export type SolarPanelTheoreticalProduction = {
+  date: string;
+  production: number;
+}
