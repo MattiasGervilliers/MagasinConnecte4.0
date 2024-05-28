@@ -1,5 +1,3 @@
-import {TArray} from "ts-interface-checker";
-
 export type WeatherDataRaw = {
   data: WeatherDataDto[];
 };

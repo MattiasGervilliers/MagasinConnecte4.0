@@ -1,4 +1,4 @@
-import type {WeatherData, WeatherDataDto, WeatherDataRaw, SolarPanelTheoreticalProduction} from "~/models/weatherReport";
+import type {WeatherData, WeatherDataRaw, SolarPanelTheoreticalProduction} from "~/models/weatherReport";
 import {parseWeatherData} from "~/models/parser";
 
 export type SolarPanelInfo = {
