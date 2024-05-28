@@ -1,38 +1,15 @@
-export type StationDto = {
-  id: string;
-  nom: string;
-  posteOuvert: boolean;
-  typePoste: number;
-  lon: number;
-  lat: number;
-  alt: number;
-  postePublic: boolean;
+import {TArray} from "ts-interface-checker";
+
+export type WeatherDataRaw = {
+  data: WeatherDataDto[];
 };
 
-export type Station = {
-  id: string;
-  name: string;
-  isOpen: boolean;
-  type: number;
-  lon: number;
-  lat: number;
-  alt: number;
-  isPublic: boolean;
-};
-
-export type CommandNumberDto = {
-  elaboreProduitAvecDemandeResponse: {
-    return: string;
-  };
-};
-
-export type CommandNumber = {
-  value: string;
+export type WeatherDataDto = {
+  datetime: string;
+  t_solar_rad: number;
 };
 
 export type WeatherData = {
-  date: string,
-  averageTemp: string,
-  averageTemp10cm: string,
-  averageTemp50cm: string;
+  date: string;
+  solar_radiation: number;
 };
