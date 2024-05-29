@@ -1,5 +1,11 @@
 <script setup lang="ts">
+
+import { definePageMeta } from "#imports";
 import type { Shop } from "~/models/shop";
+
+definePageMeta({
+  auth: false,
+})
 
 export type Item = {
   label: string;
