@@ -5,12 +5,41 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "nuxt-time",
     "@nuxt/image",
+    "@sidebase/nuxt-auth"
   ],
+  build: {
+    transpile: ['jsonwebtoken']
+  },
+  auth: {
+    baseURL: '/api/auth',
+    provider: {
+      type: 'refresh',
+      endpoints: {
+        getSession: {path: '/user'},
+        refresh: {path: '/refresh', method: 'post'}, },
+      pages: {
+        login: '/login',
+      },
+      token: {
+        signInResponseTokenPointer: '/token/accessToken',
+        maxAgeInSeconds: 60 * 5, // 5 min
+        sameSiteAttribute: 'lax'
+      },
+      refreshToken: {
+        signInResponseRefreshTokenPointer: '/token/refreshToken',
+        refreshRequestTokenPointer: '/refreshToken'
+      }
+    },
+    globalAppMiddleware: {
+      isEnabled: true
+    },
+  },
   runtimeConfig: {
     apiKey: "",
     solarPanelApiUrl: "",
     solarPanelApiKey: "",
     solarPanelSiteId: "",
+    jwtSecret: "",
   },
   pwa: {
     manifest: {
