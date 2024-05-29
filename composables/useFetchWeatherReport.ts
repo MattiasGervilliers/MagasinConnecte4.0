@@ -1,5 +1,5 @@
 import type {WeatherData, WeatherDataRaw, SolarPanelTheoreticalProduction} from "~/models/weatherReport";
-import {parseWeatherData} from "~/models/parser";
+import {parseWeatherData} from "~/models/weatherReport";
 
 export type SolarPanelInfo = {
     nominalPower: string;
