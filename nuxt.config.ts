@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     solarPanelApiUrl: "",
     solarPanelApiKey: "",
     solarPanelSiteId: "",
-    mapboxglAccessToken: "",
   },
   pwa: {
     manifest: {
