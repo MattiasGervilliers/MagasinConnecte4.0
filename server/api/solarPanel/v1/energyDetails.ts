@@ -9,7 +9,5 @@ type Query = {
 export default defineEventHandler(async (event) => {
   const { timeUnit, startTime, endTime } = getQuery<Query>(event);
 
-  return {
-    content: await fetchEnergyDetails(timeUnit, startTime, endTime),
-  };
+  return await fetchEnergyDetails(timeUnit, startTime, endTime);
 });

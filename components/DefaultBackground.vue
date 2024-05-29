@@ -1,7 +1,12 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="background"></div>
+  <div class="background">
+    <h1 class="text-white text-4xl font-bold text-center">
+      Bienvenue dans le <br />
+      magasin connectée 4.0
+    </h1>
+  </div>
 </template>
 
 <style>

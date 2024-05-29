@@ -1,64 +1,46 @@
-<script setup>
+<script setup lang="ts">
 
-import tailwindConfig from "~/tailwind.config.js";
+import type { EnergyDetails } from "~/models/solarPanel/energyDetails";
+import type { Filters } from "~/models/chart/filters";
+import moment from "moment";
 
-const { energyData } = defineProps({
-  energyData: {
-    type: Object,
-    required: true,
-  },
-}); // TODO utiliser le bon objet
+const filters = ref<Filters>({
+  // use moment to get the current date minus 7 days
+  startDate: moment().subtract(7, 'days').toDate(),
+  // today date
+  endDate: new Date(),
+  timeUnit: "HOUR",
+});
 
-const data = {
-  title: "Production de l'énergie",
-  labels: energyData.values.map(v => v.date), // TODO utiliser le bon objet
-  datasets: [
-    {
-      label: `Production de l'énergie par ${getStringByTimeUnit(energyData.timeUnit)} (${energyData.unit})`,
-      backgroundColor: "#000000",
-      borderColor: tailwindConfig.theme.extend.colors._primary[700],
-      data: energyData.values.map(v => v.value ?? 0),
-    },
-  ],
-};
+const energyDetails = ref<EnergyDetails>({
+  timeUnit: "HOUR",
+  unit: "kWh",
+  meters: [],
+});
 
-const options = {
-  plugins: {
-    title: {
-      display: true,
-      text: "Production de l'énergie",
-    },
-  },
-};
-
-function getStringByTimeUnit(timeUnit) {
-  switch (timeUnit) {
-    case "QUARTER_OF_AN_HOUR":
-      return "15 mn";
-    case "HOUR":
-      return "heure";
-    case "DAY":
-      return "jour";
-    case "WEEK":
-      return "semaine";
-    case "MONTH":
-      return "mois";
-    case "YEAR":
-      return "année";
-    default:
-      return "temps";
-  }
+function formatDateTime(date: Date): string {
+  return moment(date).format("YYYY-MM-DD HH:mm:ss");
 }
+
+async function getData() {
+  energyDetails.value = await $fetch<EnergyDetails>(`/api/solarPanel/v1/energyDetails?timeUnit=${filters.value.timeUnit}&startTime=${formatDateTime(filters.value.startDate)}&endTime=${formatDateTime(filters.value.endDate)}`, {
+    method: "GET",
+  });
+}
+
+await getData();
+
+watch(filters, () => {
+  getData();
+}, { deep: true });
+
 </script>
 
 <template>
-  <div class="chart-wrap mb-10">
-    <ChartsLineChart :data="data" :options="options" />
-  </div>
+  <SolarPanelChartView :energy-details="energyDetails" />
+  <SolarPanelChartFilters :filters="filters" />
 </template>
 
 <style scoped>
-.chart-wrap {
-  height: 75vh;
-}
+
 </style>

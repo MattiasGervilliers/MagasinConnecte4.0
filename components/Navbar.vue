@@ -1,40 +1,7 @@
 <script setup lang="ts">
-//TODO: refactor this function and optimize it
-onMounted(() => {
-  const navbar = document.querySelector(".navbar");
-
-  if (document.documentElement.scrollTop > 0) {
-    if (navbar) {
-      navbar.classList.add("navbar-scrolled");
-    }
-  }
-
-  window.addEventListener("scroll", () => {
-    if (navbar) {
-      if (window.scrollY > 0) {
-        navbar.classList.add("navbar-scrolled");
-        navbar.classList.add(
-          "animate__animated",
-          "animate__fadeInDown",
-          "animate__faster",
-        );
-      } else {
-        navbar.classList.remove("navbar-scrolled");
-        navbar.classList.remove(
-          "animate__animated",
-          "animate__fadeInDown",
-          "animate__faster",
-        );
-      }
-    }
-  });
-});
-
+const route = useRoute();
+const navbar = ref<Element | null>(null);
 const isMenuOpen = useState("isMenuOpen", () => false);
-
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
 
 const links = [
   {
@@ -50,6 +17,62 @@ const links = [
     path: "/epicerie-solidaire",
   },
 ];
+
+const changeBackground = () => {
+  if (navbar.value) {
+    if (document.documentElement.scrollTop > 0 || route.path !== "/") {
+      navbar.value.classList.add("navbar-scrolled");
+      return;
+    }
+
+    navbar.value.classList.remove("navbar-scrolled");
+  }
+};
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const resetMenu = () => {
+  if (isMenuOpen.value) {
+    isMenuOpen.value = false;
+  }
+};
+
+//TODO: refactor this function and optimize it
+onMounted(() => {
+  navbar.value = document.querySelector(".navbar");
+
+  changeBackground();
+
+  window.addEventListener("scroll", () => {
+    if (navbar.value && route.path === "/") {
+      if (window.scrollY > 0) {
+        navbar.value.classList.add("navbar-scrolled");
+        navbar.value.classList.add(
+          "animate__animated",
+          "animate__fadeInDown",
+          "animate__faster",
+        );
+      } else {
+        navbar.value.classList.remove("navbar-scrolled");
+        navbar.value.classList.remove(
+          "animate__animated",
+          "animate__fadeInDown",
+          "animate__faster",
+        );
+      }
+    }
+  });
+});
+
+watch(
+  () => route.path,
+  () => {
+    changeBackground();
+    resetMenu();
+  },
+);
 </script>
 
 <template>
@@ -57,7 +80,7 @@ const links = [
     <h1
       class="text-3xl text-white font-bold animate__animated animate__fadeInLeft animate__fast"
     >
-      Magasin Connecté 4.0
+      <NuxtLink to="/">Magasin Connecté 4.0</NuxtLink>
     </h1>
 
     <div class="navbar-menu-container">
