@@ -14,7 +14,7 @@ const currentDay: number = new Date().getDay();
 
     <ul
       class="pl-10 animate__animated animate__fadeIn"
-      v-if="item.currentWeekNumber == week"
+      v-if="item.currentWeekNumber === week"
     >
       <li
         v-for="(week, index) in item.currentWeek"
@@ -39,7 +39,7 @@ const currentDay: number = new Date().getDay();
 
     <ul
       class="pl-10 animate__animated animate__fadeIn"
-      v-else-if="item.nextWeekNumber == week"
+      v-else-if="item.nextWeekNumber === week"
     >
       <li v-for="week in item.nextWeek">
         {{ week.day }} {{ week.morningStart }} - {{ week.morningEnd }} et

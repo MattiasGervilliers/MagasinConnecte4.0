@@ -5,7 +5,9 @@ export type Item = {
   label: string;
 } & Shop;
 
-const { data: shops } = await useFetch<Shop[]>("/api/shop");
+const { data: shops } = await useFetch<Shop[]>("/api/shops", {
+  method: "GET",
+});
 
 const createItems = (shops: Shop[]): Item[] => {
   return shops.map((shop: Shop) => {

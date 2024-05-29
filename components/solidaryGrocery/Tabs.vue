@@ -54,7 +54,7 @@ const week = ref(weeks[0].value);
             option-attribute="name"
             value-attribute="value"
             icon="i-heroicons-calendar-days"
-            @change="(e) => (week = e)"
+            @change="(e) => (week = ~~e)"
           />
         </p>
 
