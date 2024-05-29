@@ -12,8 +12,6 @@ const isOpen = item.currentWeek.some((week) => {
     (week.afternoonStart <= currentHour && week.afternoonEnd >= currentHour)
   );
 });
-
-console.log("isOpen", isOpen);
 </script>
 
 <template>

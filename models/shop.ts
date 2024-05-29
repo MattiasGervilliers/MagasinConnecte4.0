@@ -1,4 +1,4 @@
-export type Week = {
+export type Day = {
   day: string;
   morningStart: string;
   morningEnd: string;
@@ -15,6 +15,6 @@ export type Shop = {
   lat: number;
   currentWeekNumber: number;
   nextWeekNumber: number;
-  currentWeek: Week[];
-  nextWeek: Week[];
+  currentWeek: Day[];
+  nextWeek: Day[];
 };
