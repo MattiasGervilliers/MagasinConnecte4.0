@@ -1,9 +1,19 @@
 <script setup lang="ts">
+import moment from "moment";
 import type { Item } from "~/pages/epicerie-solidaire.vue";
 
 const { item } = defineProps<{ item: Item; week: number }>();
 
 const currentDay: number = new Date().getDay();
+const currentHour: string = moment(new Date()).format("HH:mm");
+const isOpen = item.currentWeek.some((week) => {
+  return (
+    (week.morningStart <= currentHour && week.morningEnd >= currentHour) ||
+    (week.afternoonStart <= currentHour && week.afternoonEnd >= currentHour)
+  );
+});
+
+console.log("isOpen", isOpen);
 </script>
 
 <template>
@@ -18,11 +28,16 @@ const currentDay: number = new Date().getDay();
     >
       <li
         v-for="(week, index) in item.currentWeek"
-        :class="{ 'font-bold relative': currentDay - 1 === index }"
+        :class="{ 'flex gap-2 font-bold relative': currentDay - 1 === index }"
       >
         {{ week.day }} {{ week.morningStart }} - {{ week.morningEnd }}
         et
         {{ week.afternoonStart }} - {{ week.afternoonEnd }}
+        <span
+          :class="!isOpen ? 'text-red-500' : 'text-green-500'"
+          v-if="currentDay - 1 === index"
+          >{{ isOpen ? "ouvert" : "fermé" }}</span
+        >
         <span
           v-if="currentDay - 1 === index"
           class="ping absolute top-0 left-0 flex h-3 w-3"
