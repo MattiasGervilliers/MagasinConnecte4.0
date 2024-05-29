@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { CardInfos } from "~/components/card/Default.vue";
 import type { CardNavigationInfos } from "~/components/card/Navigation.vue";
+import { definePageMeta } from "#imports";
+
+definePageMeta({
+  auth: false
+});
 
 const cardsNavigationInfos: CardNavigationInfos[] = [
   {
