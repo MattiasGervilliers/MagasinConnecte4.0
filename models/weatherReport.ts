@@ -19,10 +19,12 @@ export type SolarPanelTheoreticalProduction = {
 }
 
 export function parseWeatherData(weatherDataDto: WeatherDataDto[]): WeatherData[] {
-  return weatherDataDto.map((data) => (
-    {
-      date: data.datetime,
+  return weatherDataDto.map((data) => {
+    const splitDate = data.datetime.split(':');
+    const formattedDate = splitDate[0] + ' ' + splitDate[1] + ':00:00';
+    return {
+      date: formattedDate,
       solarRadiation: data.t_solar_rad ?? data.solar_rad,
-    }
-  ));
+    };
+  });
 }
