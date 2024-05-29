@@ -35,7 +35,7 @@ const onSubmit = () => {
 
 <template>
   <div class="blur-sm">
-  <DefaultBackground :hide-title='true'/>
+    <DefaultBackground :is-hide-title='true'/>
   </div>
   <div class="login bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
     <h1 class="text-2xl font-bold mb-6 text-center">Connexion</h1>
