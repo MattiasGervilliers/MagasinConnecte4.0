@@ -1,31 +1,28 @@
-export type StationDto = {
-  id: string;
-  nom: string;
-  posteOuvert: boolean;
-  typePoste: number;
-  lon: number;
-  lat: number;
-  alt: number;
-  postePublic: boolean;
+export type WeatherDataRaw = {
+  data: WeatherDataDto[];
 };
 
-export type Station = {
-  id: string;
-  name: string;
-  isOpen: boolean;
-  type: number;
-  lon: number;
-  lat: number;
-  alt: number;
-  isPublic: boolean;
+export type WeatherDataDto = {
+  datetime: string;
+  t_solar_rad: number;
+  solar_rad: number;
 };
 
-export type CommandNumberDto = {
-  elaboreProduitAvecDemandeResponse: {
-    return: string;
-  };
+export type WeatherData = {
+  date: string;
+  solarRadiation: number;
 };
 
-export type CommandNumber = {
-  value: number;
-};
+export type SolarPanelTheoreticalProduction = {
+  date: string;
+  production: number;
+}
+
+export function parseWeatherData(weatherDataDto: WeatherDataDto[]): WeatherData[] {
+  return weatherDataDto.map((data) => (
+    {
+      date: data.datetime,
+      solarRadiation: data.t_solar_rad ?? data.solar_rad,
+    }
+  ));
+}
