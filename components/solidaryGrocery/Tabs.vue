@@ -58,7 +58,7 @@ const week = ref(weeks[0].value);
           />
         </p>
 
-        <SolidaryGroceryShopHours :item="item" :week="week" />
+        <SolidaryGroceryShopSchedules :item="item" :week="week" />
 
         <SolidaryGroceryShopAddress :item="item" />
       </div>

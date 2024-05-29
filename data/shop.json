@@ -11,52 +11,55 @@
     "currentWeek": [
       {
         "day": "Monday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "isOpen": false
       },
       {
         "day": "Tuesday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Wednesday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Thursday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Friday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Saturday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Sunday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       }
     ],
     "nextWeek": [
@@ -65,49 +68,56 @@
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Tuesday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Wednesday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Thursday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Friday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Saturday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Sunday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       }
     ]
   },
@@ -126,49 +136,56 @@
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Tuesday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Wednesday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Thursday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Friday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Saturday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Sunday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       }
     ],
     "nextWeek": [
@@ -177,49 +194,56 @@
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Tuesday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Wednesday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Thursday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Friday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Saturday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       },
       {
         "day": "Sunday",
         "morningStart": "8:00",
         "morningEnd": "12:00",
         "afternoonStart": "13:00",
-        "afternoonEnd": "17:00"
+        "afternoonEnd": "17:00",
+        "isOpen": true
       }
     ]
   }

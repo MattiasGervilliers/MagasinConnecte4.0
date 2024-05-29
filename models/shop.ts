@@ -1,9 +1,10 @@
 export type Day = {
   day: string;
-  morningStart: string;
-  morningEnd: string;
-  afternoonStart: string;
-  afternoonEnd: string;
+  morningStart?: string;
+  morningEnd?: string;
+  afternoonStart?: string;
+  afternoonEnd?: string;
+  isOpen: boolean;
 };
 
 export type Shop = {
