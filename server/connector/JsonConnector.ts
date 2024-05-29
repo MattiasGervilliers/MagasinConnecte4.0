@@ -1,22 +1,18 @@
 import fse from "fs-extra";
 
 export class JsonConnector {
-  private static filePath = process.cwd() + "/data/shop.json";
-
-  public static async saveData(data: any): Promise<any> {
-    await fse
-      .writeFile(this.filePath, JSON.stringify(data, null, 2), "utf8")
+  public static async saveData(data: any, filePath: string): Promise<void> {
+    return await fse
+      .writeFile(filePath, JSON.stringify(data, null, 2), "utf8")
       .catch((error) => {
         console.error(error);
         throw new Error("Error writing to file");
       });
-
-    return this.getData();
   }
 
-  public static async getData(): Promise<any> {
+  public static async getData(filePath: string): Promise<any> {
     return await fse
-      .readFile(this.filePath, "utf-8")
+      .readFile(filePath, "utf-8")
       .then((data: string) => JSON.parse(data));
   }
 }
