@@ -1,0 +1,12 @@
+.shop {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+
+.shop__select {
+  display: flex;
+  gap: 10px;
+  width: fit-content;
+}
