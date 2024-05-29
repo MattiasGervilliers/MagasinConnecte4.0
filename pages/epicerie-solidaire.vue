@@ -1,88 +1,39 @@
 <script setup lang="ts">
-import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-//TODO: refactor this component maybe just one state ?
-//TODO : style pending state
-//TODO: add a refresh button
+import type { Shop } from "~/models/shop";
 
-const isModalOpen = ref<boolean>(false);
-const isMapLoaded = ref<boolean>(false);
+export type Item = {
+  label: string;
+} & Shop;
 
-const { loadMapBox } = useMapBox(isModalOpen, isMapLoaded);
+const { data: shops } = await useFetch<Shop[]>("/api/shop");
 
-const { data, pending } = useFetch<string>("/api/mapboxAccessToken", {
-  method: "GET",
-  server: false,
-});
+const createItems = (shops: Shop[]): Item[] => {
+  return shops.map((shop: Shop) => {
+    return {
+      label: shop.name,
+      ...shop,
+    };
+  });
+};
 
-const items = [
-  {
-    label: "Tab1",
-    content: "dedefeff",
-  },
-  {
-    label: "Tab2",
-    content: "And, this is the content for Tab2",
-  },
-  {
-    label: "Tab3",
-    content: "Finally, this is the content for Tab3",
-  },
-];
-
-watch(
-  () => data.value,
-  (value) => {
-    mapboxgl.accessToken = value;
-    loadMapBox();
-  },
-);
+const items = ref<Item[]>(createItems(shops.value || []));
 </script>
 
 <template>
-  <div class="wrapper">
-    <p v-if="pending">Loading...</p>
-    <div id="map">
-      <p v-if="!isMapLoaded">Erreur lors du chargement de la map</p>
-    </div>
+  <div class="shop-wrapper">
+    <!-- ADD MAIN TITLE -->
 
-    <USlideover v-model="isModalOpen">
-      <UCard>
-        <template #header>
-          <div class="flex items-center justify-between">
-            <h3>Lorem</h3>
-            <UButton
-              variant="link"
-              icon="i-heroicons-x-mark-20-solid"
-              class="-my-1"
-              @click="isModalOpen = false"
-            />
-          </div>
-        </template>
-      </UCard>
-    </USlideover>
+    <p class="introduction">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat facilis
+      doloribus illo impedit harum laudantium blanditiis quaerat, ab enim?
+      Molestiae cum aspernatur ab ipsa exercitationem architecto itaque vitae
+      doloremque debitis. Voluptates, quod ad ipsa inventore molestias, sint et
+      architecto doloremque neque quidem perferendis, quia quas possimus itaque
+      ullam consectetur! Optio illum atque unde numquam voluptas in ut beatae,
+      dolores ipsam?
+    </p>
 
-    <UTabs :items="items">
-      <template #item="{ item }">
-        <div class="tab-container">
-          <div class="tab-image">
-            <NuxtImg src="test.jpg" />
-          </div>
-          <div class="tab-description">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              dolorum, sint ullam necessitatibus maxime sunt soluta saepe.
-              Nesciunt dignissimos beatae non eum fugit doloribus. Minima beatae
-              nulla tenetur facilis natus? Tempore eos praesentium minima ad a,
-              quibusdam aliquam voluptate voluptatum ipsam architecto, optio
-              itaque deserunt beatae? Similique possimus sed mollitia beatae
-              fugit distinctio, nisi deserunt asperiores, esse a, voluptates
-              eligendi.
-            </p>
-          </div>
-        </div>
-      </template>
-    </UTabs>
+    <SolidaryGroceryTabs :items="items" />
   </div>
 </template>
 

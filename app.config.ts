@@ -19,6 +19,10 @@ export default defineAppConfig({
       },
     },
 
+    select: {
+      placeholder: "text-black dark:text-black",
+    },
+
     tabs: {
       list: {
         background: "bg-transparent dark:bg-transparent",
