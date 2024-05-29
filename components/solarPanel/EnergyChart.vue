@@ -5,15 +5,14 @@ import type { Filters } from "~/models/chart/filters";
 import moment from "moment";
 
 const filters = ref<Filters>({
-  // today at 00:00
-  //use moment to get the current date minus 7 days
+  // use moment to get the current date minus 7 days
   startDate: moment().subtract(7, 'days').toDate(),
-  // today at 23:59
+  // today date
   endDate: new Date(),
   timeUnit: "HOUR",
 });
 
-let energyDetails = ref<EnergyDetails>({
+const energyDetails = ref<EnergyDetails>({
   timeUnit: "HOUR",
   unit: "kWh",
   meters: [],
