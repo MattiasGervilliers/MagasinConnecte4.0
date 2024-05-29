@@ -2,14 +2,35 @@
 import type { CardInfos } from "~/components/card/Default.vue";
 import type { CardNavigationInfos } from "~/components/card/Navigation.vue";
 
+const cardsNavigationInfos: CardNavigationInfos[] = [
+  {
+    title: "Technologies",
+    description: "Découvrez les dernières technologies",
+    path: "/technologies",
+    iconUrl: "i-heroicons-camera-solid",
+  },
+  {
+    title: "Photovoltaïque",
+    description: "Découvrez les panneaux solaires",
+    path: "/photovoltaique",
+    iconUrl: "i-heroicons-camera-solid",
+  },
+  {
+    title: "Epicerie-solidaire",
+    description: "Découvrez notre épicerie solidaire",
+    path: "/epicerie-solidaire",
+    iconUrl: "i-heroicons-camera-solid",
+  },
+];
+
 const cardsInfos: CardInfos[] = [
   {
     title: "Par les étudiants pour les étudiants !",
     subTitle: "",
     description:
         "\"Nous proposons à ces étudiants des produits à 10% des prix du marchés, comme des paquets de pâtes à 7 centimes"
-        + "\" - Alexandre Siméoni, président de la fédération Aix-Marseille Interasso.\n depuis l'inoguration du magasin" +
-        "connecter en 2019 plus de 650 étudiants ont bénéficié de ces tarifs préférentiels.",
+        + "\" - Alexandre Siméoni, président de la fédération Aix-Marseille Interasso.\n Depuis l'inoguration du magasin" +
+        " connecté en 2019 plus de 650 étudiants ont bénéficié de ces tarifs préférentiels.",
     publicImage: "mainPage_store.jpg",
     isReversed: false,
   },
@@ -19,7 +40,7 @@ const cardsInfos: CardInfos[] = [
     subTitle: "Vivez l'experience du client de demain",
     description:
         "Le magasin connecter a pour but de regroupé les technologies du futur et de les integré dans un contexte reel. " +
-        "on y retrouve des technologies comme le LiFi, le recyclage de la lumière ambiante, l'eclairage circadien, " +
+        "On y retrouve des technologies comme le LiFi, le recyclage de la lumière ambiante, l'eclairage circadien, " +
         "des drones, le RFID, l'IOT et la VLC",
     publicImage: "mainPage_tech_img.png",
     isReversed: true,
