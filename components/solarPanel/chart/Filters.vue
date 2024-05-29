@@ -8,14 +8,14 @@ const { filters } = defineProps<{
 }>();
 
 
-let startDateISO = computed({
+const startDateISO = computed({
   get: () => moment(filters.startDate).format("YYYY-MM-DDTHH:mm:ss"),
   set: (value) => {
     filters.startDate = new Date(value);
   },
 });
 
-let endDateISO = computed({
+const endDateISO = computed({
   get: () => moment(filters.endDate).format("YYYY-MM-DDTHH:mm:ss"),
   set: (value) => {
     filters.endDate = new Date(value);
