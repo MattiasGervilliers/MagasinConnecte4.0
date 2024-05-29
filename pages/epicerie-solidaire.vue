@@ -10,12 +10,10 @@ const { data: shops } = await useFetch<Shop[]>("/api/shops", {
 });
 
 const createItems = (shops: Shop[]): Item[] => {
-  return shops.map((shop: Shop) => {
-    return {
-      label: shop.name,
-      ...shop,
-    };
-  });
+  return shops.map((shop: Shop) => ({
+    label: shop.name,
+    ...shop,
+  }));
 };
 
 const items = ref<Item[]>(createItems(shops.value || []));
