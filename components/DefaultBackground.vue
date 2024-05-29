@@ -1,8 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps<{
+  isHideTitle?: boolean;
+}>();
+</script>
 
 <template>
   <div class="background">
-    <h1 class="text-white text-4xl font-bold text-center">
+    <h1 v-if="!isHideTitle" class="text-white text-4xl font-bold text-center">
       Bienvenue dans le <br />
       magasin connectée 4.0
     </h1>
