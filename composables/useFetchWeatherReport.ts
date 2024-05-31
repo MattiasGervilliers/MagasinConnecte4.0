@@ -16,7 +16,7 @@ type UseFetchWeatherReport = {
     solarPanelInfo: SolarPanelInfo;
 }
 export const useFetchWeatherReport = async ({queryParams, apiKey, solarPanelInfo}: UseFetchWeatherReport) => {
-
+    console.log('useFetchWeatherReport', `https://api.weatherbit.io/v2.0/history/${queryParams.frequency}?lat=43.3186&lon=5.4084&start_date=${queryParams.beginningDate}&end_date=${queryParams.endDate}&key=${apiKey}`)
     const weatherDataRaw = await $fetch<WeatherDataRaw>(`https://api.weatherbit.io/v2.0/history/${queryParams.frequency}?lat=43.3186&lon=5.4084&start_date=${queryParams.beginningDate}&end_date=${queryParams.endDate}&key=${apiKey}`, {
       method: 'GET',
       headers: {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CardInfos } from "~/components/card/Default.vue";
 import type { CardNavigationInfos } from "~/components/card/Navigation.vue";
+import type {SolarPanelTheoreticalProduction} from "~/models/weatherReport";
 
 const cardsNavigationInfos: CardNavigationInfos[] = [
   {

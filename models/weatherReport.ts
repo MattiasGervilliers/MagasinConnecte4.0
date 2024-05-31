@@ -1,3 +1,5 @@
+import moment from "moment/moment";
+
 export type WeatherDataRaw = {
   data: WeatherDataDto[];
 };
@@ -20,8 +22,7 @@ export type SolarPanelTheoreticalProduction = {
 
 export function parseWeatherData(weatherDataDto: WeatherDataDto[]): WeatherData[] {
   return weatherDataDto.map((data) => {
-    const splitDate = data.datetime.split(':');
-    const formattedDate = splitDate[0] + ' ' + splitDate[1] + ':00:00';
+    const formattedDate = moment(data.datetime, 'YYYY-MM-DD:HH').format("YYYY-MM-DD HH:mm:ss");
     return {
       date: formattedDate,
       solarRadiation: data.t_solar_rad ?? data.solar_rad,
