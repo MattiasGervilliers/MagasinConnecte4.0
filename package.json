@@ -21,8 +21,9 @@
     "@sidebase/nuxt-auth": "^0.7.2",
     "animate.css": "^4.1.1",
     "chart.js": "^4.4.2",
-    "jsonwebtoken": "^9.0.2",
+    "crypto-js": "^4.2.0",
     "fs-extra": "^11.2.0",
+    "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
     "nuxt": "^3.11.2",
     "nuxt-time": "^0.1.3",
@@ -33,8 +34,9 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.6",
+    "@types/crypto-js": "^4.2.2",
     "@types/fs-extra": "^11.0.4",
+    "@types/jsonwebtoken": "^9.0.6",
     "@vite-pwa/nuxt": "^0.7.0",
     "prettier": "3.2.5"
   }
