@@ -26,8 +26,9 @@ const isCurrentlyOpen =
   <p>
     <span v-if="day.isOpen">
       {{ day.day }} {{ day.morningStart }} - {{ day.morningEnd }}
-      et
-      {{ day.afternoonStart }} - {{ day.afternoonEnd }}
+      <span v-if="day.withBreak">
+        et {{ day.afternoonStart }} - {{ day.afternoonEnd }}</span
+      >
     </span>
 
     <span v-else> {{ day.day }} <span class="text-red-500">fermé</span> </span>

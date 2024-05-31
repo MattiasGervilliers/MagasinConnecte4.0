@@ -1,5 +1,6 @@
 export type Day = {
   day: string;
+  withBreak: boolean;
   morningStart?: string;
   morningEnd?: string;
   afternoonStart?: string;
