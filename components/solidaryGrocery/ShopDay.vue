@@ -8,8 +8,18 @@ const currentDay: number = new Date().getDay();
 const currentHour: string = moment(new Date()).format("HH:mm");
 
 const isCurrentlyOpen =
-  (day.morningStart! <= currentHour && day.morningEnd! >= currentHour) ||
-  (day.afternoonStart! <= currentHour && day.afternoonEnd! >= currentHour);
+  moment(currentHour, "HH:mm").isBetween(
+    moment(day.morningStart, "HH:mm"),
+    moment(day.morningEnd, "HH:mm"),
+    undefined,
+    "[]",
+  ) ||
+  moment(currentHour, "HH:mm").isBetween(
+    moment(day.afternoonStart, "HH:mm"),
+    moment(day.afternoonEnd, "HH:mm"),
+    undefined,
+    "[]",
+  );
 </script>
 
 <template>
@@ -25,7 +35,8 @@ const isCurrentlyOpen =
     <span
       :class="isCurrentlyOpen ? 'text-green-500' : 'text-red-500'"
       v-if="currentDay - 1 === index"
-      >{{ isCurrentlyOpen ? "ouvert" : "fermé" }}</span
+    >
+      {{ isCurrentlyOpen ? " ouvert" : " fermé" }}</span
     >
 
     <span
