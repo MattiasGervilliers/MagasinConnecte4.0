@@ -6,12 +6,19 @@ export class ShopRepository {
   static filePath: string = process.cwd() + "/data/shop.json";
 
   public static async saveShops(shops: Shop[]): Promise<Shop[]> {
-    await JsonConnector.saveData(shops, this.filePath);
-
-    return (await JsonConnector.getData(this.filePath)) as Shop[];
+    try {
+      await JsonConnector.saveData(shops, this.filePath);
+      return (await JsonConnector.getData(this.filePath)) as Shop[];
+    } catch (error) {
+      throw new Error("Error saving shops");
+    }
   }
 
   public static async getShops(): Promise<Shop[]> {
-    return (await JsonConnector.getData(this.filePath)) as Shop[];
+    try {
+      return (await JsonConnector.getData(this.filePath)) as Shop[];
+    } catch (error) {
+      throw new Error("Error getting shops");
+    }
   }
 }
