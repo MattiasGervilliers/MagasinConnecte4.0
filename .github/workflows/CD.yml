@@ -18,7 +18,7 @@ jobs:
     - name: remmove node builded files
       run: rm ./package-lock.json && rm -rf ./node_modules
     - name: connect and pull
-      run: sshpass -p '${{ secrets.SSH_PWD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && npm i && npm run build && exit"
+      run: sshpass -p '${{ secrets.SSH_PWD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && rm ./package-lock.json && rm -rf ./node_modules && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && npm i && npm run build && exit"
     - name: restart site
       run: curl -X POST --basic --user "${{ secrets.AD_API_KEY }} account=${{ secrets.AD_ACCOUNT }}:" '${{ secrets.AD_URL_RESTART }}'
     - name: cleanup
