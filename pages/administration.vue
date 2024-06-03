@@ -1,7 +1,12 @@
 <script lang="ts" setup>
 import type { Shop } from "~/models/shop";
+import type { User } from "~/models/user";
 
 const { data: shops } = await useFetch<Shop[]>("/api/shops", {
+  method: "GET",
+});
+
+const { data: users } = await useFetch<User[]>("/api/users", {
   method: "GET",
 });
 </script>
@@ -14,6 +19,7 @@ const { data: shops } = await useFetch<Shop[]>("/api/shops", {
 
     <div>
       <h3>Gestion du mot de passe</h3>
+      <AdminUserManagement v-if="users" :users="users" />
     </div>
 
     <div>
