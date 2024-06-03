@@ -1,33 +1,11 @@
 <script setup lang="ts">
-import moment from "moment";
 import type { Item } from "~/pages/epicerie-solidaire.vue";
 
 const { items } = defineProps<{
   items: Item[];
 }>();
 
-const currentWeekNumber: number = moment(new Date()).isoWeek();
-
-const getStartAndEndOfWeek = (weekNumber: number, year: number) => {
-  const startOfWeek = moment().year(year).week(weekNumber).startOf("week");
-  const endOfWeek = moment().year(year).week(weekNumber).endOf("week");
-
-  return {
-    start: startOfWeek.format("MM-DD"),
-    end: endOfWeek.format("MM-DD"),
-  };
-};
-
-const weeks = [
-  {
-    name: `${getStartAndEndOfWeek(currentWeekNumber, new Date().getFullYear()).start} au ${getStartAndEndOfWeek(currentWeekNumber, new Date().getFullYear()).end}`,
-    value: currentWeekNumber,
-  },
-  {
-    name: `${getStartAndEndOfWeek(currentWeekNumber + 1, new Date().getFullYear()).start} au ${getStartAndEndOfWeek(currentWeekNumber + 1, new Date().getFullYear()).end}`,
-    value: currentWeekNumber + 1,
-  },
-];
+const { weeks } = useWeek();
 
 const week = ref(weeks[0].value);
 </script>

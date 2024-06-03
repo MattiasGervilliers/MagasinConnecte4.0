@@ -108,6 +108,14 @@ watch(
         name="i-heroicons-x-mark"
         class="menu-icon text-3xl cursor-pointer animate__animated animate__flipInX animate__fast"
       />
+
+      <UButton
+        icon="i-heroicons-user-16-solid"
+        size="md"
+        class="menu-icon"
+        to="/administration"
+        variant="link"
+      />
     </div>
   </nav>
 </template>
