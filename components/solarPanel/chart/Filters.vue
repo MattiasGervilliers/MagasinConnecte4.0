@@ -3,10 +3,18 @@
 import type { Filters } from "~/models/chart/filters";
 import moment from "moment";
 
-const { filters } = defineProps<{
+let { filters } = defineProps<{
   filters: Filters;
 }>();
 
+const options = ref([
+  { value: "QUARTER_OF_AN_HOUR", text: "15 min" },
+  { value: "HOUR", text: "heure" },
+  { value: "DAY", text: "jour" },
+  { value: "WEEK", text: "semaine" },
+  { value: "MONTH", text: "mois" },
+  { value: "YEAR", text: "année" },
+]);
 
 const startDateISO = computed({
   get: () => moment(filters.startDate).format("YYYY-MM-DDTHH:mm:ss"),
@@ -21,22 +29,201 @@ const endDateISO = computed({
     filters.endDate = new Date(value);
   },
 });
+
+function reset() {
+  filters.startDate = moment().subtract(7, "days").toDate();
+  filters.endDate = new Date();
+  filters.timeUnit = "HOUR";
+  updateFilters();
+}
+
+let undoStack: Filters[] = [];
+let redoStack: Filters[] = [];
+undoStack.push({ ...filters });
+function updateFilters() {
+  // Only add to stack if the latest state is different from the current state
+  if (undoStack.length === 0 || JSON.stringify(undoStack[undoStack.length - 1]) !== JSON.stringify(filters)) {
+    undoStack.push({ ...filters });
+    redoStack = []; // Clear the redo stack on new changes
+  }
+}
+
+function undo() {
+  if (undoStack.length > 1) { // Ensure there's a previous state to go back to
+    redoStack.push(undoStack.pop()!); // Move the current state to the redo stack
+    const lastState = undoStack[undoStack.length - 1];
+    filters.startDate = lastState.startDate;
+    filters.endDate = lastState.endDate;
+    filters.timeUnit = lastState.timeUnit;
+  }
+}
+
+function redo() {
+  if (redoStack.length > 0) {
+    undoStack.push({ ...filters }); // Save current state for undo
+    const nextState = redoStack.pop()!;
+    filters.startDate = nextState.startDate;
+    filters.endDate = nextState.endDate;
+    filters.timeUnit = nextState.timeUnit;
+  }
+}
+
+watch(() => filters, () => {
+  updateFilters();
+}, { deep: true });
+
+onMounted(() => {
+  const handleKeyDown = (event: KeyboardEvent) => {
+    event.stopImmediatePropagation();
+    if ((event.key === 'z' || event.key === 'Z') && (event.ctrlKey || event.metaKey)) {
+      event.shiftKey ? redo() : undo();
+      event.preventDefault();
+    }
+  };
+  window.addEventListener('keydown', handleKeyDown);
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('keydown', handleKeyDown);
+  });
+});
 </script>
 
 <template>
-  <select v-model="filters.timeUnit">
-    <option value="QUARTER_OF_AN_HOUR">15 min</option>
-    <option value="HOUR">heure</option>
-    <option value="DAY">jour</option>
-    <option value="WEEK">semaine</option>
-    <option value="MONTH">mois</option>
-    <option value="YEAR">année</option>
-  </select>
+  <UPopover class="popover-content">
+    <UButton class="filter-button" size="xl">
+      <UIcon name="i-heroicons-funnel" class="filter-icon" />
+      <span class="display-on-hover">Filtres</span>
+    </UButton>
 
-  <input type="datetime-local" v-model="startDateISO">
-  <input type="datetime-local" v-model="endDateISO">
+    <template #panel>
+      <div class="popover-content container bg-white dark:bg-black">
+        <div class="relative">
+          <UTooltip text="Réinitalise les filtres"  :popper="{ placement: 'top' }" >
+            <button class="btn-float reset" @click="reset" aria-label="Reset filters" >
+              <UIcon name="i-heroicons-arrow-path" />
+            </button>
+          </UTooltip>
+
+          <UTooltip text="Annule les dernières modifications" :shortcuts="['Ctrl', 'Z']"  :popper="{ placement: 'top' }" >
+            <button class="btn-float previous" @click="undo" aria-label="Previous filters">
+              <UIcon name="i-heroicons-arrow-uturn-left" />
+            </button>
+          </UTooltip>
+
+          <UTooltip text="Refait les dernières modifications" :shortcuts="['Ctrl', 'Shift', 'Z']"  :popper="{ placement: 'top' }" >
+            <button class="btn-float next" @click="redo" aria-label="Next filters">
+              <UIcon name="i-heroicons-arrow-uturn-right" />
+            </button>
+          </UTooltip>
+
+          <h1 class="text-xl font-bold text-center mb-2">Filtres</h1>
+        </div>
+        <div class="filters-popover-wrap">
+          <h2 class="mb-1">Plage de temps</h2>
+          <div class="custom-select">
+            <div class="custom-option"
+                 v-for="(option, index) in options"
+                 :key="index"
+                 :class="{ 'selected-option': filters.timeUnit === option.value }"
+                 @click="filters.timeUnit = option.value">
+              {{ option.text }}
+            </div>
+          </div>
+
+          <div class="mb-1 mt-2 flex items-center">
+            <UIcon name="i-heroicons-calendar" />
+            <label for="startDate" class="ml-1">Date de début</label>
+          </div>
+          <input type="datetime-local" v-model="startDateISO" id="startDate">
+
+          <div class="mb-1 mt-2 flex items-center">
+            <UIcon name="i-heroicons-calendar" />
+            <label for="endDate" class="ml-1">Date de fin</label>
+          </div>
+          <input type="datetime-local" v-model="endDateISO" id="endDate">
+        </div>
+      </div>
+    </template>
+  </UPopover>
 </template>
 
 <style scoped>
+/* Button and popover styling */
+.filter-button {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 45px;
+  overflow: hidden;
 
+  .display-on-hover {
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .filter-icon {
+    min-width: 1em;
+  }
+
+  &:hover {
+    width: 95px;
+    transition: width 0.3s ease;
+    padding-right: 10px;
+
+    .display-on-hover {
+      opacity: 1;
+    }
+  }
+}
+
+.popover-content {
+  padding: 16px 8px;
+
+  .filters-popover-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-float {
+    position: absolute;
+    top: 2px;
+
+    &.reset {
+      left: 2px;
+    }
+
+    &.previous {
+      left: 30px;
+    }
+
+    &.next {
+      left: 58px;
+    }
+  }
+}
+
+/* Custom select styling */
+.custom-select {
+  display: flex;
+}
+
+.custom-option {
+  padding: 4px 8px;
+  cursor: pointer;
+  border: 1px solid #ced4da;
+
+  &:first-child {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
+
+.selected-option {
+  background-color: theme('colors._primary.700');
+}
 </style>
