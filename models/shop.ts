@@ -1,10 +1,16 @@
 export type Day = {
   day: string;
+  withBreak: boolean;
   morningStart?: string;
   morningEnd?: string;
   afternoonStart?: string;
   afternoonEnd?: string;
   isOpen: boolean;
+};
+
+export type Week = {
+  number: number;
+  days: Day[];
 };
 
 export type Shop = {
@@ -14,8 +20,6 @@ export type Shop = {
   image: string;
   lng: number;
   lat: number;
-  currentWeekNumber: number;
-  nextWeekNumber: number;
-  currentWeek: Day[];
-  nextWeek: Day[];
+  currentWeek: Week;
+  nextWeek: Week;
 };

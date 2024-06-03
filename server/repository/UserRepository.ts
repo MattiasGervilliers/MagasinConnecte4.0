@@ -22,10 +22,26 @@ export class UserRepository {
     }
   }
 
-  public static async getUserByEmail(email: string): Promise<User | undefined> {
+  public static async saveUserByEmail(
+    email: string,
+    user: User,
+  ): Promise<User> {
     try {
       const users = await this.getUsers();
-      return users.find((user) => user.email === email);
+      const index = users.findIndex((user: User) => user.email === email);
+      users[index] = user;
+
+      return (await this.saveUsers(users)).find(
+        (user: User) => user.email === email,
+      ) as User;
+    } catch (error) {
+      throw new Error("Error saving user by email");
+    }
+  }
+
+  public static async getUserByEmail(email: string): Promise<User | undefined> {
+    try {
+      return (await this.getUsers()).find((user: User) => user.email === email);
     } catch (error) {
       throw new Error("Error getting user by email");
     }
