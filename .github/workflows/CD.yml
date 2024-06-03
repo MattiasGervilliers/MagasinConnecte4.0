@@ -16,6 +16,6 @@ jobs:
     - name: install ssh
       run: sudo apt-get update && sudo apt-get install -y sshpass
     - name: connect and pull
-      run: sshpass -p '${{ secrets.SSH_PWD }}' ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
+      run: sshpass -p '${{ secrets.SSH_PWD }}' ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
