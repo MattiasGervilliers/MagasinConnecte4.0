@@ -2,6 +2,7 @@
 const route = useRoute();
 const navbar = ref<Element | null>(null);
 const isMenuOpen = useState("isMenuOpen", () => false);
+const auth = useAuth();
 
 const links = [
   {
@@ -96,17 +97,22 @@ watch(
         </li>
       </ul>
 
-      <UIcon
-        @click="toggleMenu"
+      <UButton
+        icon="i-heroicons-bars-3-16-solid"
+        size="md"
         v-if="!isMenuOpen"
-        name="i-heroicons-bars-3"
         class="menu-icon text-3xl cursor-pointer animate__animated animate__flipInX animate__fast"
-      />
-      <UIcon
         @click="toggleMenu"
+        variant="link"
+      />
+
+      <UButton
+        icon="i-heroicons-x-mark-16-solid"
+        size="md"
         v-if="isMenuOpen"
-        name="i-heroicons-x-mark"
         class="menu-icon text-3xl cursor-pointer animate__animated animate__flipInX animate__fast"
+        @click="toggleMenu"
+        variant="link"
       />
 
       <UButton
@@ -115,6 +121,15 @@ watch(
         class="menu-icon"
         to="/administration"
         variant="link"
+      />
+
+      <UButton
+        v-if="auth.status.value === 'authenticated'"
+        icon="i-heroicons-arrow-right-start-on-rectangle-16-solid"
+        size="md"
+        class="menu-icon"
+        variant="link"
+        @click="auth.signOut()"
       />
     </div>
   </nav>
