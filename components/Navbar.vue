@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
 const navbar = ref<Element | null>(null);
-const isMenuOpen = useState("isMenuOpen", () => false);
 const auth = useAuth();
 
 const { isMenuOpen, refLinks, resetMenu, toggleMenu, toggleMenuWithSubLinks } =
