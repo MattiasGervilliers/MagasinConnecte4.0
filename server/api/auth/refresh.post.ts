@@ -1,16 +1,14 @@
 import { createError, eventHandler, readBody } from 'h3'
 import { sign, verify } from 'jsonwebtoken'
 
-export const SECRET = 'dummy'
+const config = useRuntimeConfig();
 
-interface User {
-  username: string;
-  name: string;
-  picture: string;
+interface UserJwt {
+  username: string,
+  role: string,
 }
 
-interface JwtPayload extends User {
-  scope: Array<'test' | 'user'>;
+interface JwtPayload extends UserJwt {
   exp: number;
 }
 
@@ -24,7 +22,7 @@ export default eventHandler(async (event) => {
     })
   }
 
-  const decoded = verify(body.refreshToken, SECRET) as JwtPayload | undefined
+  const decoded = verify(body.refreshToken, config.jwtSecret) as JwtPayload | undefined
 
   if (!decoded) {
     throw createError({
@@ -35,16 +33,15 @@ export default eventHandler(async (event) => {
 
   const expiresIn = 60 * 5 // 5 minutes
 
-  const user: User = {
+  const userJwt: UserJwt = {
     username: decoded.username,
-    picture: decoded.picture,
-    name: decoded.name
+    role: decoded.role,
   }
 
-  const accessToken = sign({ ...user, scope: ['test', 'user'] }, SECRET, { // TODO: Check and verify this
+  const accessToken = sign({ ...userJwt }, config.jwtSecret, {
     expiresIn
   })
-  const refreshToken = sign({ ...user, scope: ['test', 'user'] }, SECRET, { // TODO: Check and verify this
+  const refreshToken = sign({ ...userJwt }, config.jwtSecret, {
     expiresIn: 60 * 60 * 24
   })
 

@@ -1,8 +1,8 @@
 import { createError, eventHandler, readBody } from "h3";
 import { z } from "zod";
 import { sign } from "jsonwebtoken";
-import sha256 from "crypto-js/sha256";
 import { UserRepository } from "~/server/repository/UserRepository";
+import { User } from "~/models/user";
 
 const config = useRuntimeConfig();
 
@@ -15,11 +15,10 @@ type LoginData = {
 
 export default eventHandler(async (event) => {
   const loginData: LoginData = await readBody(event);
-  const pwd: string =
-    (await UserRepository.getUserByEmail(loginData.username))?.password || "";
+  const user: User | undefined = await UserRepository.getUserByEmail(loginData.username);
 
   const result = z
-    .object({ username: z.string().min(1), password: z.literal(pwd) })
+    .object({ username: z.string().min(1), password: z.literal(user?.password) })
     .safeParse(loginData);
   if (!result.success) {
     throw createError({
@@ -27,20 +26,17 @@ export default eventHandler(async (event) => {
     });
   }
 
-  const expiresIn = 15;
+  const expiresIn = 1;
 
-  const { username } = result.data;
-
-  const user = {
-    username,
-    picture: "https://github.com/nuxt.png",
-    name: "User " + username,
+  const userToToken = {
+    username: user?.email,
+    role: user?.role,
   };
 
-  const accessToken = sign({ ...user, scope: ["test", "user"] }, SECRET, {
+  const accessToken = sign({ ...userToToken }, SECRET, {
     expiresIn,
   });
-  const refreshToken = sign({ ...user, scope: ["test", "user"] }, SECRET, {
+  const refreshToken = sign({ ...userToToken }, SECRET, {
     expiresIn: 60 * 60 * 24,
   });
 
