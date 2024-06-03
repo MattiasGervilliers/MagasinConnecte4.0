@@ -1,4 +1,4 @@
-import { User } from '~/models/user'
+import { User } from "~/models/user";
 import { UserRepository } from "~/server/repository/UserRepository";
 
 type Query = {
@@ -8,7 +8,7 @@ type Query = {
 export default defineEventHandler(async (event): Promise<User[]> => {
   const { email } = getQuery<Query>(event);
 
-  if (email !== undefined) {
+  if (email) {
     const user = await UserRepository.getUserByEmail(email);
     return user ? [user] : [];
   }
