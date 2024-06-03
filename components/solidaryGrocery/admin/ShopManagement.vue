@@ -43,11 +43,14 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
 
   try {
     isLoading.value = true;
-    await $fetch("api/shops", {
+    await useFetchWithToast("api/shops", {
+      successMessage: "Les données ont bien été enregistrées",
+      errorMessage: "Une erreur est survenue lors de l'enregistrement des données",
+    }, {
       method: "PUT",
       body: JSON.stringify(shopsCopy),
-    });
 
+    });
     isLoading.value = false;
   } catch (error) {
     console.error(error);

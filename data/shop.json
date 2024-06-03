@@ -13,10 +13,10 @@
           "day": "Monday",
           "isOpen": true,
           "withBreak": true,
-          "morningStart": "08:00",
+          "morningStart": "09:00",
           "morningEnd": "12:00",
-          "afternoonStart": "12:10",
-          "afternoonEnd": "18:00"
+          "afternoonStart": "",
+          "afternoonEnd": ""
         },
         {
           "day": "Tuesday",
