@@ -4,279 +4,287 @@
     "description": "This is a shop",
     "address": "123 Fake St",
     "image": "https://via.placeholder.com/150",
-    "currentWeekNumber": 22,
-    "nextWeekNumber": 23,
     "lat": 51.5074,
     "lng": 0.1278,
-    "currentWeek": [
-      {
-        "day": "Monday",
-        "isOpen": true,
-        "morningStart": "08:00",
-        "morningEnd": "11:00",
-        "afternoonStart": "",
-        "afternoonEnd": "",
-        "withBreak": false
-      },
-      {
-        "day": "Tuesday",
-        "morningStart": "08:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Wednesday",
-        "morningStart": "08:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Thursday",
-        "morningStart": "08:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Friday",
-        "morningStart": "08:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Saturday",
-        "morningStart": "08:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Sunday",
-        "morningStart": "08:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      }
-    ],
-    "nextWeek": [
-      {
-        "day": "Monday",
-        "morningStart": "09:00",
-        "morningEnd": "10:00",
-        "afternoonStart": "11:00",
-        "afternoonEnd": "14:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Tuesday",
-        "morningStart": "08:26",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Wednesday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Thursday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Friday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Saturday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Sunday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      }
-    ]
+    "currentWeek": {
+      "number": 23,
+      "days": [
+        {
+          "day": "Monday",
+          "isOpen": true,
+          "withBreak": true,
+          "morningStart": "08:00",
+          "morningEnd": "12:00",
+          "afternoonStart": "12:10",
+          "afternoonEnd": "18:00"
+        },
+        {
+          "day": "Tuesday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Wednesday",
+          "isOpen": true,
+          "withBreak": false,
+          "morningStart": "07:00",
+          "morningEnd": "13:00",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Thursday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Friday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Saturday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Sunday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        }
+      ]
+    },
+    "nextWeek": {
+      "number": 24,
+      "days": [
+        {
+          "day": "Monday",
+          "isOpen": true,
+          "withBreak": false,
+          "morningStart": "08:00",
+          "morningEnd": "16:00",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Tuesday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Wednesday",
+          "isOpen": true,
+          "withBreak": false,
+          "morningStart": "07:00",
+          "morningEnd": "14:00",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Thursday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Friday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Saturday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Sunday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        }
+      ]
+    }
   },
   {
     "name": "Shop 2",
     "description": "This is another shop",
     "address": "456 Fake St",
     "image": "https://via.placeholder.com/150",
-    "currentWeekNumber": 22,
-    "nextWeekNumber": 23,
     "lat": 78.5074,
     "lng": 0.1278,
-    "currentWeek": [
-      {
-        "day": "Monday",
-        "morningStart": "06:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Tuesday",
-        "morningStart": "07:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Wednesday",
-        "morningStart": "07:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Thursday",
-        "morningStart": "07:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Friday",
-        "morningStart": "07:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Saturday",
-        "morningStart": "07:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Sunday",
-        "morningStart": "07:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      }
-    ],
-    "nextWeek": [
-      {
-        "day": "Monday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Tuesday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Wednesday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Thursday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Friday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Saturday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      },
-      {
-        "day": "Sunday",
-        "morningStart": "8:00",
-        "morningEnd": "12:00",
-        "afternoonStart": "13:00",
-        "afternoonEnd": "17:00",
-        "isOpen": true,
-        "withBreak": true
-      }
-    ]
+    "currentWeek": {
+      "number": 23,
+      "days": [
+        {
+          "day": "Monday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Tuesday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Wednesday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Thursday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Friday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Saturday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Sunday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        }
+      ]
+    },
+    "nextWeek": {
+      "number": 24,
+      "days": [
+        {
+          "day": "Monday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Tuesday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Wednesday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Thursday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Friday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Saturday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        },
+        {
+          "day": "Sunday",
+          "isOpen": false,
+          "withBreak": true,
+          "morningStart": "",
+          "morningEnd": "",
+          "afternoonStart": "",
+          "afternoonEnd": ""
+        }
+      ]
+    }
   }
 ]

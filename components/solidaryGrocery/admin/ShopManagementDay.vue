@@ -1,81 +1,63 @@
 <script setup lang="ts">
-import type { Day, Shop } from "~/models/shop";
+import type { Day } from "~/models/shop";
 
 // use props instead of descrupturing because we need to watch the week and day props inside the component
 const props = defineProps<{
-  day: string;
-  shop: Shop;
-  index: number;
-  week: number;
+  dayName: string;
+  day: Day;
 }>();
 
 // we descructure the props that are not watching inside the component
-const { index, day } = props;
-
-const selectedWeek = ref<Day[]>(
-  props.shop.currentWeekNumber === props.week
-    ? props.shop.currentWeek
-    : props.shop.nextWeek,
-);
-
-watch(
-  () => [props.week, props.shop],
-  () => {
-    selectedWeek.value =
-      props.shop.currentWeekNumber === props.week
-        ? props.shop.currentWeek
-        : props.shop.nextWeek;
-  },
-);
+const { dayName } = props;
 
 const toggleClose = (isOpen: boolean): void => {
   if (!isOpen) {
-    selectedWeek.value[index].morningStart = "";
-    selectedWeek.value[index].morningEnd = "";
-    selectedWeek.value[index].afternoonStart = "";
-    selectedWeek.value[index].afternoonEnd = "";
+    props.day.morningStart = "";
+    props.day.morningEnd = "";
+    props.day.afternoonStart = "";
+    props.day.afternoonEnd = "";
   }
 };
 
 const toggleBreak = (withBreak: boolean): void => {
   if (!withBreak) {
-    selectedWeek.value[index].afternoonStart = "";
-    selectedWeek.value[index].afternoonEnd = "";
+    props.day.afternoonStart = "";
+    props.day.afternoonEnd = "";
   }
 };
 </script>
 
 <template>
-  <label>{{ day }}</label>
+  <label>{{ dayName }}</label>
   <UInput
     type="time"
-    v-model="selectedWeek[index].morningStart"
-    :disabled="!selectedWeek[index].isOpen"
+    v-model="props.day.morningStart"
+    :disabled="!props.day.isOpen"
   />
   <UInput
     type="time"
-    v-model="selectedWeek[index].morningEnd"
-    :disabled="!selectedWeek[index].isOpen"
+    v-model="props.day.morningEnd"
+    :disabled="!props.day.isOpen"
   />
 
-  <span v-if="selectedWeek[index].withBreak">et</span>
+  <span v-if="props.day.withBreak">et</span>
 
   <UInput
-    v-if="selectedWeek[index].withBreak"
+    v-if="props.day.withBreak"
     type="time"
-    v-model="selectedWeek[index].afternoonStart"
-    :disabled="!selectedWeek[index].isOpen"
+    v-model="props.day.afternoonStart"
+    :disabled="!props.day.isOpen"
   />
   <UInput
-    v-if="selectedWeek[index].withBreak"
+    v-if="props.day.withBreak"
     type="time"
-    v-model="selectedWeek[index].afternoonEnd"
-    :disabled="!selectedWeek[index].isOpen"
+    v-model="props.day.afternoonEnd"
+    :disabled="!props.day.isOpen"
   />
 
   <label>Pause déjeuner</label>
-  <UToggle v-model="selectedWeek[index].withBreak" @change="toggleBreak" />
+  <UToggle v-model="props.day.withBreak" @change="toggleBreak" />
 
   <label>Ouvert</label>
-  <UToggle v-model="selectedWeek[index].isOpen" @change="toggleClose" />
+  <UToggle v-model="props.day.isOpen" @change="toggleClose" />
 </template>

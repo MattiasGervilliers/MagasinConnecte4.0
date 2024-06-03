@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { FormSubmitEvent } from "#ui/types";
-import type { Shop } from "~/models/shop";
+import moment from "moment";
+import type { Day, Shop } from "~/models/shop";
 
 export type Item = {
   label: string;
@@ -10,11 +11,12 @@ const { shops } = defineProps<{
   shops: Shop[];
 }>();
 
-const { weeks, currentWeekNumber } = useWeek();
+const { weeks } = useWeek();
+const { loadState } = useShopManagement();
 const week = ref(weeks[0].value);
-const state = reactive<Shop[]>(shops || []);
 const isLoading = ref<boolean>(false);
 const shopNumber = ref<number>(0);
+const state = reactive<Shop[]>(loadState(shops || []));
 
 const createItems = (shops: Shop[]): Item[] => {
   return shops.map((shop: Shop) => ({
@@ -39,17 +41,11 @@ const days = [
 const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
   const shopsCopy = [...event.data];
 
-  const finalShops: Shop[] = shopsCopy.map((shop: Shop) => ({
-    ...shop,
-    currentWeekNumber: currentWeekNumber,
-    nextWeekNumber: currentWeekNumber + 1,
-  }));
-
   try {
     isLoading.value = true;
     await $fetch("api/shops", {
       method: "PUT",
-      body: JSON.stringify(finalShops),
+      body: JSON.stringify(shopsCopy),
     });
 
     isLoading.value = false;
@@ -87,15 +83,16 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
           <ul>
             <li v-for="(dayName, index) in days" :key="index">
               <SolidaryGroceryAdminShopManagementDay
-                :day="dayName"
-                :shop="state[shopNumber]"
-                :index="index"
-                :week="week"
+                :day-name="dayName"
+                :day="
+                  week === state[shopNumber].currentWeek.number
+                    ? state[shopNumber].currentWeek.days[index]
+                    : state[shopNumber].nextWeek.days[index]
+                "
               />
             </li>
+            <UButton type="submit" :loading="isLoading">Enregistrer</UButton>
           </ul>
-
-          <UButton type="submit" :loading="isLoading">Enregistrer</UButton>
         </UForm>
       </template>
     </UTabs>

@@ -3,7 +3,7 @@ import type { Item } from "~/pages/epicerie-solidaire.vue";
 
 const { item } = defineProps<{ item: Item; week: number }>();
 
-const currentDay: number = new Date().getDay();
+const { currentDay } = useDate();
 </script>
 
 <template>
@@ -14,24 +14,33 @@ const currentDay: number = new Date().getDay();
 
     <ul
       class="pl-10 animate__animated animate__fadeIn"
-      v-if="item.currentWeekNumber === week"
+      v-if="item.currentWeek.number === week"
     >
       <li
-        v-for="(week, index) in item.currentWeek"
+        v-for="(week, index) in item.currentWeek.days"
         :class="{ 'flex gap-2 font-bold relative': currentDay - 1 === index }"
       >
-        <SolidaryGroceryShopDay :day="week" :index="index" />
+        <SolidaryGroceryShopDay
+          :day="week"
+          :index="index"
+          :week-number="item.currentWeek.number"
+        />
       </li>
     </ul>
 
     <ul
       class="pl-10 animate__animated animate__fadeIn"
-      v-else-if="item.nextWeekNumber === week"
+      v-else-if="item.nextWeek.number === week"
     >
-      <li v-for="week in item.nextWeek">
-        {{ week.day }} {{ week.morningStart }} - {{ week.morningEnd }} et
-        {{ week.afternoonStart }} -
-        {{ week.afternoonEnd }}
+      <li
+        v-for="(week, index) in item.nextWeek.days"
+        :class="{ 'flex gap-2 relative': currentDay - 1 === index }"
+      >
+        <SolidaryGroceryShopDay
+          :day="week"
+          :index="index"
+          :week-number="item.nextWeek.number"
+        />
       </li>
     </ul>
 

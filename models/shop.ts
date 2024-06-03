@@ -8,6 +8,11 @@ export type Day = {
   isOpen: boolean;
 };
 
+export type Week = {
+  number: number;
+  days: Day[];
+};
+
 export type Shop = {
   name: string;
   description: string;
@@ -15,8 +20,6 @@ export type Shop = {
   image: string;
   lng: number;
   lat: number;
-  currentWeekNumber: number;
-  nextWeekNumber: number;
-  currentWeek: Day[];
-  nextWeek: Day[];
+  currentWeek: Week;
+  nextWeek: Week;
 };
