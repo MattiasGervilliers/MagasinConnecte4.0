@@ -17,13 +17,13 @@ const { cardInfos } = defineProps<{
     <NuxtImg
       v-if="!cardInfos.isReversed"
       class="card-image"
-      :src="cardInfos.publicImage"
+      :src="cardInfos.publicImage ?? ''"
     />
 
     <div class="card-description">
       <h2 class="text-xl font-bold text-primary-500">{{ cardInfos.title }}</h2>
 
-      <h3>
+      <h3 class="italic">
         {{ cardInfos.subTitle }}
       </h3>
 
@@ -37,7 +37,7 @@ const { cardInfos } = defineProps<{
     <NuxtImg
       v-if="cardInfos.isReversed"
       class="card-image"
-      :src="cardInfos.publicImage"
+      :src="cardInfos.publicImage ?? ''"
     />
   </div>
 </template>
