@@ -4,7 +4,7 @@ import type { CardNavigationInfos } from "~/components/card/Navigation.vue";
 import { definePageMeta } from "#imports";
 
 definePageMeta({
-  auth: false
+  auth: false,
 });
 
 const cardsNavigationInfos: CardNavigationInfos[] = [
@@ -33,9 +33,9 @@ const cardsInfos: CardInfos[] = [
     title: "Par les étudiants pour les étudiants !",
     subTitle: "",
     description:
-        "\"Nous proposons à ces étudiants des produits à 10% des prix du marchés, comme des paquets de pâtes à 7 centimes"
-        + "\" - Alexandre Siméoni, président de la fédération Aix-Marseille Interasso.\n Depuis l'inoguration du magasin" +
-        " connecté en 2019 plus de 650 étudiants ont bénéficié de ces tarifs préférentiels.",
+      '"Nous proposons à ces étudiants des produits à 10% des prix du marchés, comme des paquets de pâtes à 7 centimes' +
+      "\" - Alexandre Siméoni, président de la fédération Aix-Marseille Interasso.\n Depuis l'inoguration du magasin" +
+      " connecté en 2019 plus de 650 étudiants ont bénéficié de ces tarifs préférentiels.",
     publicImage: "mainPage_store.jpg",
     isReversed: false,
   },
@@ -44,9 +44,9 @@ const cardsInfos: CardInfos[] = [
     title: "Un magasin a la pointe de la technologie",
     subTitle: "Vivez l'experience du client de demain",
     description:
-        "Le magasin connecter a pour but de regroupé les technologies du futur et de les integré dans un contexte reel. " +
-        "On y retrouve des technologies comme le LiFi, le recyclage de la lumière ambiante, l'eclairage circadien, " +
-        "des drones, le RFID, l'IOT et la VLC",
+      "Le magasin connecter a pour but de regroupé les technologies du futur et de les integré dans un contexte reel. " +
+      "On y retrouve des technologies comme le LiFi, le recyclage de la lumière ambiante, l'eclairage circadien, " +
+      "des drones, le RFID, l'IOT et la VLC",
     publicImage: "mainPage_tech_img.png",
     isReversed: true,
   },
