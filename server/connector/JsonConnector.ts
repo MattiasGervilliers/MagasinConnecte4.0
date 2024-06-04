@@ -10,6 +10,12 @@ export class JsonConnector {
       });
   }
 
+  public static async appendData(data: any, filePath: string): Promise<void> {
+    const allData = await this.getData(filePath);
+    allData.push(data);
+    return await this.saveData(allData, filePath);
+  }
+
   public static async getData(filePath: string): Promise<any> {
     return await fse
       .readFile(filePath, "utf-8")

@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import type { User } from "~/models/user";
+import UserManager from "~/components/admin/UserManager.vue";
+
+const { users } = defineProps<{ users: User[] }>();
+const isLoading = ref<boolean>(false);
+
+const indexUserSelected = ref<number>(0);
+
+const managedUsers = [{
+  email: "Nouvel utilisateur",
+  role: "seller",
+  password: "",
+  confirmPassword: ""
+}]
+
+managedUsers.push(...users.map((user) => {
+  return {
+    ...user,
+    confirmPassword: ""
+  };
+}));
+
+const email = ref<string>(managedUsers[0].email);
+
+</script>
+
+<template>
+  <h3>Gestion des utilisateurs</h3>
+
+  <USelect v-model="email" @change='(e) => {indexUserSelected = managedUsers.findIndex((user) => user.email == e)}' :options="managedUsers" option-attribute="email" />
+
+  <UserManager :user=managedUsers[indexUserSelected] :isNew="indexUserSelected == 0"/>
+</template>

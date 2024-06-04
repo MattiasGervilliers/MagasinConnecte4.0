@@ -65,6 +65,7 @@ const onSubmit = () => {
           id="email"
           v-model="state.email"
           class="w-full shadow-sm focus:outline-none"
+          type="email"
         />
       </UFormGroup>
       <UFormGroup
