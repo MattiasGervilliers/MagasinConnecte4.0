@@ -7,11 +7,13 @@ const { data: shops } = await useFetch<Shop[]>("/api/shops", {
   method: "GET",
 });
 
-const { data: users } = await useFetch<User[]>("/api/users", {
+const { data: users } = await useFetch<User[]>("/api/users?safe=true", {
   method: "GET",
 });
 
 const { data } = useAuth();
+
+console.log(users.value);
 </script>
 
 <template>
@@ -26,8 +28,7 @@ const { data } = useAuth();
   </div>
 
   <div v-if="data.role == 'admin'">
-    <h3>Gestion du mot de passe</h3>
-    <AdminUserManagement v-if="users" :users="users" />
+    <AdminUsersManagement v-if="users" :users="users" />
   </div>
 </template>
 

@@ -26,7 +26,7 @@ export default eventHandler(async (event) => {
     });
   }
 
-  const expiresIn = 1;
+  const expiresIn = 15;
 
   const userToToken = {
     username: user?.email,
