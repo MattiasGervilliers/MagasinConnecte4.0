@@ -2,6 +2,7 @@
 const route = useRoute();
 const navbar = ref<Element | null>(null);
 const auth = useAuth();
+const toast = useToast();
 
 const { isMenuOpen, refLinks, resetMenu, toggleMenu, toggleMenuWithSubLinks } =
   useNavbar();
@@ -23,6 +24,24 @@ watch(
     resetMenu();
   },
 );
+
+const onSignOut = (): void => {
+  auth
+    .signOut({ callbackUrl: "/" })
+    .then(() => {
+      toast.add({
+        title: "Déconnexion",
+        description: "Vous avez été déconnecté avec succès",
+      });
+    })
+    .catch((error) => {
+      toast.add({
+        title: "Déconnexion",
+        description: `Une erreur est survenue lors de la déconnexion ${error}`,
+        color: "red",
+      });
+    });
+};
 </script>
 
 <template>
@@ -99,7 +118,7 @@ watch(
         size="md"
         class="menu-icon"
         variant="link"
-        @click="auth.signOut()"
+        @click="onSignOut"
       />
     </div>
   </nav>

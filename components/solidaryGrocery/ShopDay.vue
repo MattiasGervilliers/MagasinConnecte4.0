@@ -8,11 +8,11 @@ const { day, index, weekNumber } = defineProps<{
   weekNumber: number;
 }>();
 
-const { currentDay, currentHour, currentWeek } = useDate();
+const { currentHour, currentWeek, currentDayIndex } = useDate();
 
 // check if the shop is currently open with the current time and the current day
 const isCurrentlyOpen = () => {
-  if (currentWeek !== weekNumber) {
+  if (currentWeek !== weekNumber || currentDayIndex !== index) {
     return false;
   }
 
@@ -52,7 +52,7 @@ const isCurrentlyOpen = () => {
     >
 
     <span
-      v-if="isCurrentlyOpen()"
+      v-if="index === currentDayIndex && weekNumber === currentWeek"
       class="ping absolute top-0 left-0 flex h-3 w-3"
     >
       <span
