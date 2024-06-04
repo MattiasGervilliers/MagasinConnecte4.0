@@ -46,4 +46,13 @@ export class UserRepository {
       throw new Error("Error getting user by email");
     }
   }
+
+  static async createUser(user: User) {
+    try {
+      await JsonConnector.appendData(user, this.filePath);
+      return this.getUserByEmail(user.email);
+    } catch (error) {
+      throw new Error("Error creating user");
+    }
+  }
 }
