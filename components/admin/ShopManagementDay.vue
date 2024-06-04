@@ -28,36 +28,59 @@ const toggleBreak = (withBreak: boolean): void => {
 </script>
 
 <template>
-  <label>{{ dayName }}</label>
-  <UInput
-    type="time"
-    v-model="props.day.morningStart"
-    :disabled="!props.day.isOpen"
-  />
-  <UInput
-    type="time"
-    v-model="props.day.morningEnd"
-    :disabled="!props.day.isOpen"
-  />
+  <label class="font-bold">{{ dayName }}</label>
+  <div class="form-container">
+    <div class="flex gap-4">
+      <UInput
+        class="w-fit"
+        type="time"
+        v-model="props.day.morningStart"
+        :disabled="!props.day.isOpen"
+      />
+      <UInput
+        class="w-fit"
+        type="time"
+        v-model="props.day.morningEnd"
+        :disabled="!props.day.isOpen"
+      />
 
-  <span v-if="props.day.withBreak">et</span>
+      <span v-if="props.day.withBreak">et</span>
 
-  <UInput
-    v-if="props.day.withBreak"
-    type="time"
-    v-model="props.day.afternoonStart"
-    :disabled="!props.day.isOpen"
-  />
-  <UInput
-    v-if="props.day.withBreak"
-    type="time"
-    v-model="props.day.afternoonEnd"
-    :disabled="!props.day.isOpen"
-  />
+      <UInput
+        class="w-fit"
+        v-if="props.day.withBreak"
+        type="time"
+        v-model="props.day.afternoonStart"
+        :disabled="!props.day.isOpen"
+      />
+      <UInput
+        class="w-fit"
+        v-if="props.day.withBreak"
+        type="time"
+        v-model="props.day.afternoonEnd"
+        :disabled="!props.day.isOpen"
+      />
+    </div>
 
-  <label>Pause déjeuner</label>
-  <UToggle v-model="props.day.withBreak" @change="toggleBreak" />
+    <div class="flex gap-3">
+      <div class="flex flex-col">
+        <label>Pause déjeuner</label>
+        <UToggle v-model="props.day.withBreak" @change="toggleBreak" />
+      </div>
 
-  <label>Ouvert</label>
-  <UToggle v-model="props.day.isOpen" @change="toggleClose" />
+      <div class="flex flex-col">
+        <label>Ouvert</label>
+        <UToggle v-model="props.day.isOpen" @change="toggleClose" />
+      </div>
+    </div>
+  </div>
 </template>
+
+<style>
+.form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+</style>

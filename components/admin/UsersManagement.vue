@@ -7,28 +7,54 @@ const isLoading = ref<boolean>(false);
 
 const indexUserSelected = ref<number>(0);
 
-const managedUsers = [{
-  email: "Nouvel utilisateur",
-  role: "seller",
-  password: "",
-  confirmPassword: ""
-}]
+const managedUsers = [
+  {
+    email: "Nouvel utilisateur",
+    role: "seller",
+    password: "",
+    confirmPassword: "",
+  },
+];
 
-managedUsers.push(...users.map((user) => {
-  return {
-    ...user,
-    confirmPassword: ""
-  };
-}));
+managedUsers.push(
+  ...users.map((user) => {
+    return {
+      ...user,
+      confirmPassword: "",
+    };
+  }),
+);
 
 const email = ref<string>(managedUsers[0].email);
-
 </script>
 
 <template>
-  <h3>Gestion des utilisateurs</h3>
+  <div class="container">
+    <h3>Gestion des utilisateurs</h3>
 
-  <USelect v-model="email" @change='(e) => {indexUserSelected = managedUsers.findIndex((user) => user.email == e)}' :options="managedUsers" option-attribute="email" />
+    <USelect
+      v-model="email"
+      @change="
+        (e) => {
+          indexUserSelected = managedUsers.findIndex((user) => user.email == e);
+        }
+      "
+      :options="managedUsers"
+      option-attribute="email"
+      class="w-fit"
+    />
 
-  <UserManager :user=managedUsers[indexUserSelected] :isNew="indexUserSelected == 0"/>
+    <UserManager
+      :user="managedUsers[indexUserSelected]"
+      :isNew="indexUserSelected == 0"
+    />
+  </div>
 </template>
+
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+</style>

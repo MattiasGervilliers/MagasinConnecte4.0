@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { Shop } from "~/models/shop";
 import type { User } from "~/models/user";
-import { useAuth } from "#imports";
 
 const { data: shops } = await useFetch<Shop[]>("/api/shops", {
   method: "GET",
@@ -11,27 +10,39 @@ const { data: users } = await useFetch<User[]>("/api/users?safe=true", {
   method: "GET",
 });
 
-const { data } = useAuth();
+const items = [
+  {
+    label: "Horaires",
+  },
+  {
+    label: "Utilisateurs",
+  },
+];
 </script>
 
 <template>
   <div class="wrapper">
-    <div>
-      <h3>Gestion des horaires de l'épicerie solidaire</h3>
+    <h2>Administration</h2>
+    <UTabs :items="items">
+      <template #item="{ item }">
+        <AdminShopsManagement
+          v-if="shops && item.label === 'Horaires'"
+          :shops="shops"
+          class="animate__animated animate__fadeIn"
+        />
 
-      <AdminShopManagement v-if="shops" :shops="shops" />
-
-      <p v-else>pas de shops</p>
-    </div>
-  </div>
-
-  <div v-if="data.role == 'admin'">
-    <AdminUsersManagement v-if="users" :users="users" />
+        <AdminUsersManagement
+          v-if="users && item.label === 'Utilisateurs'"
+          :users="users"
+          class="animate__animated animate__fadeIn"
+        />
+      </template>
+    </UTabs>
   </div>
 </template>
 
 <style>
 .wrapper {
-  margin: 70px 15%;
+  margin: 110px 15%;
 }
 </style>
