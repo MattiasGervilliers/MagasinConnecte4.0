@@ -27,6 +27,8 @@ export const useFetchWithToast = async <T>(
       });
 
       if (toastOpts.error) toastOpts.error();
+
+      throw new Error(error);
     });
 
   return data;
