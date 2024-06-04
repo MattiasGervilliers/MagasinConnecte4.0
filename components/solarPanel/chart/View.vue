@@ -19,9 +19,6 @@ function updateChart() {
   const consumptionData = energyDetails.value.meters.find((meter: EnergyDetailsMeter) => meter.type === "Consumption")?.values.map((v: EnergyDetailsData) => ({ x: v.date, y: v.value ?? 0 })) || [];
   const differenceData = productionData.map((v, i) => ({ x: v.x, y: (v.y ?? 0) - (consumptionData[i]?.y ?? 0) }));
   const theoreticalData = theoreticalProduction.value.map((v: SolarPanelTheoreticalProduction) => ({ x: v.date, y: v.production }));
-  console.log("theoricalData", theoreticalData)
-  console.log("productionData", productionData)
-  console.log("energyDetails  ", energyDetails.value.meters)
   data.datasets[0].data = productionData;
   data.datasets[1].data = theoreticalData;
   data.datasets[2].data = consumptionData;
