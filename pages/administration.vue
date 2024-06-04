@@ -21,7 +21,7 @@ const items = [
 </script>
 
 <template>
-  <div class="wrapper">
+  <GlobalWrapper>
     <h2>Administration</h2>
     <UTabs :items="items">
       <template #item="{ item }">
@@ -38,11 +38,7 @@ const items = [
         />
       </template>
     </UTabs>
-  </div>
+  </GlobalWrapper>
 </template>
 
-<style>
-.wrapper {
-  margin: 110px 15%;
-}
-</style>
+<style></style>

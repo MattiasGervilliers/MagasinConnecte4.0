@@ -25,7 +25,7 @@ const items = ref<Item[]>(createItems(shops.value || []));
 </script>
 
 <template>
-  <div class="shop-wrapper">
+  <GlobalWrapper class="shop-wrapper">
     <!-- ADD MAIN TITLE -->
 
     <p class="introduction">
@@ -39,7 +39,7 @@ const items = ref<Item[]>(createItems(shops.value || []));
     </p>
 
     <SolidaryGroceryTabs :items="items" />
-  </div>
+  </GlobalWrapper>
 </template>
 
 <style>

@@ -58,7 +58,7 @@ const cardsInfos: CardInfos[] = [
 
   <ScrollButton hash="#content" />
 
-  <div id="content" class="content">
+  <GlobalWrapper id="content" class="content" with-fullscreen>
     <CardDefault v-for="cardInfos in cardsInfos" :card-infos="cardInfos" />
 
     <div class="card-navigation-container">
@@ -67,7 +67,7 @@ const cardsInfos: CardInfos[] = [
         :card-navigation-infos="cardNavigationInfos"
       />
     </div>
-  </div>
+  </GlobalWrapper>
 </template>
 
 <style>
