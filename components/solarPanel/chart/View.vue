@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "chartjs-adapter-moment";
 import { ref, watch } from "vue";
 
 const props = defineProps<{
@@ -15,15 +16,25 @@ const options = {
       text: "Production de l'énergie",
     },
   },
-  /*scales: {
+  scales: {
     x: {
       type: "time",
-      time: {
-        unit: "hour",
-        parser: "YYYY-MM-DD HH:mm:ss",
+      ticks: {
+        autoSkip: false,
+        maxRotation: 0,
+        major: {
+          enabled: true,
+        },
+        font: (context: { tick: { major: any; }; }) => {
+          if (context.tick && context.tick.major) {
+            return {
+              weight: "bold",
+            };
+          }
+        },
       },
     },
-  },*/
+  },
 };
 
 watch(props, () => {
@@ -31,6 +42,9 @@ watch(props, () => {
   chartKey.value++;
 }, { deep: true });
 
+window.addEventListener("resize", () => {
+  chartKey.value++;
+});
 </script>
 
 <template>
