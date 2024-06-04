@@ -20,6 +20,9 @@ const links = [
     <div class="overview">
       <Overview/>
     </div>
+    <div class="chart mt-5">
+      <SolarPanelEnergyChart />
+    </div>
   </div>
 </template>
 

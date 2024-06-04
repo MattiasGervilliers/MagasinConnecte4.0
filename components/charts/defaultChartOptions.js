@@ -1,5 +1,3 @@
-import { CategoryScale, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from "chart.js";
-
 export const defaultChartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -26,17 +24,7 @@ export const defaultChartOptions = {
   },
   tooltips: {
     enabled: true,
-    mode: 'index',
+    mode: 'nearest',
     intersect: false
   }
 }
-
-export const defaultRegister= [
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Legend,
-  Tooltip
-]

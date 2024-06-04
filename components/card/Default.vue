@@ -21,7 +21,7 @@ const { cardInfos } = defineProps<{
     />
 
     <div class="card-description">
-      <h2>{{ cardInfos.title }}</h2>
+      <h2 class="text-xl font-bold text-primary-500">{{ cardInfos.title }}</h2>
 
       <h3>
         {{ cardInfos.subTitle }}

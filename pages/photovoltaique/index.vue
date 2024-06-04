@@ -19,3 +19,9 @@ const links = [
   </UBreadcrumb>
   <UButton to="/photovoltaique/visualisation" class="mt-4">Visualisation</UButton>
 </template>
+
+<style scoped>
+h1 {
+  margin-top: 70px;
+}
+</style>

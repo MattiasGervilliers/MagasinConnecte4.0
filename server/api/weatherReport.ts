@@ -1,28 +1,17 @@
-import { fetchWeatherReport } from "~/composables";
+import { useFetchWeatherReport } from "~/composables/useFetchWeatherReport";
 
 type Query = {
-  departmentId: string;
+  frequency: string;
   beginningDate: string;
   endDate: string;
+  nominalPower: string;
+  performanceRatio: string;
 };
 
-export default defineEventHandler((event) => {
-  const { departmentId, beginningDate, endDate } = getQuery<Query>(event);
-
+export default defineEventHandler(async (event) => {
+  const { frequency, beginningDate, endDate, nominalPower, performanceRatio} = getQuery<Query>(event);
   const config = useRuntimeConfig();
 
   const apiKey = config.apiKey;
-
-  const weatherReport = fetchWeatherReport({
-    apiKey: apiKey,
-    queriesParams: {
-      departmentId: ~~departmentId,
-      beginningDate: beginningDate,
-      endDate: endDate,
-    },
-  });
-
-  return {
-    hello: weatherReport,
-  };
+  return await useFetchWeatherReport({queryParams: {frequency, beginningDate, endDate}, apiKey, solarPanelInfo: {nominalPower, performanceRatio}});
 });

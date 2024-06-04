@@ -1,0 +1,8 @@
+.ping {
+  transform: translateX(-150%);
+}
+
+.shop__hours {
+  display: flex;
+  gap: 10px;
+}
