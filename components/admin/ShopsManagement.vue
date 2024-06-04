@@ -62,7 +62,9 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
 </script>
 
 <template>
-  <div>
+  <div class="container">
+    <h3>Gestion des horaires de l'épicerie solidaire</h3>
+
     <p class="shop__select">
       Semaine :
       <USelect
@@ -76,17 +78,20 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
       />
     </p>
 
-    <p>Shop numéro : {{ shopNumber + 1 }}</p>
-
     <UTabs
       :items="items"
       orientation="vertical"
-      :ui="{ wrapper: 'flex items-start gap-10', list: { width: 'w-48' } }"
+      :ui="{
+        wrapper: 'flex items-start gap-4 flex-wrap',
+        list: { width: 'w-48' },
+      }"
       @change="(e) => (shopNumber = ~~e)"
     >
       <template #item="{ item }">
         <UForm :state="state" @submit="onSubmit">
-          <ul>
+          <UButton type="submit" :loading="isLoading">Enregistrer</UButton>
+
+          <ul class="shop__ul">
             <li v-for="(dayName, index) in days" :key="index">
               <AdminShopManagementDay
                 :day-name="dayName"
@@ -97,7 +102,6 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
                 "
               />
             </li>
-            <UButton type="submit" :loading="isLoading">Enregistrer</UButton>
           </ul>
         </UForm>
       </template>
@@ -106,9 +110,5 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
 </template>
 
 <style>
-.shop__select {
-  display: flex;
-  gap: 10px;
-  width: fit-content;
-}
+@import url("~/assets/css/admin/shopsManagement.css");
 </style>
