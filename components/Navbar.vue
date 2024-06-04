@@ -1,75 +1,25 @@
 <script setup lang="ts">
 const route = useRoute();
 const navbar = ref<Element | null>(null);
-const isMenuOpen = useState("isMenuOpen", () => false);
+const auth = useAuth();
 
-const links = [
-  {
-    name: "Technologies",
-    path: "/technologies",
-  },
-  {
-    name: "Photovoltaïque",
-    path: "/photovoltaique",
-  },
-  {
-    name: "Epicerie-solidaire",
-    path: "/epicerie-solidaire",
-  },
-];
+const { isMenuOpen, refLinks, resetMenu, toggleMenu, toggleMenuWithSubLinks } =
+  useNavbar();
 
-const changeBackground = () => {
-  if (navbar.value) {
-    if (document.documentElement.scrollTop > 0 || route.path !== "/") {
-      navbar.value.classList.add("navbar-scrolled");
-      return;
-    }
+const { changeBackground, onScroll } = useBackground({ navbar });
 
-    navbar.value.classList.remove("navbar-scrolled");
-  }
-};
-
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value;
-};
-
-const resetMenu = () => {
-  if (isMenuOpen.value) {
-    isMenuOpen.value = false;
-  }
-};
-
-//TODO: refactor this function and optimize it
 onMounted(() => {
   navbar.value = document.querySelector(".navbar");
 
   changeBackground();
-
-  window.addEventListener("scroll", () => {
-    if (navbar.value && route.path === "/") {
-      if (window.scrollY > 0) {
-        navbar.value.classList.add("navbar-scrolled");
-        navbar.value.classList.add(
-          "animate__animated",
-          "animate__fadeInDown",
-          "animate__faster",
-        );
-      } else {
-        navbar.value.classList.remove("navbar-scrolled");
-        navbar.value.classList.remove(
-          "animate__animated",
-          "animate__fadeInDown",
-          "animate__faster",
-        );
-      }
-    }
-  });
+  window.addEventListener("scroll", onScroll);
 });
 
 watch(
   () => route.path,
   () => {
     changeBackground();
+
     resetMenu();
   },
 );
@@ -87,26 +37,52 @@ watch(
       <ul class="menu" v-if="isMenuOpen">
         <li
           class="animate__animated animate__fadeInDown animate__faster"
-          v-for="link in links"
-          :key="link.name"
+          v-for="refLink in refLinks"
+          :key="refLink.name"
         >
-          <UButton :to="link.path" variant="link" size="xl">{{
-            link.name
-          }}</UButton>
+          <UButton
+            v-if="
+              refLink.name !== 'Photovoltaïque' && refLink.name !== 'Retour'
+            "
+            :to="refLink.path"
+            variant="link"
+            size="xl"
+            >{{ refLink.name }}</UButton
+          >
+          <UButton
+            v-else-if="refLink.name === 'Retour'"
+            :icon="refLink.icon"
+            variant="link"
+            size="xl"
+            @click="refLink.onClick"
+          />
+
+          <UButton
+            v-else
+            variant="link"
+            size="xl"
+            @click="toggleMenuWithSubLinks"
+            >{{ refLink.name }}</UButton
+          >
         </li>
       </ul>
 
-      <UIcon
-        @click="toggleMenu"
+      <UButton
+        icon="i-heroicons-bars-3-16-solid"
+        size="md"
         v-if="!isMenuOpen"
-        name="i-heroicons-bars-3"
         class="menu-icon text-3xl cursor-pointer animate__animated animate__flipInX animate__fast"
-      />
-      <UIcon
         @click="toggleMenu"
+        variant="link"
+      />
+
+      <UButton
+        icon="i-heroicons-x-mark-16-solid"
+        size="md"
         v-if="isMenuOpen"
-        name="i-heroicons-x-mark"
         class="menu-icon text-3xl cursor-pointer animate__animated animate__flipInX animate__fast"
+        @click="toggleMenu"
+        variant="link"
       />
 
       <UButton
@@ -115,6 +91,15 @@ watch(
         class="menu-icon"
         to="/administration"
         variant="link"
+      />
+
+      <UButton
+        v-if="auth.status.value === 'authenticated'"
+        icon="i-heroicons-arrow-right-start-on-rectangle-16-solid"
+        size="md"
+        class="menu-icon"
+        variant="link"
+        @click="auth.signOut()"
       />
     </div>
   </nav>
