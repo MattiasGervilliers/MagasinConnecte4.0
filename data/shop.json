@@ -12,7 +12,7 @@
         {
           "day": "Monday",
           "isOpen": true,
-          "withBreak": true,
+          "withBreak": false,
           "morningStart": "09:00",
           "morningEnd": "12:00",
           "afternoonStart": "",

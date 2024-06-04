@@ -21,7 +21,7 @@ console.log(users.value);
     <div>
       <h3>Gestion des horaires de l'épicerie solidaire</h3>
 
-      <SolidaryGroceryAdminShopManagement v-if="shops" :shops="shops" />
+      <AdminShopManagement v-if="shops" :shops="shops" />
 
       <p v-else>pas de shops</p>
     </div>

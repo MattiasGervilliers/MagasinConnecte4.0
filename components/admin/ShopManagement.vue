@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { FormSubmitEvent } from "#ui/types";
-import moment from "moment";
-import type { Day, Shop } from "~/models/shop";
+import type { Shop } from "~/models/shop";
 
 export type Item = {
   label: string;
@@ -43,14 +42,18 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
 
   try {
     isLoading.value = true;
-    await useFetchWithToast("api/shops", {
-      successMessage: "Les données ont bien été enregistrées",
-      errorMessage: "Une erreur est survenue lors de l'enregistrement des données",
-    }, {
-      method: "PUT",
-      body: JSON.stringify(shopsCopy),
-
-    });
+    await useFetchWithToast(
+      "api/shops",
+      {
+        successMessage: "Les données ont bien été enregistrées",
+        errorMessage:
+          "Une erreur est survenue lors de l'enregistrement des données",
+      },
+      {
+        method: "PUT",
+        body: JSON.stringify(shopsCopy),
+      },
+    );
     isLoading.value = false;
   } catch (error) {
     console.error(error);
@@ -85,7 +88,7 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
         <UForm :state="state" @submit="onSubmit">
           <ul>
             <li v-for="(dayName, index) in days" :key="index">
-              <SolidaryGroceryAdminShopManagementDay
+              <AdminShopManagementDay
                 :day-name="dayName"
                 :day="
                   week === state[shopNumber].currentWeek.number
