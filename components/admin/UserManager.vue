@@ -63,8 +63,14 @@ const onSubmit = async () => {
     await useFetchWithToast(
       "/api/users",
       {
-        successMessage: "Utilisateur ajouté",
-        errorMessage: "Impossible d'ajouter l'utilisateur",
+        successMessage: {
+          title: "Utilisateur ajouté",
+          description: "L'utilisateur a bien été ajouté",
+        },
+        errorMessage: {
+          title: "Erreur",
+          description: "Impossible d'ajouter l'utilisateur",
+        },
       },
       {
         method: "POST",
@@ -79,8 +85,14 @@ const onSubmit = async () => {
     await useFetchWithToast(
       "/api/users",
       {
-        successMessage: "Utilisateur mis à jour",
-        errorMessage: "Impossible de mettre à jour l'utilisateur",
+        successMessage: {
+          title: "Utilisateur mis à jour",
+          description: "L'utilisateur a bien été mis à jour",
+        },
+        errorMessage: {
+          title: "Erreur",
+          description: "Impossible de mettre à jour l'utilisateur",
+        },
       },
       {
         method: "PUT",

@@ -1,9 +1,15 @@
 export const useFetchWithToast = async <T>(
   url: string,
   toastOpts: {
-    successMessage?: string;
+    successMessage?: {
+      title: string;
+      description: string;
+    };
     success?: () => void;
-    errorMessage?: string;
+    errorMessage?: {
+      title: string;
+      description: string;
+    };
     error?: () => void;
   },
   opts?: { method: "POST" | "PUT" | "GET"; body: string },
@@ -16,14 +22,16 @@ export const useFetchWithToast = async <T>(
   })
     .then(() => {
       toast.add({
-        title: `${toastOpts.successMessage || "Success"}`,
+        title: `${toastOpts.successMessage?.title || "Success"}`,
+        description: `${toastOpts.successMessage?.description || "Success"}`,
       });
 
       if (toastOpts.success) toastOpts.success();
     })
     .catch((error) => {
       toast.add({
-        title: `${toastOpts.errorMessage || "Error"} : ${error}`,
+        title: `${toastOpts.errorMessage?.title || "Error"} : ${error}`,
+        description: `${toastOpts.errorMessage?.description || "Error occured"}`,
       });
 
       if (toastOpts.error) toastOpts.error();

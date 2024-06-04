@@ -45,9 +45,15 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
     await useFetchWithToast(
       "api/shops",
       {
-        successMessage: "Les données ont bien été enregistrées",
-        errorMessage:
-          "Une erreur est survenue lors de l'enregistrement des données",
+        successMessage: {
+          description: "Les horaires ont bien été enregistrés",
+          title: "Succès",
+        },
+        errorMessage: {
+          description:
+            "Une erreur est survenue lors de l'enregistrement des horaires",
+          title: "Erreur",
+        },
       },
       {
         method: "PUT",
