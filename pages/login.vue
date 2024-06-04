@@ -11,20 +11,20 @@ const isLoading = ref<boolean>(false);
 definePageMeta({
   auth: {
     unauthenticatedOnly: true,
-    navigateAuthenticatedTo: "/",
-  },
+    navigateAuthenticatedTo: "/"
+  }
 });
 
 const schema = z.object({
   email: z.string().email("L'adresse mail est invalide").min(1, "Requis"),
-  password: z.string().min(1, "Requis"),
+  password: z.string().min(1, "Requis")
 });
 
 type Schema = z.output<typeof schema>;
 
 const state = reactive({
   email: undefined,
-  password: undefined,
+  password: undefined
 });
 
 const onSubmit = () => {
@@ -32,20 +32,20 @@ const onSubmit = () => {
   signIn(
     {
       username: state.email,
-      password: sha256(state.password || "").toString(),
+      password: sha256(state.password || "").toString()
     },
-    { callbackUrl: "/" },
+    { callbackUrl: "/" }
   )
     .then(() => {
       toast.add({
         title: "Connexion",
-        description: "Vous êtes connecté avec succès",
+        description: "Vous êtes connecté avec succès"
       });
     })
     .catch((error) => {
       toast.add({
         title: "L'e-mail ou le mot de passe est incorrect",
-        color: "red",
+        color: "red"
       });
     })
     .finally(() => {
@@ -55,11 +55,7 @@ const onSubmit = () => {
 </script>
 
 <template>
-  <div class="blur-sm">
-    <DefaultBackground :is-hide-title="true" />
-  </div>
-  <div class="login bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-    <h1 class="text-2xl font-bold mb-6 text-center">Connexion</h1>
+  <BlurBackground title="Connexion">
     <UForm :state="state" :schema="schema" class="space-y-4" @submit="onSubmit">
       <UFormGroup
         label="E-mail"
@@ -91,17 +87,13 @@ const onSubmit = () => {
         type="submit"
         class="w-full py-2 px-4 text-white font-semibold rounded-md shadow"
         :loading="isLoading"
-        >Connexion</UButton
       >
+        Connexion
+      </UButton>
     </UForm>
-  </div>
+  </BlurBackground>
 </template>
 
 <style scoped>
-.login {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 50%);
-}
+
 </style>
