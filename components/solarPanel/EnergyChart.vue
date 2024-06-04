@@ -19,7 +19,7 @@ const energyDetails = ref<EnergyDetails>({
   meters: [],
 });
 
-let theoreticalProduction = ref<SolarPanelTheoreticalProduction[]>([{
+const theoreticalProduction = ref<SolarPanelTheoreticalProduction[]>([{
   date: '0000-00-00 00:00:00',
   production: 0,
 }]);
