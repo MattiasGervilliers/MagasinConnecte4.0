@@ -3,7 +3,7 @@
 import type { Filters } from "~/models/chart/filters";
 import moment from "moment";
 
-let { filters } = defineProps<{
+const { filters } = defineProps<{
   filters: Filters;
 }>();
 
@@ -37,7 +37,7 @@ function reset() {
   updateFilters();
 }
 
-let undoStack: Filters[] = [];
+const undoStack: Filters[] = [];
 let redoStack: Filters[] = [];
 undoStack.push({ ...filters });
 function updateFilters() {
