@@ -12,8 +12,6 @@ const { data: users } = await useFetch<User[]>("/api/users?safe=true", {
 });
 
 const { data } = useAuth();
-
-console.log(users.value);
 </script>
 
 <template>
