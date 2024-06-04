@@ -36,6 +36,12 @@ const onSubmit = () => {
     },
     { callbackUrl: "/" },
   )
+    .then(() => {
+      toast.add({
+        title: "Connexion",
+        description: "Vous êtes connecté avec succès",
+      });
+    })
     .catch((error) => {
       toast.add({
         title: "L'e-mail ou le mot de passe est incorrect",

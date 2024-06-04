@@ -29,13 +29,20 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
   const { password } = event.data;
 
   try {
-    await useFetch(`/api/users`, {
-      method: "PUT",
-      body: JSON.stringify({
-        email: email.value,
-        password: sha256(password).toString(),
-      }),
-    });
+    await useFetchWithToast(
+      `/api/users`,
+      {
+        successMessage: "Mot de passe modifié",
+        errorMessage: "Erreur lors de la modification du mot de passe",
+      },
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          email: email.value,
+          password: sha256(password).toString(),
+        }),
+      },
+    );
   } catch (error) {
     console.error(error);
   }
