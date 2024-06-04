@@ -74,6 +74,12 @@ const toggleBreak = (withBreak: boolean): void => {
       </div>
     </div>
   </div>
+
+  <UDivider
+    orientation="horizontal"
+    class="mt-2"
+    icon="i-heroicons-calendar-days"
+  />
 </template>
 
 <style>
@@ -81,6 +87,7 @@ const toggleBreak = (withBreak: boolean): void => {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 10px;
 }
 </style>

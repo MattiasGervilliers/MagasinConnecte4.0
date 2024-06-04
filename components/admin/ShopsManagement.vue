@@ -81,11 +81,16 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
     <UTabs
       :items="items"
       orientation="vertical"
-      :ui="{ wrapper: 'flex items-start gap-10', list: { width: 'w-48' } }"
+      :ui="{
+        wrapper: 'flex items-start gap-4 flex-wrap',
+        list: { width: 'w-48' },
+      }"
       @change="(e) => (shopNumber = ~~e)"
     >
       <template #item="{ item }">
         <UForm :state="state" @submit="onSubmit">
+          <UButton type="submit" :loading="isLoading">Enregistrer</UButton>
+
           <ul class="shop__ul">
             <li v-for="(dayName, index) in days" :key="index">
               <AdminShopManagementDay
@@ -98,7 +103,6 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
               />
             </li>
           </ul>
-          <UButton type="submit" :loading="isLoading">Enregistrer</UButton>
         </UForm>
       </template>
     </UTabs>

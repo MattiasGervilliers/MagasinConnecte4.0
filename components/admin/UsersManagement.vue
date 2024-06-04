@@ -2,12 +2,16 @@
 import type { User } from "~/models/user";
 import UserManager from "~/components/admin/UserManager.vue";
 
+type UserWithConfirmPassword = User & {
+  confirmPassword: string;
+};
+
 const { users } = defineProps<{ users: User[] }>();
 const isLoading = ref<boolean>(false);
 
 const indexUserSelected = ref<number>(0);
 
-const managedUsers = [
+const managedUsers: UserWithConfirmPassword[] = [
   {
     email: "Nouvel utilisateur",
     role: "seller",

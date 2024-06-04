@@ -6,7 +6,7 @@
 .shop__ul {
   overflow: auto;
   height: 300px;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .shop__select {
