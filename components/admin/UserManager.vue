@@ -53,9 +53,6 @@ const onSubmit = async () => {
     await useFetchWithToast("/api/users",
       {
         successMessage: "Utilisateur ajouté",
-        success() {
-            props.refresh();
-        },
         errorMessage: "Impossible d'ajouter l'utilisateur"
       }, {
         method: "POST",
