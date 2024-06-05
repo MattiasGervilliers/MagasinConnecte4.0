@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const isDarkTheme = document.documentElement.classList.contains("dark");
+const isDarkTheme = ref(false);
+
+onMounted(() => {
+  isDarkTheme.value = document.documentElement.classList.contains("dark");
+});
 </script>
 
 <template>
@@ -29,6 +33,6 @@ const isDarkTheme = document.documentElement.classList.contains("dark");
   </footer>
 </template>
 
-<style>
+<style scoped>
 @import url("~/assets/css/footer.css");
 </style>
