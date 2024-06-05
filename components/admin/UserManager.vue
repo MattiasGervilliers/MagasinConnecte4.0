@@ -17,11 +17,12 @@ const ROLE_RADIO = [
   },
 ];
 
-const props = defineProps<{ user: User; isNew?: boolean }>();
+const props = defineProps<{ user: User; isNew?: boolean; addUser: (user: User) => void }>();
 
 watch(
   () => props.user,
   (user) => {
+    state.email = user.email;
     state.role = user.role;
     state.password = "";
     state.confirmPassword = "";
@@ -65,7 +66,7 @@ const onSubmit = async () => {
       {
         successMessage: {
           title: "Utilisateur ajouté",
-          description: "L'utilisateur a bien été ajouté",
+          description: "L'utilisateur a bien été ajouté"
         },
         errorMessage: {
           title: "Erreur",
@@ -80,7 +81,13 @@ const onSubmit = async () => {
           password: sha256(state.password).toString(),
         }),
       },
-    );
+    ).then((data) => {
+      props.addUser((data) as User);
+      state.email = "";
+      state.role = ROLE_ENUM[0];
+      state.password = "";
+      state.confirmPassword = "";
+    });
   } else {
     await useFetchWithToast(
       "/api/users",
