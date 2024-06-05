@@ -125,10 +125,10 @@ if (props.isNew) {
     <UFormGroup label="Rôle" name="role">
       <URadioGroup v-model="state.role" :options="ROLE_RADIO" />
     </UFormGroup>
-    <UFormGroup label="Mot de passe" name="password">
+    <UFormGroup :label="props.isNew ? 'Mot de passe' : 'Nouveau mot de passe'" name="password">
       <UInput v-model="state.password" type="password" />
     </UFormGroup>
-    <UFormGroup label="Confirmer le mot de passe" name="confirmPassword">
+    <UFormGroup :label="props.isNew ? 'Confirmer le mot de passe' : 'Confirmer le nouveau mot de passe'" name="confirmPassword">
       <UInput v-model="state.confirmPassword" type="password" />
     </UFormGroup>
 
