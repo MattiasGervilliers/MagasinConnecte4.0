@@ -47,7 +47,7 @@ const onSignOut = (): void => {
 <template>
   <nav class="navbar">
     <h1
-      class="text-3xl text-white font-bold animate__animated animate__fadeInLeft animate__fast"
+      class="text-xl md:text-3xl text-white font-bold animate__animated animate__fadeInLeft animate__fast"
     >
       <NuxtLink to="/">Magasin Connecté 4.0</NuxtLink>
     </h1>
