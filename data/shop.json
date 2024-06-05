@@ -1,11 +1,11 @@
 [
   {
-    "name": "Mon shop numéro 1",
-    "description": "This is a shop",
-    "address": "123 Fake St",
-    "image": "https://via.placeholder.com/150",
-    "lat": 51.5074,
-    "lng": 0.1278,
+    "name": "AGORAé Etoile ",
+    "description": "Innauguration le 24 novembre 2022",
+    "social": "https://www.instagram.com/agorae_marseille_etoile/",
+    "linkTree": "https://www.linksight.me/agoraeaixmarseille",
+    "address": "142 Trav. Charles Susini, 13013 Marseille",
+    "images": ["/logo_agorae.png", "/interieur.png"],
     "currentWeek": {
       "number": 23,
       "days": [
@@ -32,7 +32,7 @@
           "isOpen": true,
           "withBreak": false,
           "morningStart": "07:00",
-          "morningEnd": "13:00",
+          "morningEnd": "17 :00",
           "afternoonStart": "",
           "afternoonEnd": ""
         },

@@ -26,16 +26,14 @@ const items = ref<Item[]>(createItems(shops.value || []));
 
 <template>
   <GlobalWrapper class="shop-wrapper">
-    <!-- ADD MAIN TITLE -->
+    <MainTitle text="Epicerie solidaire" title="Epicerie solidaire" />
 
     <p class="introduction">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat facilis
-      doloribus illo impedit harum laudantium blanditiis quaerat, ab enim?
-      Molestiae cum aspernatur ab ipsa exercitationem architecto itaque vitae
-      doloremque debitis. Voluptates, quod ad ipsa inventore molestias, sint et
-      architecto doloremque neque quidem perferendis, quia quas possimus itaque
-      ullam consectetur! Optio illum atque unde numquam voluptas in ut beatae,
-      dolores ipsam?
+      La Fédération Aix-Marseille Interasso (FAMI) a été créée en 2012 pour défendre les droits des étudiants et
+      améliorer leurs conditions de vie. Face à une précarité étudiante croissante révélée par une enquête, la FAMI a
+      ouvert des épiceries solidaires AGORAé sur les campus d'Aix-Marseille, proposant des produits à bas prix et
+      diverses activités. Un nouveau projet d'épicerie solidaire ouvrira fin 2023 au campus aixois, soutenu par des
+      associations étudiantes et le réseau Alumni.
     </p>
 
     <SolidaryGroceryTabs :items="items" />

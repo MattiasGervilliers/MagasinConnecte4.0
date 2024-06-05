@@ -6,8 +6,8 @@ const { item } = defineProps<{ item: Item }>();
 
 <template>
   <div class="shop__images">
-    <NuxtImg class="shop__image" :src="item.image" />
-    <NuxtImg class="shop__image" :src="item.image" />
+    <NuxtImg class="shop__image" :src="item.images[0]" />
+    <NuxtImg class="shop__image" :src="item.images[1] ?? ''"  />
   </div>
 </template>
 
