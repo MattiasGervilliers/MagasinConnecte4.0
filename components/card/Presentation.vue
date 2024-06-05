@@ -43,5 +43,5 @@ const { cardInfos } = defineProps<{
 </template>
 
 <style>
-@import url("~/assets/css/card/default.css");
+@import url("~/assets/css/card/presentation.css");
 </style>
