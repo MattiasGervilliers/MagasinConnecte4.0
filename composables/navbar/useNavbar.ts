@@ -29,6 +29,10 @@ export const useNavbar = (): UseNavbarReturn => {
       name: "Epicerie solidaire",
       path: "/epicerie-solidaire",
     },
+    {
+      name: "Contact",
+      path: "/contact",
+    }
   ];
 
   const refLinks = ref<Link[]>(links);
