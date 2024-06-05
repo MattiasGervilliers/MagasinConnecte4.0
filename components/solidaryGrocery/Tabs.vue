@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import moment from "moment";
 import type { Item } from "~/pages/epicerie-solidaire.vue";
 
 const { items } = defineProps<{

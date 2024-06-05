@@ -46,7 +46,7 @@ const isCurrentlyOpen = () => {
 
     <span
       :class="isCurrentlyOpen() ? 'text-green-500' : 'text-red-500'"
-      v-if="isCurrentlyOpen()"
+      v-if="currentWeek === weekNumber && currentDayIndex === index"
     >
       {{ isCurrentlyOpen() ? " ouvert" : " fermé" }}</span
     >
