@@ -1,4 +1,4 @@
-import { CategoryScale, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from "chart.js";
+import { CategoryScale, Legend, LinearScale, LineElement, PointElement, TimeScale, Title, Tooltip } from "chart.js";
 
 export const defaultChartOptions = {
   responsive: true,
@@ -26,7 +26,7 @@ export const defaultChartOptions = {
   },
   tooltips: {
     enabled: true,
-    mode: 'index',
+    mode: 'nearest',
     intersect: false
   }
 }
@@ -34,6 +34,7 @@ export const defaultChartOptions = {
 export const defaultRegister= [
   CategoryScale,
   LinearScale,
+  TimeScale,
   PointElement,
   LineElement,
   Title,

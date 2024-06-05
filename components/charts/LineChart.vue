@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Chart as ChartJS } from "chart.js";
 import { Line } from "vue-chartjs";
-import { defaultChartOptions, defaultRegister } from "~/components/Charts/defaultChart.js";
+import { defaultChartOptions, defaultRegister } from "~/components/charts/defaultChart.js";
 
 ChartJS.register(...defaultRegister);
 
