@@ -179,7 +179,9 @@ watch(filters, () => {
     </div>
 
     <div class="refresh-wrap">
-      <UButton @click="getData" variant="link" size="xl"><UIcon name="i-heroicons-arrows-up-down" /></UButton>
+      <UTooltip text="Rafraîchit les données">
+        <UButton @click="getData" variant="link" size="xl"><UIcon name="i-heroicons-arrow-path" /></UButton>
+      </UTooltip>
     </div>
   </div>
 </template>
