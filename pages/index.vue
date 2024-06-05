@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CardInfos } from "~/components/card/Default.vue";
+import type { CardInfos } from "~/components/card/Presentation.vue";
 import type { CardNavigationInfos } from "~/components/card/Navigation.vue";
 import { definePageMeta } from "#imports";
 
@@ -60,7 +60,10 @@ const cardsInfos: CardInfos[] = [
 
   <GlobalWrapper id="content" class="content" with-fullscreen>
     <div class="card-default-container">
-      <CardDefault v-for="cardInfos in cardsInfos" :card-infos="cardInfos" />
+      <CardPresentation
+        v-for="cardInfos in cardsInfos"
+        :card-infos="cardInfos"
+      />
     </div>
 
     <div class="card-navigation-container">
