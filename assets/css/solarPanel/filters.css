@@ -27,7 +27,7 @@
 }
 
 .popover-content {
-    padding: 16px 8px;
+    padding: 0 16px 8px 16px;
 
     .filters-popover-wrap {
         display: flex;
@@ -36,7 +36,7 @@
 
     .btn-float {
         position: absolute;
-        top: 2px;
+        top: 8px;
 
         &.reset {
             left: 2px;

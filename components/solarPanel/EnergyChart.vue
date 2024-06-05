@@ -2,17 +2,20 @@
 
 import type { EnergyDetails, EnergyDetailsData, EnergyDetailsMeter } from "~/models/solarPanel/energyDetails";
 import type { Filters } from "~/models/chart/filters";
+import type { SolarPanelTheoreticalProduction } from "~/models/weatherReport";
 import moment from "moment";
 import colors from "tailwindcss/colors";
 import tailwindConfig from "~/tailwind.config";
 
 const filters = ref<Filters>({
   // use moment to get the current date minus 7 days
-  startDate: moment().subtract(7, "days").toDate(),
+  startDate: moment().subtract(7, 'days').toDate(),
   // today date
   endDate: new Date(),
   timeUnit: "HOUR",
 });
+
+const { formatDateTime, formatWeatherValue } = useEnergyChartData()
 
 let energyDetails: EnergyDetails = {
   timeUnit: "HOUR",
@@ -20,14 +23,21 @@ let energyDetails: EnergyDetails = {
   meters: [],
 };
 
-function formatDateTime(date: Date): string {
-  return moment(date).format("YYYY-MM-DD HH:mm:ss");
-}
+const theoreticalProduction = ref<SolarPanelTheoreticalProduction[]>([{
+  date: '0000-00-00 00:00:00',
+  production: 0,
+}]);
 
 async function getData() {
-  energyDetails = await $fetch<EnergyDetails>(`/api/solarPanel/v1/energyDetails?timeUnit=${filters.value.timeUnit}&startTime=${formatDateTime(filters.value.startDate)}&endTime=${formatDateTime(filters.value.endDate)}`, {
-    method: "GET",
-  });
+  const [energyDetailsResponse, theoreticalProductionResponse] = await Promise.all([
+    $fetch<EnergyDetails>(`/api/solarPanel/v1/energyDetails?timeUnit=${filters.value.timeUnit}&startTime=${formatDateTime(filters.value.startDate)}&endTime=${formatDateTime(filters.value.endDate)}`, {
+      method: "GET",
+    }),
+    formatWeatherValue(filters.value)
+  ]);
+
+  energyDetails = energyDetailsResponse;
+  theoreticalProduction.value = theoreticalProductionResponse;
 }
 
 function getStringByTimeUnit(timeUnit: string) {
@@ -53,10 +63,12 @@ function updateChartContext() {
   const productionData = energyDetails.meters.find((meter: EnergyDetailsMeter) => meter.type === "Production")?.values.map((v: EnergyDetailsData) => ({ x: v.date, y: v.value ?? 0 })) || [];
   const consumptionData = energyDetails.meters.find((meter: EnergyDetailsMeter) => meter.type === "Consumption")?.values.map((v: EnergyDetailsData) => ({ x: v.date, y: v.value ?? 0 })) || [];
   const differenceData = productionData.map((v, i) => ({ x: v.x, y: (v.y ?? 0) - (consumptionData[i]?.y ?? 0) }));
+  const theoreticalData = theoreticalProduction.value.map((v: SolarPanelTheoreticalProduction) => ({ x: v.date, y: v.production }));
 
   chartContext.value.datasets[0].data = productionData;
-  chartContext.value.datasets[1].data = consumptionData;
-  chartContext.value.datasets[2].data = differenceData;
+  chartContext.value.datasets[1].data = theoreticalData;
+  chartContext.value.datasets[2].data = consumptionData;
+  chartContext.value.datasets[3].data = differenceData;
 }
 
 await getData();
@@ -71,6 +83,12 @@ const chartContext = ref({
       data: energyDetails.meters.find(meter => meter.type === "Production")?.values.map(v => {
         return { x: v.date, y: v.value ?? 0 };
       }),
+    },
+    {
+      label: `Production théorique de l'énergie par ${getStringByTimeUnit(energyDetails.timeUnit)} (${energyDetails.unit})`,
+      backgroundColor: colors.black,
+      borderColor: tailwindConfig?.theme?.extend?.colors?._primary[200],
+      data: theoreticalProduction.value.map((v: SolarPanelTheoreticalProduction) => ({ x: v.date, y: v.production }))
     },
     {
       label: `Consommation de l'énergie par ${getStringByTimeUnit(energyDetails.timeUnit)} (${energyDetails.unit})`,
@@ -105,7 +123,7 @@ watch(filters, () => {
 
 <template>
   <div class="energy-chart">
-    <SolarPanelChartView :chart-context="chartContext" />
+    <SolarPanelChartView :chart-context="chartContext" title="Production de l'énergie" />
     <div class="filters-wrap">
       <SolarPanelChartFilters :filters="filters" />
     </div>

@@ -89,7 +89,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <UPopover class="popover-content">
+  <UPopover class="popover-content" :popper="{placement: 'bottom-end'}">
     <UButton class="filter-button" size="xl">
       <UIcon name="i-heroicons-funnel" class="filter-icon" />
       <span class="display-on-hover">Filtres</span>

@@ -1,3 +1,5 @@
+import moment from "moment/moment";
+
 export type WeatherDataRaw = {
   data: WeatherDataDto[];
 };
@@ -19,10 +21,11 @@ export type SolarPanelTheoreticalProduction = {
 }
 
 export function parseWeatherData(weatherDataDto: WeatherDataDto[]): WeatherData[] {
-  return weatherDataDto.map((data) => (
-    {
-      date: data.datetime,
+  return weatherDataDto.map((data) => {
+    const formattedDate = moment(data.datetime, 'YYYY-MM-DD:HH').format("YYYY-MM-DD HH:mm:ss");
+    return {
+      date: formattedDate,
       solarRadiation: data.t_solar_rad ?? data.solar_rad,
-    }
-  ));
+    };
+  });
 }
