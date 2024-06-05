@@ -30,13 +30,13 @@ export const useFetchWithToast = async <T>(
     })
     .catch((error) => {
       toast.add({
-        title: `${toastOpts.errorMessage?.title || "Erreur"} : ${error}`,
+        title: `${toastOpts.errorMessage?.title || "Erreur"}`,
         description: `${toastOpts.errorMessage?.description}`,
+        color: "red",
       });
 
       if (toastOpts.error) toastOpts.error();
 
-      throw new Error(error);
     });
 
   return data;
