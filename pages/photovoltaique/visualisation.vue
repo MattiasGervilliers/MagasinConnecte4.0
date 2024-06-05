@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { definePageMeta } from "#imports";
+
+definePageMeta({
+  auth: false
+});
+
 const links = [
   {
     label: "Magasin Connecté 4.0",
