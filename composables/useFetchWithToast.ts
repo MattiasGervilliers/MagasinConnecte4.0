@@ -3,12 +3,12 @@ export const useFetchWithToast = async <T>(
   toastOpts: {
     successMessage?: {
       title: string;
-      description: string;
+      description?: string;
     };
     success?: () => void;
     errorMessage?: {
       title: string;
-      description: string;
+      description?: string;
     };
     error?: () => void;
   },
@@ -22,16 +22,16 @@ export const useFetchWithToast = async <T>(
   })
     .then(() => {
       toast.add({
-        title: `${toastOpts.successMessage?.title || "Success"}`,
-        description: `${toastOpts.successMessage?.description || "Success"}`,
+        title: `${toastOpts.successMessage?.title || "Succès"}`,
+        description: `${toastOpts.successMessage?.description}`,
       });
 
       if (toastOpts.success) toastOpts.success();
     })
     .catch((error) => {
       toast.add({
-        title: `${toastOpts.errorMessage?.title || "Error"} : ${error}`,
-        description: `${toastOpts.errorMessage?.description || "Error occured"}`,
+        title: `${toastOpts.errorMessage?.title || "Erreur"} : ${error}`,
+        description: `${toastOpts.errorMessage?.description}`,
       });
 
       if (toastOpts.error) toastOpts.error();
