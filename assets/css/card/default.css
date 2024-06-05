@@ -20,8 +20,8 @@
   }
 }
 
-.card-description {
-  width: 50%;
+.card-description,
+.card-description-fullwidth {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -30,6 +30,14 @@
   @media screen and (max-width: 768px) {
     width: 100%;
   }
+}
+
+.card-description {
+  width: 50%;
+}
+
+.card-description-fullwidth {
+  width: 100%;
 }
 
 .card-image {
