@@ -25,10 +25,14 @@ export class UserRepository {
   public static async saveUserByEmail(
     email: string,
     user: User,
-  ): Promise<User> {
+  ): Promise<User | Error> {
     try {
       const users = await this.getUsers();
       const index = users.findIndex((user: User) => user.email === email);
+      if (index === -1) {
+        return new Error("User not found");
+      }
+
       users[index] = user;
 
       return (await this.saveUsers(users)).find(
@@ -49,6 +53,11 @@ export class UserRepository {
 
   static async createUser(user: User) {
     try {
+      const existingUser: User|undefined = await this.getUserByEmail(user.email);
+      if (existingUser) {
+        return new Error("User already exists");
+      }
+
       await JsonConnector.appendData(user, this.filePath);
       return this.getUserByEmail(user.email);
     } catch (error) {

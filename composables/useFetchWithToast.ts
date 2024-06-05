@@ -20,23 +20,25 @@ export const useFetchWithToast = async <T>(
     method: opts?.method,
     body: opts?.body,
   })
-    .then(() => {
+    .then((data) => {
       toast.add({
         title: `${toastOpts.successMessage?.title || "Succès"}`,
         description: `${toastOpts.successMessage?.description}`,
       });
 
       if (toastOpts.success) toastOpts.success();
+
+      return data;
     })
     .catch((error) => {
       toast.add({
-        title: `${toastOpts.errorMessage?.title || "Erreur"} : ${error}`,
+        title: `${toastOpts.errorMessage?.title || "Erreur"}`,
         description: `${toastOpts.errorMessage?.description}`,
+        color: "red",
       });
 
       if (toastOpts.error) toastOpts.error();
 
-      throw new Error(error);
     });
 
   return data;
