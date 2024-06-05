@@ -19,7 +19,7 @@ export type Shop = {
   address: string;
   images: string[];
   social: string;
-  donate: string;
+  other: string;
   currentWeek: Week;
   nextWeek: Week;
 };
