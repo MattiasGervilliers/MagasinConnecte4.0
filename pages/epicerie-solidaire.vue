@@ -26,7 +26,7 @@ const items = ref<Item[]>(createItems(shops.value || []));
 
 <template>
   <GlobalWrapper class="shop-wrapper">
-    <!-- ADD MAIN TITLE -->
+    <MainTitle text="Epicerie solidaire" />
 
     <p class="introduction">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat facilis

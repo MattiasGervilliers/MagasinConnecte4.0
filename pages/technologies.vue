@@ -11,10 +11,7 @@ const links = [
 </script>
 
 <template>
-  <h1>Technologies</h1>
-  <UBreadcrumb :links="links">
-    <template #divider>
-      <span class="w-8 h-1 rounded-full bg-neutral-700 dark:bg-neutral-300" />
-    </template>
-  </UBreadcrumb>
+  <GlobalWrapper class="shop-wrapper">
+    <MainTitle text="Nos technologies" />
+  </GlobalWrapper>
 </template>
