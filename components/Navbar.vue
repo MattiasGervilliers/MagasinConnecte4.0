@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const navbar = ref<Element | null>(null);
+
 const auth = useAuth();
 const toast = useToast();
 
@@ -20,7 +21,6 @@ watch(
   () => route.path,
   () => {
     changeBackground();
-
     resetMenu();
   },
 );
