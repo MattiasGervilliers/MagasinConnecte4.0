@@ -1,7 +1,6 @@
 .card {
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
   max-height: 400px;
   gap: 20px;
   transition: 0.3s ease-in-out;
@@ -26,14 +25,14 @@
   flex-direction: column;
   gap: 10px;
   transition: 0.3s ease-in-out;
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
 }
 
 .card-description {
   width: 50%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .card-description-fullwidth {

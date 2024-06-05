@@ -1,7 +1,7 @@
 <script setup lang="ts">
 export type CardInfos = {
   title: string;
-  subTitle: string;
+  subTitle?: string;
   description: string;
   publicImage?: string;
   isReversed?: boolean;
@@ -30,7 +30,7 @@ const { cardInfos } = defineProps<{
       <h2 class="text-xl font-bold text-primary-500">{{ cardInfos.title }}</h2>
 
       <h3 class="italic">
-        {{ cardInfos.subTitle }}
+        {{ cardInfos.subTitle ?? "" }}
       </h3>
 
       <UDivider size="sm" />

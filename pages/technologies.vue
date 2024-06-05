@@ -14,6 +14,24 @@ export type TechnoInfos = {
   installImage?: string;
 };
 
+const isNavigationVisible = ref<boolean>(false);
+
+const onScroll = () => {
+  if (window.scrollY > 100) {
+    isNavigationVisible.value = true;
+  } else {
+    isNavigationVisible.value = false;
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", onScroll);
+
+  return () => {
+    window.removeEventListener("scroll", onScroll);
+  };
+});
+
 const technoInfos: TechnoInfos[] = [
   {
     title: "LI-FI",
@@ -110,9 +128,15 @@ const technoInfos: TechnoInfos[] = [
     <div class="content-description">
       <TechnologiesDescription
         v-for="technoInfo in technoInfos"
-        :techno-infos="technoInfo"
+        :techno-info="technoInfo"
       />
     </div>
+
+    <TechnologiesNavigation
+      id="navigation"
+      v-if="isNavigationVisible"
+      :links="technoInfos.map((info) => info.link)"
+    />
   </GlobalWrapper>
 </template>
 
