@@ -49,6 +49,11 @@ export class UserRepository {
 
   static async createUser(user: User) {
     try {
+      const existingUser: User|undefined = await this.getUserByEmail(user.email);
+      if (existingUser) {
+        return new Error("User already exists");
+      }
+
       await JsonConnector.appendData(user, this.filePath);
       return this.getUserByEmail(user.email);
     } catch (error) {
