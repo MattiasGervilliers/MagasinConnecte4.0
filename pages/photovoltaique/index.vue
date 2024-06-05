@@ -17,7 +17,8 @@ const links = [
       <span class="w-8 h-1 rounded-full bg-neutral-700 dark:bg-neutral-300" />
     </template>
   </UBreadcrumb>
-  <UButton to="/photovoltaique/visualisation" class="mt-4">Visualisation</UButton>
+
+  <NuxtLink to="/photovoltaique/visualisation">Visualisation</NuxtLink>
 </template>
 
 <style scoped>

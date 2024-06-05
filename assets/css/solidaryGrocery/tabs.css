@@ -5,8 +5,8 @@
   gap: 20px;
 }
 
-.shop__select {
-  display: flex;
-  gap: 10px;
-  width: fit-content;
+@media screen and (max-width: 768px) {
+ .shop__tabs {
+   flex-wrap: wrap;
+ }
 }

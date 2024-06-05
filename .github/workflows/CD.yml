@@ -1,0 +1,23 @@
+name: MagasinConnecte4.0 CD
+
+on:
+  workflow_run:
+    workflows: ["MagasinConnecte4.0 CI"]
+    types:
+      - completed
+  
+jobs:
+  run_pull:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'master' }}
+    name: run pull
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: install ssh
+      run: sudo apt-get update && sudo apt-get install -y sshpass
+    - name: connect and pull
+      run: sshpass -p '${{ secrets.SSH_PWD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && rm ./package-lock.json && rm -rf ./node_modules && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && npm i && npm run build && exit"
+    - name: restart site
+      run: curl -X POST --basic --user "${{ secrets.AD_API_KEY }} account=${{ secrets.AD_ACCOUNT }}:" '${{ secrets.AD_URL_RESTART }}'
+    - name: cleanup
+      run: rm -rf ~/.ssh

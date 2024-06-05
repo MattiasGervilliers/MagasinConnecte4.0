@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import "chartjs-adapter-moment";
 import { ref, watch } from "vue";
 

@@ -53,6 +53,10 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .navbar {
+    padding: 0 5%;
+  }
+
   .menu {
     flex-direction: column;
     transform: translate(-50%, 70px);

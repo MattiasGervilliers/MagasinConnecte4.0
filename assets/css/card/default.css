@@ -1,18 +1,22 @@
 .card {
   display: flex;
   flex-direction: row;
-  width: 50%;
   margin: 0 auto;
-  padding: 50px 20px;
+  max-height: 400px;
   gap: 20px;
   transition: 0.3s ease-in-out;
+}
 
-  @media screen and (max-width: 1024px) {
-    width: 90%;
+@media screen and (max-width: 1024px) {
+  .card {
+    max-height: fit-content;
   }
+}
 
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  .card {
     flex-direction: column;
+    max-height: fit-content;
   }
 }
 

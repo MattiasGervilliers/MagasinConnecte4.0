@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { CardInfos } from "~/components/card/Default.vue";
 import type { CardNavigationInfos } from "~/components/card/Navigation.vue";
+import { definePageMeta } from "#imports";
+
+definePageMeta({
+  auth: false,
+});
 
 const cardsNavigationInfos: CardNavigationInfos[] = [
   {
@@ -25,20 +30,24 @@ const cardsNavigationInfos: CardNavigationInfos[] = [
 
 const cardsInfos: CardInfos[] = [
   {
-    title: "Lorem ipsum dolor sit amet",
-    subTitle: "Hic nisi repellat sed voluptatem consequatur",
+    title: "Par les étudiants pour les étudiants !",
+    subTitle: "",
     description:
-      "Qui temporibus rerum et cumque quod et iure officia est doloribus aspernatur sit nihil quia. In eius cumque et consequatur exercitationem qui pariatur Quis! Est placeat consequatur ut animi sapiente aut voluptatem molestias sed dolorem fugit et sunt maiores aut quia tempore.",
-    publicImage: "test.jpg",
+      '"Nous proposons à ces étudiants des produits à 10% des prix du marchés, comme des paquets de pâtes à 7 centimes' +
+      "\" - Alexandre Siméoni, président de la fédération Aix-Marseille Interasso.\n Depuis l'inoguration du magasin" +
+      " connecté en 2019 plus de 650 étudiants ont bénéficié de ces tarifs préférentiels.",
+    publicImage: "mainPage_store.jpg",
     isReversed: false,
   },
 
   {
-    title: "Lorem ipsum dolor sit amet",
-    subTitle: "Hic nisi repellat sed voluptatem consequatur",
+    title: "Un magasin a la pointe de la technologie",
+    subTitle: "Vivez l'experience du client de demain",
     description:
-      "Qui temporibus rerum et cumque quod et iure officia est doloribus aspernatur sit nihil quia. In eius cumque et consequatur exercitationem qui pariatur Quis! Est placeat consequatur ut animi sapiente aut voluptatem molestias sed dolorem fugit et sunt maiores aut quia tempore.",
-    publicImage: "test.jpg",
+      "Le magasin connecter a pour but de regroupé les technologies du futur et de les integré dans un contexte reel. " +
+      "On y retrouve des technologies comme le LiFi, le recyclage de la lumière ambiante, l'eclairage circadien, " +
+      "des drones, le RFID, l'IOT et la VLC",
+    publicImage: "mainPage_tech_img.png",
     isReversed: true,
   },
 ];
@@ -49,8 +58,10 @@ const cardsInfos: CardInfos[] = [
 
   <ScrollButton hash="#content" />
 
-  <div id="content" class="content">
-    <CardDefault v-for="cardInfos in cardsInfos" :card-infos="cardInfos" />
+  <GlobalWrapper id="content" class="content" with-fullscreen>
+    <div class="card-default-container">
+      <CardDefault v-for="cardInfos in cardsInfos" :card-infos="cardInfos" />
+    </div>
 
     <div class="card-navigation-container">
       <CardNavigation
@@ -58,7 +69,9 @@ const cardsInfos: CardInfos[] = [
         :card-navigation-infos="cardNavigationInfos"
       />
     </div>
-  </div>
+
+    <Parteners />
+  </GlobalWrapper>
 </template>
 
 <style>
