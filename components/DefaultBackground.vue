@@ -8,7 +8,7 @@ const props = defineProps<{
   <div class="background">
     <h1 v-if="!isHideTitle" class="text-white text-4xl font-bold text-center">
       Bienvenue dans le <br />
-      magasin connectée 4.0
+      magasin connecté 4.0
     </h1>
   </div>
 </template>
