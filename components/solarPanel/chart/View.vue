@@ -4,6 +4,7 @@ import { ref, watch } from "vue";
 
 const props = defineProps<{
   chartContext: object;
+  title: string
 }>();
 const chartContext = ref(props.chartContext);
 
@@ -13,7 +14,7 @@ const options = {
   plugins: {
     title: {
       display: true,
-      text: "Production de l'énergie",
+      text: props.title,
     },
   },
   scales: {
@@ -37,13 +38,15 @@ const options = {
   },
 };
 
-watch(props, () => {
+watch(() => props, () => {
   chartContext.value = props.chartContext;
   chartKey.value++;
 }, { deep: true });
 
-window.addEventListener("resize", () => {
-  chartKey.value++;
+onMounted(() => {
+  window.addEventListener("resize", () => {
+    chartKey.value++;
+  });
 });
 </script>
 
