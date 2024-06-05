@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const navbar = ref<Element | null>(null);
+
 const auth = useAuth();
 const toast = useToast();
 
@@ -20,7 +21,6 @@ watch(
   () => route.path,
   () => {
     changeBackground();
-
     resetMenu();
   },
 );
@@ -47,7 +47,7 @@ const onSignOut = (): void => {
 <template>
   <nav class="navbar">
     <h1
-      class="text-3xl text-white font-bold animate__animated animate__fadeInLeft animate__fast"
+      class="text-xl md:text-3xl text-white font-bold animate__animated animate__fadeInLeft animate__fast"
     >
       <NuxtLink to="/">Magasin Connecté 4.0</NuxtLink>
     </h1>

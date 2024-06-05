@@ -4,3 +4,9 @@
   width: 100%;
   gap: 20px;
 }
+
+@media screen and (max-width: 768px) {
+ .shop__tabs {
+   flex-wrap: wrap;
+ }
+}

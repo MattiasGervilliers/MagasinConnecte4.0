@@ -26,25 +26,16 @@ export const useNavbar = (): UseNavbarReturn => {
       path: "/photovoltaique",
     },
     {
-      name: "Epicerie-solidaire",
+      name: "Epicerie solidaire",
       path: "/epicerie-solidaire",
     },
+    {
+      name: "Contact",
+      path: "/contact",
+    }
   ];
 
-  const refLinks = ref<Link[]>([
-    {
-      name: "Technologies",
-      path: "/technologies",
-    },
-    {
-      name: "Photovoltaïque",
-      path: "/photovoltaique",
-    },
-    {
-      name: "Epicerie-solidaire",
-      path: "/epicerie-solidaire",
-    },
-  ]);
+  const refLinks = ref<Link[]>(links);
 
   const subLinks: Link[] = [
     {

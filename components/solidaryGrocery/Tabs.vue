@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import moment from "moment";
 import type { Item } from "~/pages/epicerie-solidaire.vue";
 
 const { items } = defineProps<{
@@ -13,6 +14,7 @@ const week = ref(weeks[0].value);
 <template>
   <UTabs
     :items="items"
+    class="shop__tabs"
     orientation="vertical"
     :ui="{ wrapper: 'flex items-start gap-10', list: { width: 'w-48' } }"
   >

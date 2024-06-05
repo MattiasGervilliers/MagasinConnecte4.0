@@ -1,0 +1,78 @@
+/* Button and popover styling */
+.filter-button {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 45px;
+    overflow: hidden;
+
+    .display-on-hover {
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .filter-icon {
+        min-width: 1em;
+    }
+
+    &:hover {
+        width: 95px;
+        transition: width 0.3s ease;
+        padding-right: 10px;
+
+        .display-on-hover {
+            opacity: 1;
+        }
+    }
+}
+
+.popover-content {
+    padding: 0 16px 8px 16px;
+
+    .filters-popover-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn-float {
+        position: absolute;
+        top: 8px;
+
+        &.reset {
+            left: 2px;
+        }
+
+        &.previous {
+            left: 30px;
+        }
+
+        &.next {
+            left: 58px;
+        }
+    }
+}
+
+/* Custom select styling */
+.custom-select {
+    display: flex;
+}
+
+.custom-option {
+    padding: 4px 8px;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+
+    &:first-child {
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+
+.selected-option {
+    background-color: theme('colors._primary.700');
+}

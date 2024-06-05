@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Chart as ChartJS } from "chart.js";
 import { Line } from "vue-chartjs";
-import { defaultChartOptions, defaultRegister } from "~/components/Charts/defaultChart.js";
+import { defaultChartOptions } from "~/components/charts/defaultChartOptions.js";
+import { registerables } from "chart.js";
 
-ChartJS.register(...defaultRegister);
+ChartJS.register(...registerables);
 
 let { data, options } = defineProps({
   data: {
