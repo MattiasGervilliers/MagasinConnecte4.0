@@ -41,7 +41,6 @@ const state = reactive<Schema>({
 })
 
 const onSubmit = () => {
-  console.log(state.identity)
   window.location.href = "mailto:email@example.com?subject=[" + IDENTITIES_SELECT.find(identity => identity.value === state.identity)?.label + "] " + state.subject + "&body=" + state.message;
 }
 </script>
