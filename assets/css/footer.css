@@ -1,6 +1,31 @@
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
+    width: 100%;
+    box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 4em;
+
+        .logo {
+            width: 250px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .footer-menu {
+            column-count: 2;
+            margin: 0;
+            padding: 0;
+
+            li {
+                list-style: none;
+                display: block;
+            }
+        }
+    }
 }
