@@ -16,10 +16,7 @@ const addUser = (user: User) => {
     ...user,
     confirmPassword: "",
   });
-
-  console.log("managesUSer", managedUsers);
 };
-
 
 const managedUsers = ref<UserWithConfirmPassword[]>([
   {

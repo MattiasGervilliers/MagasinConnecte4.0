@@ -61,7 +61,7 @@ const state = reactive<Schema>({
 
 const onSubmit = async () => {
   if (props.isNew) {
-    await useFetchWithToast(
+    await useFetchWithToast<User>(
       "/api/users",
       {
         successMessage: {
@@ -81,7 +81,7 @@ const onSubmit = async () => {
           password: sha256(state.password).toString(),
         }),
       },
-    ).then((data) => {
+    ).then((data: User|void) => {
       props.addUser((data) as User);
       state.email = "";
       state.role = ROLE_ENUM[0];
