@@ -114,7 +114,7 @@ const onSignOut = (): void => {
         />
       </UTooltip>
 
-      <UTooltip text="Déconnexion">
+      <UTooltip text="Déconnexion" v-if="auth.status.value === 'authenticated'">
         <UButton
           v-if="auth.status.value === 'authenticated'"
           icon="i-heroicons-arrow-right-start-on-rectangle-16-solid"
