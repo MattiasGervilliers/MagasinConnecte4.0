@@ -41,7 +41,7 @@ const cardsInfos: CardInfos[] = [
   },
 
   {
-    title: "Un magasin a la pointe de la technologie",
+    title: "Un magasin a la pointe de la technologies",
     subTitle: "Vivez l'experience du client de demain",
     description:
       "Le magasin connecter a pour but de regroupé les technologies du futur et de les integré dans un contexte reel. " +
