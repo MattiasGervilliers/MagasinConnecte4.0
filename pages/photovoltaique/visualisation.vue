@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { definePageMeta } from "#imports";
 import Overview from "~/components/solarPanel/Overview.vue";
+
+definePageMeta({
+  auth: false
+});
+
 const links = [
   {
     label: "Magasin Connecté 4.0",

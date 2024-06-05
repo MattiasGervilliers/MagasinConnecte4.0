@@ -1,69 +1,135 @@
 <script setup lang="ts">
-import type { CardInfosTechno } from "~/components/CardInfoTechno.vue";
+definePageMeta({
+  auth: false,
+});
 
-const links = [
+export type TechnoInfos = {
+  title: string;
+  shortDescription: string;
+  image?: string;
+  link: string;
+  functioningDescription: string;
+  functioningImage?: string;
+  installDescription: string;
+  installImage?: string;
+};
+
+const technoInfos: TechnoInfos[] = [
   {
-    label: "Magasin Connecté 4.0",
-    to: "/",
+    title: "LI-FI",
+    image: "screenshots/LIFI.png",
+    shortDescription:
+      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+    functioningImage: "screenshots/LIFI.png",
+    installImage: "/screenshots/acoustique.png",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "lifi",
   },
   {
-    label: "Technologies",
+    title: "VLC",
+    shortDescription:
+      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+    functioningImage: "screenshots/VLC.png",
+    installImage: "/screenshots/acoustique.png",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "vlc",
+    image: "screenshots/VLC.png",
+  },
+  {
+    title: "Drones",
+    shortDescription:
+      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+    functioningImage: "screenshots/drone.jpg",
+    installImage: "/screenshots/acoustique.png",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "drones",
+    image: "screenshots/drone.jpg",
+  },
+  {
+    title: "CSO",
+    shortDescription:
+      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+    functioningImage: "/screenshots/CSO.jpg",
+    installImage: "/screenshots/acoustique.png",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "cso",
+    image: "/screenshots/CSO.jpg",
+  },
+  {
+    title: "RFID",
+    shortDescription:
+      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+    functioningImage: "/screenshots/RFID.png",
+    installImage: "/screenshots/acoustique.png",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "rfid",
+    image: "/screenshots/RFID.png",
+  },
+  {
+    title: "Acoustique",
+    shortDescription:
+      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+    functioningImage: "/screenshots/acoustique.png",
+    installImage: "/screenshots/acoustique.png",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "acoustique",
+    image: "/screenshots/acoustique.png",
   },
 ];
-
-const cardInfosTechno: CardInfosTechno[] = [
-  {
-    title: 'LI-FI',
-    description: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.',
-    image:  'screenshots/LIFI.png',
-    link: 'lifi'
-  },
-  {
-    title: 'VLC',
-    description: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.',
-    image: 'screenshots/VLC.png',
-    link: 'vlc'
-  },
-  {
-    title: 'Drones',
-    description: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.',
-    image: 'screenshots/drone.jpg',
-    link: 'drones'
-  },
-  {
-    title: 'CSO',
-    description: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.',
-    image: '/screenshots/CSO.jpg',
-    link: 'cso'
-  },
-  {
-    title: 'RFID',
-    description: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.',
-    image: '/screenshots/RFID.png',
-    link: 'rfid'
-  },
-  {
-    title: 'Acoustique',
-    description: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.',
-    image: '/screenshots/acoustique.png',
-    link: 'acoustique'
-  },
-
-]
 </script>
 
 <template>
-  <h1>Technologies</h1>
-  <UBreadcrumb :links="links">
-    <template #divider>
-      <span class="w-8 h-1 rounded-full bg-neutral-700 dark:bg-neutral-300" />
-    </template>
-  </UBreadcrumb>
-  <div id="contentTechno" class="contentTechno">
-    <CardInfoTechno v-for="cardInfoTechno in cardInfosTechno" :card-infos-techno="cardInfoTechno" />
-  </div>
+  <GlobalWrapper>
+    <MainTitle text="Nos technologies" />
+
+    <div class="content-techno">
+      <TechnologiesCardInfo
+        v-for="technoInfo in technoInfos"
+        :techno-infos="technoInfo"
+      />
+    </div>
+
+    <div class="content-description">
+      <TechnologiesDescription
+        v-for="technoInfo in technoInfos"
+        :techno-infos="technoInfo"
+      />
+    </div>
+  </GlobalWrapper>
 </template>
 
 <style>
-@import url("~/assets/css/cardInfosTechno.css");
+.content-techno {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.content-description {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  margin-top: 150px;
+}
 </style>
