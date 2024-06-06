@@ -34,7 +34,7 @@ const onSubmit = () => {
       username: state.email,
       password: sha256(state.password || "").toString()
     },
-    { callbackUrl: "/" }
+    { callbackUrl: "/administration" }
   )
     .then(() => {
       toast.add({

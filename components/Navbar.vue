@@ -104,22 +104,26 @@ const onSignOut = (): void => {
         variant="link"
       />
 
-      <UButton
-        icon="i-heroicons-user-16-solid"
-        size="md"
-        class="menu-icon"
-        to="/administration"
-        variant="link"
-      />
+      <UTooltip text="Espace administration">
+        <UButton
+          icon="i-heroicons-user-16-solid"
+          size="md"
+          class="menu-icon"
+          to="/administration"
+          variant="link"
+        />
+      </UTooltip>
 
-      <UButton
-        v-if="auth.status.value === 'authenticated'"
-        icon="i-heroicons-arrow-right-start-on-rectangle-16-solid"
-        size="md"
-        class="menu-icon"
-        variant="link"
-        @click="onSignOut"
-      />
+      <UTooltip text="Déconnexion" v-if="auth.status.value === 'authenticated'">
+        <UButton
+          v-if="auth.status.value === 'authenticated'"
+          icon="i-heroicons-arrow-right-start-on-rectangle-16-solid"
+          size="md"
+          class="menu-icon"
+          variant="link"
+          @click="onSignOut"
+        />
+      </UTooltip>
     </div>
   </nav>
 </template>
