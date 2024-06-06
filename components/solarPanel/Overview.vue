@@ -1,49 +1,63 @@
 <script setup lang="ts">
-import MainTitle from "~/components/MainTitle.vue";
 import type { Overview } from "~/models/solarPanel/overview";
 
-const overviewData: Overview = await $fetch<Overview>('/api/solarPanel/v1/overview')
+const overviewData: Overview = await $fetch<Overview>("/api/solarPanel/v1/overview");
 </script>
 
 <template>
-  <MainTitle text="Vue Générale"/>
-  <div class="overview-container">
-    <p class="overview-container-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <CardValueWUnit title="Courant acutel" :value='overviewData.currentPower' unit="Watt"/>
-  </div>
+  <PageHeader title="Laissons parler les chiffres" image="/photovoltaique/visualisation/header.jpg"
+              image-alt="Panneaux solaires" />
+  <section class="powers mt-5 relative">
+    <div class="current-power">
+      <div class="information">
+        <h3>Puissance actuelle</h3>
+        <p>{{ overviewData.currentPower }} Watt</p>
+      </div>
 
-  <div class="overview-container-details">
-    <CardValueWUnit title="Energie produite au total" :value="overviewData.lifeTimeDataEnergy" unit="Wh"/>
-    <CardValueWUnit title="Energie produite l'année dernière" :value="overviewData.lastYearDataEnergy" unit="Wh"/>
-    <CardValueWUnit title="Energie produite le mois dernier" :value="overviewData.lastMonthDataEnergy" unit="Wh"/>
-    <CardValueWUnit title="Energie produite hier" :value="overviewData.lastDayDataEnergy" unit="Wh"/>
-  </div>
+      <div class="arrow left">
+        <div class="line bg-black dark:bg-white"></div>
+        <div class="point border-black dark:border-white"></div>
+      </div>
+
+      <NuxtImg src="/photovoltaique/visualisation/solarPanel.svg" alt="Solar panel illustration"
+               class="solar-panel-illustration" />
+
+      <div class="arrow right">
+        <div class="line bg-black dark:bg-white"></div>
+        <div class="point border-black dark:border-white"></div>
+      </div>
+
+      <div class="information">
+        <h3>Production actuelle</h3>
+        <p>Watt</p>
+      </div>
+    </div>
+
+    <h2 class="font-bold text-2xl text-center mt-5">Energie produite</h2>
+    <div class="power-history mt-8">
+      <div class="power">
+        <h3>Depuis l'installation</h3>
+        <p>{{ overviewData.lifeTimeDataEnergy }} Wh</p>
+      </div>
+
+      <div class="power">
+        <h3>L'année précédente</h3>
+        <p>{{ overviewData.lastYearDataEnergy }} Wh</p>
+      </div>
+
+      <div class="power">
+        <h3>Le mois précédent</h3>
+        <p>{{ overviewData.lastMonthDataEnergy }} Wh</p>
+      </div>
+
+      <div class="power">
+        <h3>Le jour précédent</h3>
+        <p>{{ overviewData.lastDayDataEnergy }} Wh</p>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
-  .overview-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-    width: 60%;
-    margin: 0 auto;
-  }
-
-  .overview-container-details {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-    flex-wrap: wrap;
-  }
-
-  .overview-container-text {
-    display: flex;
-    flex: 1;
-  }
+@import url("~/assets/css/solarPanel/overview.css");
 </style>

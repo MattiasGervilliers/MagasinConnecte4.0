@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { definePageMeta } from "#imports";
-import Overview from "~/components/solarPanel/Overview.vue";
 
 definePageMeta({
   auth: false,
@@ -8,19 +7,23 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="visualization">
+  <GlobalWrapper>
     <div class="overview">
-      <Overview />
+      <SolarPanelOverview />
     </div>
+  </GlobalWrapper>
+  <div class="greenwashing-wrapper">
+    <SolarPanelGreenwashing />
+  </div>
+  <GlobalWrapper>
     <div class="chart mt-5">
       <SolarPanelEnergyChart />
     </div>
-  </div>
+  </GlobalWrapper>
 </template>
 
 <style scoped>
-.visualization {
-  margin-top: 70px;
-  padding: 0 10%;
+.chart {
+  padding: 24px;
 }
 </style>

@@ -5,6 +5,6 @@ export type Benefit = {
     so2: number,
     nox: number,
   },
-  treePlanted: number,
+  treesPlanted: number,
   lightBulbs: number,
 }
