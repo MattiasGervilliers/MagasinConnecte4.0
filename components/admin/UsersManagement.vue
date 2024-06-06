@@ -11,16 +11,23 @@ const isLoading = ref<boolean>(false);
 
 const indexUserSelected = ref<number>(0);
 
-const managedUsers: UserWithConfirmPassword[] = [
+const addUser = (user: User) => {
+  managedUsers.value.push({
+    ...user,
+    confirmPassword: "",
+  });
+};
+
+const managedUsers = ref<UserWithConfirmPassword[]>([
   {
     email: "Nouvel utilisateur",
     role: "seller",
     password: "",
     confirmPassword: "",
   },
-];
+]);
 
-managedUsers.push(
+managedUsers.value.push(
   ...users.map((user) => {
     return {
       ...user,
@@ -29,7 +36,7 @@ managedUsers.push(
   }),
 );
 
-const email = ref<string>(managedUsers[0].email);
+const email = ref<string>(managedUsers.value[0].email);
 </script>
 
 <template>
@@ -51,6 +58,7 @@ const email = ref<string>(managedUsers[0].email);
     <UserManager
       :user="managedUsers[indexUserSelected]"
       :isNew="indexUserSelected == 0"
+      :addUser="addUser"
     />
   </div>
 </template>
