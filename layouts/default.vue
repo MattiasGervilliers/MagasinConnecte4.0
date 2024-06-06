@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import "animate.css";
+
+const { checkIfPWAIsUsed } = usePWA();
+
+onMounted(() => {
+  if (checkIfPWAIsUsed()) {
+    navigateTo("/photovoltaique/visualisation");
+  }
+});
 </script>
 
 <template>
