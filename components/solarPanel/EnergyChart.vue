@@ -6,10 +6,10 @@ import type { SolarPanelTheoreticalProduction } from "~/models/weatherReport";
 import moment from "moment";
 import colors from "tailwindcss/colors";
 import tailwindConfig from "~/tailwind.config";
-
+const isMobile = navigator.maxTouchPoints > 0;
 const filters = ref<Filters>({
   // use moment to get the current date minus 7 days
-  startDate: moment().subtract(7, "days").toDate(),
+  startDate: isMobile ? moment().subtract(1, 'days').toDate() : moment().subtract(7, "days").toDate(),
   // today date
   endDate: new Date(),
   timeUnit: "HOUR",

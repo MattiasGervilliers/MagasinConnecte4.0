@@ -1,7 +1,25 @@
 <script setup lang="ts">
 import type { Overview } from "~/models/solarPanel/overview";
+const toast = useToast();
+let overviewData: Overview = {
+  currentPower: 0,
+  lifeTimeDataEnergy: 0,
+  lastYearDataEnergy: 0,
+  lastMonthDataEnergy: 0,
+  lastDayDataEnergy: 0,
+  lastUpdateTime: "",
+};
 
-const overviewData: Overview = await $fetch<Overview>("/api/solarPanel/v1/overview");
+try {
+  overviewData = await $fetch<Overview>("/api/solarPanel/v1/overview");
+} catch (error) {
+  console.error(error);
+  toast.add({
+    title: "Une erreur est survenue lors de la récupération de données. Veuillez réessayer plus tard.",
+    icon: "i-heroicons-information-circle",
+    color: "red",
+  });
+}
 </script>
 
 <template>
