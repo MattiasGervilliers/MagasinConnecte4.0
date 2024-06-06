@@ -12,12 +12,17 @@ onMounted(() => {
       <div class="logo">
         <NuxtImg
           v-if="isDarkTheme"
-          src="Logo_AMU_BLANC.png"
-          alt="Logo AMU"
+          src="footer/amu_logo_white.png"
+          alt="Logo amu white"
           class="w-fit"
         />
 
-        <NuxtImg v-else src="LOGO_AMU.png" alt="Logo AMU" class="w-fit" />
+        <NuxtImg
+          v-else
+          src="footer/amu_logo.png"
+          alt="Logo amu"
+          class="w-fit"
+        />
       </div>
 
       <div>
