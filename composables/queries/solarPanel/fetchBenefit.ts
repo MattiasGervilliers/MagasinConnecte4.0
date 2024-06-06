@@ -13,7 +13,5 @@ export const fetchBenefit = async (): Promise<Benefit> => {
     },
   );
 
-  console.log(response);
-
   return response;
 }
