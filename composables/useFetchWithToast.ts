@@ -35,6 +35,7 @@ export const useFetchWithToast = async <T>(
         title: `${toastOpts.errorMessage?.title || "Erreur"}`,
         description: `${toastOpts.errorMessage?.description}`,
         color: "red",
+        ui: {"title": "text-red-800","description": "text-red-500"}
       });
 
       if (toastOpts.error) toastOpts.error();
