@@ -4,13 +4,16 @@
 
 <template>
   <GlobalWrapper>
-    <div class="visualization">
-      <div class="overview">
-        <SolarPanelOverview/>
-      </div>
-      <div class="chart mt-5">
-        <SolarPanelEnergyChart />
-      </div>
+    <div class="overview">
+      <SolarPanelOverview />
+    </div>
+  </GlobalWrapper>
+  <div class="greenwashing-wrapper">
+    <SolarPanelGreenwashing />
+  </div>
+  <GlobalWrapper>
+    <div class="chart mt-5">
+      <SolarPanelEnergyChart />
     </div>
   </GlobalWrapper>
 </template>

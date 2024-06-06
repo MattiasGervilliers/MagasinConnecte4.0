@@ -19,7 +19,7 @@ const overviewData: Overview = await $fetch<Overview>("/api/solarPanel/v1/overvi
         <div class="point border-black dark:border-white"></div>
       </div>
 
-      <NuxtImg src="/photovoltaique/visualisation/solarPanel.svg" alt="Solar panel illusatration"
+      <NuxtImg src="/photovoltaique/visualisation/solarPanel.svg" alt="Solar panel illustration"
                class="solar-panel-illustration" />
 
       <div class="arrow right">
