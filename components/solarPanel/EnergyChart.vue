@@ -198,6 +198,13 @@ watch(filters, () => {
   z-index: 11;
 }
 
+@media screen and (max-width: 768px) {
+  .filters-wrap {
+    top: -50px;
+    right: 0;
+  }
+}
+
 .refresh-wrap {
   position: absolute;
   top: 0;
@@ -209,4 +216,12 @@ watch(filters, () => {
     font-size: 1.2em;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .refresh-wrap {
+    top: -50px;
+    right: 50px;
+  }
+}
+
 </style>
