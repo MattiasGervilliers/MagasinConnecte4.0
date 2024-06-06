@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { links } = defineProps<{ links: string[] }>();
+import type { TechnoInfos } from "~/pages/technologies.vue";
+
+const { technoInfos } = defineProps<{ technoInfos: TechnoInfos[] }>();
 const route = useRoute();
 
 const hash = ref(route.hash);
@@ -15,16 +17,18 @@ watch(
 <template>
   <ul class="navigation">
     <li
-      v-for="link in links"
-      :key="link"
-      :class="hash === `#${link}` ? 'is-selected ' : 'not-selected'"
+      v-for="technoInfo in technoInfos"
+      :key="technoInfo.title"
+      :class="hash === `#${technoInfo.link}` ? 'is-selected ' : 'not-selected'"
     >
-      <UButton
-        :to="`#${link}`"
-        variant="link"
-        :color="hash === `#${link}` ? 'white' : 'primary'"
-        >{{ link }}</UButton
-      >
+      <UTooltip :text="technoInfo.title">
+        <UButton
+          :to="`#${technoInfo.link}`"
+          variant="link"
+          :icon="technoInfo.icon"
+          color="white"
+        />
+      </UTooltip>
     </li>
   </ul>
 </template>
@@ -38,18 +42,20 @@ watch(
   background-color: theme("colors.white");
   display: flex;
   flex-direction: row;
-  border: 1px solid theme("colors.primary.500");
-  border-radius: 10px;
-  overflow: hidden;
+  box-shadow: 0px 0px 15px -7px #000000;
+  border-radius: 50px;
+  padding: 10px 20px;
+  gap: 10px;
 }
 
 .navigation li {
-  padding: 10px;
+  padding: 5px;
   transition: 0.3s ease-in-out;
+  border-radius: 25px;
+  box-shadow: 0px 0px 15px -7px #000000;
 }
 
 .is-selected {
   background-color: theme("colors.primary.500");
-  color: theme("colors.white");
 }
 </style>
