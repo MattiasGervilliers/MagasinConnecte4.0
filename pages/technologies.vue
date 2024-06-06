@@ -6,6 +6,7 @@ definePageMeta({
 export type TechnoInfos = {
   title: string;
   shortDescription: string;
+  icon?: string;
   image?: string;
   link: string;
   functioningDescription: string;
@@ -35,6 +36,7 @@ onMounted(() => {
 const technoInfos: TechnoInfos[] = [
   {
     title: "LI-FI",
+    icon: "i-heroicons-wifi-16-solid",
     image: "technologies/lifi.png",
     shortDescription:
       "Utilise la lumière pour transmettre des données, offrant une alternative rapide et sécurisée au Wi-Fi traditionnel.",
@@ -48,6 +50,7 @@ const technoInfos: TechnoInfos[] = [
   },
   {
     title: "VLC",
+    icon: "i-heroicons-light-bulb-16-solid",
     shortDescription:
       "Le VLC (Visible Light Communication) est une technologie de transmission de données unidirectionnelle via la lumière LED.",
     functioningImage: "screenshots/VLC.png",
@@ -61,6 +64,7 @@ const technoInfos: TechnoInfos[] = [
   },
   {
     title: "Drones",
+    icon: "i-heroicons-rocket-launch-16-solid",
     shortDescription:
       "Les drones sont des appareils sans équipage, pilotés automatiquement ou à distance, utilisés dans le civil ou par les forces armées et de sécurité.",
     functioningImage: "screenshots/drone.jpg",
@@ -74,6 +78,7 @@ const technoInfos: TechnoInfos[] = [
   },
   {
     title: "Diffuseur de Parfum",
+    icon: "i-heroicons-arrow-up-on-square-16-solid",
     shortDescription:
       "Crée une ambiance olfactive agréable dans le magasin, enrichissant l'expérience des visiteurs.",
     functioningImage: "/technologies/diffuseur_parfum.png",
@@ -87,6 +92,7 @@ const technoInfos: TechnoInfos[] = [
   },
   {
     title: "RFID",
+    icon: "i-heroicons-circle-stack-16-solid",
     shortDescription:
       "Facilitent la gestion et le suivi des stocks grâce à l'identification par radiofréquence, améliorant ainsi l'efficacité logistique.",
     functioningImage: "/screenshots/RFID.png",
@@ -100,6 +106,7 @@ const technoInfos: TechnoInfos[] = [
   },
   {
     title: "Acoustique",
+    icon: "i-heroicons-megaphone-16-solid",
     shortDescription:
       "Améliorent l'acoustique de l'espace, réduisant les nuisances sonores et créant un environnement propice à la concentration et à l'apprentissage.",
     functioningImage: "/screenshots/acoustique.png",
@@ -131,6 +138,11 @@ const technoInfos: TechnoInfos[] = [
         :techno-info="technoInfo"
       />
     </div>
+
+    <TechnologiesNavigation
+      :techno-infos="technoInfos"
+      :class="isNavigationVisible ? 'is-visible' : 'is-hidden'"
+    />
   </GlobalWrapper>
 </template>
 
@@ -149,5 +161,15 @@ const technoInfos: TechnoInfos[] = [
   flex-direction: column;
   gap: 100px;
   margin-top: 150px;
+}
+
+.is-visible {
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+}
+
+.is-hidden {
+  opacity: 0;
+  transition: 0.3s ease-in-out;
 }
 </style>
