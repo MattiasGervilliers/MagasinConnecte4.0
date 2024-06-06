@@ -14,12 +14,20 @@ export const useWeek = (): UseWeekReturn => {
   const currentYear: number = moment(new Date()).year();
 
   const getStartAndEndOfWeek = (weekNumber: number, year: number) => {
-    const startOfWeek = moment().year(year).week(weekNumber).startOf("week").add(1, "day");
-    const endOfWeek = moment().year(year).week(weekNumber).endOf("week").add(1, "day");
+    const startOfWeek = moment()
+      .year(year)
+      .week(weekNumber)
+      .startOf("week")
+      .add(1, "day");
+    const endOfWeek = moment()
+      .year(year)
+      .week(weekNumber)
+      .endOf("week")
+      .add(1, "day");
 
     return {
-      start: startOfWeek.format("MM-DD"),
-      end: endOfWeek.format("MM-DD"),
+      start: startOfWeek.format("DD/MM/YYYY"),
+      end: endOfWeek.format("DD/MM/YYYY"),
     };
   };
 
