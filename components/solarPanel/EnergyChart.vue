@@ -143,7 +143,7 @@ const chartContext = ref({
     {
       label: `Consommation de l'énergie par ${getStringByTimeUnit(energyDetails.timeUnit)} (${energyDetails.unit})`,
       backgroundColor: colors.black,
-      borderColor: tailwindConfig?.theme?.extend?.colors?._secondary[700],
+      borderColor: tailwindConfig?.theme?.extend?.colors?._tertiary[700],
       data: energyDetails.meters.find(meter => meter.type === "Consumption")?.values.map(v => {
         return { x: v.date, y: v.value ?? 0 };
       }),
@@ -151,7 +151,7 @@ const chartContext = ref({
     {
       label: `Différence entre la production et la consommation de l'énergie par ${getStringByTimeUnit(energyDetails.timeUnit)} (${energyDetails.unit})`,
       backgroundColor: colors.black,
-      borderColor: tailwindConfig?.theme?.extend?.colors?._secondary[200],
+      borderColor: tailwindConfig?.theme?.extend?.colors?._tertiary[200],
       data: energyDetails.meters.find(meter => meter.type === "Production")?.values.map((v, i) => {
         return {
           x: v.date,
