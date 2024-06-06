@@ -34,6 +34,7 @@ const overviewData: Overview = await $fetch<Overview>("/api/solarPanel/v1/overvi
     </div>
 
     <h2 class="font-bold text-2xl text-center mt-5">Energie produite</h2>
+
     <div class="power-history mt-8">
       <div class="power">
         <h3>Depuis l'installation</h3>

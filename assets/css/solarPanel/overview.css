@@ -1,5 +1,8 @@
 section {
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .current-power {
@@ -18,6 +21,10 @@ section {
         border-radius: 100%;
         border: 4px solid theme('colors._primary.300');
 
+        @media screen and (max-width: 768px) {
+            border: none;
+        }
+
         h3 {
             font-size: 1.125em;
             font-weight: 500;
@@ -27,7 +34,12 @@ section {
 
 .power-history {
     display: flex;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 20px;
 
     .power {
         display: flex;
@@ -36,9 +48,13 @@ section {
         padding: 0 24px;
         font-size: 1.125em;
         font-weight: 500;
-        width: 100%;
 
         border-right: 3px solid theme('colors._primary.300');
+
+        @media screen and (max-width: 768px) {
+            border-right: none;
+            border-bottom: 3px solid theme('colors._primary.300');
+        }
 
         &:last-child {
             border-right: none;
@@ -47,7 +63,19 @@ section {
 }
 
 .solar-panel-illustration {
-    width: 560px !important;
+    width: 360px !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .solar-panel-illustration {
+        width: 200px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .solar-panel-illustration {
+        width: 100px !important;
+    }
 }
 
 .arrow {
@@ -74,5 +102,18 @@ section {
         transform: rotate(180deg);
         margin-left: auto;
         margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .arrow {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .arrow {
+        display: none;
     }
 }
