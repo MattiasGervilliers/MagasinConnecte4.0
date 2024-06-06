@@ -5,6 +5,7 @@
     position: relative;
     width: 45px;
     overflow: hidden;
+    color: theme('colors.black');
 
     .display-on-hover {
         opacity: 0;
