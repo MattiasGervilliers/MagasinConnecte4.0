@@ -8,6 +8,8 @@ const PARTENERS_IMAGES_LINK: string[] = [
   "parteners/connectwave.webp",
   "parteners/insiteo.webp",
   "parteners/dracula.webp",
+  "parteners/lopcommerce.webp",
+  "parteners/eurofins.webp",
 ] as const;
 </script>
 

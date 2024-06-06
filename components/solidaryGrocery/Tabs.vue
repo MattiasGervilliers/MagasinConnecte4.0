@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import moment from "moment";
 import type { Item } from "~/pages/epicerie-solidaire.vue";
 
 const { items } = defineProps<{
@@ -24,11 +23,12 @@ const week = ref(weeks[0].value);
 
         <h3 class="font-bold">{{ item.name }}</h3>
         <p>{{ item.description }}</p>
+        <UButton variant="link" :to=item.social target="_blank" style="width: fit-content">⸱ Instagram</UButton>
+        <UButton variant="link" :to=item.linkTree target="_blank" style="width: fit-content">⸱ Autres liens</UButton>
 
         <p class="shop__select">
           Semaine :
           <USelect
-            color="primary"
             v-model="week"
             :options="weeks"
             option-attribute="name"

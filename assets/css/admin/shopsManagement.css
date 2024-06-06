@@ -4,8 +4,6 @@
   gap: 20px;
 }
 .shop__ul {
-  overflow: auto;
-  height: 300px;
   margin-top: 20px;
 }
 

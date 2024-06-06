@@ -100,7 +100,7 @@ onMounted(() => {
         <div class="relative">
           <UTooltip text="Réinitalise les filtres"  :popper="{ placement: 'top' }" >
             <button class="btn-float reset" @click="reset" aria-label="Reset filters" >
-              <UIcon name="i-heroicons-arrow-path" />
+              <UIcon name="i-heroicons-x-mark" />
             </button>
           </UTooltip>
 

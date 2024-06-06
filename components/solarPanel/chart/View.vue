@@ -16,6 +16,11 @@ const options = {
     title: {
       display: true,
       text: props.title,
+      font: {
+        size: 20,
+        weight: "bold",
+      },
+      color: '#000'
     },
   },
   scales: {
@@ -42,12 +47,15 @@ const options = {
 watch(() => props, () => {
   chartContext.value = props.chartContext;
   chartKey.value++;
+  isDarkMode = document.documentElement.classList.contains("dark");
 }, { deep: true });
 
 onMounted(() => {
   window.addEventListener("resize", () => {
     chartKey.value++;
   });
+
+  options.plugins.title.color = document.documentElement.classList.contains("dark") ? "#FFF" : "#000";
 });
 </script>
 

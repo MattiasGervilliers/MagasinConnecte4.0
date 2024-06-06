@@ -1,6 +1,7 @@
 .footer {
   width: 100%;
   box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+  padding: 0 15%;
 
   .container {
     margin-left: auto;
@@ -28,5 +29,17 @@
         display: block;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1264px) {
+  .footer {
+    padding: 0 10%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .footer {
+    padding: 0 5%;
   }
 }

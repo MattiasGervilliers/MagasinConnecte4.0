@@ -11,8 +11,16 @@ onMounted(() => {
     <div class="container py-5 justify-center lg:justify-between">
       <div class="logo">
         <NuxtImg
-          :src="isDarkTheme ? 'Logo_AMU_BLANC.png' : 'LOGO_AMU.png'"
-          alt="Logo AMU"
+          v-if="isDarkTheme"
+          src="footer/amu_logo_white.png"
+          alt="Logo amu white"
+          class="w-fit"
+        />
+
+        <NuxtImg
+          v-else
+          src="footer/amu_logo.png"
+          alt="Logo amu"
           class="w-fit"
         />
       </div>
