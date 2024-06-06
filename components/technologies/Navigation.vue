@@ -4,7 +4,7 @@ import type { TechnoInfos } from "~/pages/technologies.vue";
 const { technoInfos } = defineProps<{ technoInfos: TechnoInfos[] }>();
 const route = useRoute();
 
-const hash = ref(route.hash);
+const hash = ref("#lifi");
 
 watch(
   () => route.hash,
@@ -15,7 +15,7 @@ watch(
 </script>
 
 <template>
-  <ul class="navigation">
+  <ul class="navigation bg-white dark:bg-black">
     <li
       v-for="technoInfo in technoInfos"
       :key="technoInfo.title"
@@ -39,7 +39,6 @@ watch(
   bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: theme("colors.white");
   display: flex;
   flex-direction: row;
   box-shadow: 0px 0px 15px -7px #000000;
