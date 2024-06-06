@@ -1,21 +1,29 @@
 <script setup lang="ts">
 const props = defineProps<{
-  image: string,
-  imageAlt: string,
-  title: string
+  image: string;
+  imageAlt: string;
+  title: string;
+  isSmall?: boolean;
 }>();
 </script>
 
 <template>
-  <header class="relative">
+  <header :class="isSmall ? 'relative small-height' : 'relative height'">
     <NuxtImg :src="props.image" :alt="props.imageAlt" />
     <h1 class="text-white font-black text-5xl">{{ title }}</h1>
   </header>
 </template>
 
 <style scoped>
-header {
+.height {
   height: 500px;
+}
+
+.small-height {
+  height: 200px;
+}
+
+header {
   border-radius: 25px;
   overflow: hidden;
 

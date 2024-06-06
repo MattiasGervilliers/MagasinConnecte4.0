@@ -35,11 +35,11 @@ onMounted(() => {
 const technoInfos: TechnoInfos[] = [
   {
     title: "LI-FI",
-    image: "screenshots/LIFI.png",
+    image: "technologies/lifi.png",
     shortDescription:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+      "Utilise la lumière pour transmettre des données, offrant une alternative rapide et sécurisée au Wi-Fi traditionnel.",
     functioningImage: "screenshots/LIFI.png",
-    installImage: "/screenshots/acoustique.png",
+    installImage: "",
     functioningDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     installDescription:
@@ -49,67 +49,67 @@ const technoInfos: TechnoInfos[] = [
   {
     title: "VLC",
     shortDescription:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+      "Le VLC (Visible Light Communication) est une technologie de transmission de données unidirectionnelle via la lumière LED.",
     functioningImage: "screenshots/VLC.png",
-    installImage: "/screenshots/acoustique.png",
+    installImage: "",
     functioningDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     installDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     link: "vlc",
-    image: "screenshots/VLC.png",
+    image: "technologies/vlc.png",
   },
   {
     title: "Drones",
     shortDescription:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+      "Les drones sont des appareils sans équipage, pilotés automatiquement ou à distance, utilisés dans le civil ou par les forces armées et de sécurité.",
     functioningImage: "screenshots/drone.jpg",
-    installImage: "/screenshots/acoustique.png",
+    installImage: "",
     functioningDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     installDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     link: "drones",
-    image: "screenshots/drone.jpg",
+    image: "technologies/drone.png",
   },
   {
-    title: "CSO",
+    title: "Diffuseur de Parfum",
     shortDescription:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
-    functioningImage: "/screenshots/CSO.jpg",
-    installImage: "/screenshots/acoustique.png",
+      "Crée une ambiance olfactive agréable dans le magasin, enrichissant l'expérience des visiteurs.",
+    functioningImage: "/technologies/diffuseur_parfum.png",
+    installImage: "",
     functioningDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     installDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     link: "cso",
-    image: "/screenshots/CSO.jpg",
+    image: "/technologies/diffuseur_parfum.png",
   },
   {
     title: "RFID",
     shortDescription:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+      "Facilitent la gestion et le suivi des stocks grâce à l'identification par radiofréquence, améliorant ainsi l'efficacité logistique.",
     functioningImage: "/screenshots/RFID.png",
-    installImage: "/screenshots/acoustique.png",
+    installImage: "",
     functioningDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     installDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     link: "rfid",
-    image: "/screenshots/RFID.png",
+    image: "/technologies/rfid.png",
   },
   {
     title: "Acoustique",
     shortDescription:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non malesuada est.",
+      "Améliorent l'acoustique de l'espace, réduisant les nuisances sonores et créant un environnement propice à la concentration et à l'apprentissage.",
     functioningImage: "/screenshots/acoustique.png",
-    installImage: "/screenshots/acoustique.png",
+    installImage: "",
     functioningDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     installDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
     link: "acoustique",
-    image: "/screenshots/acoustique.png",
+    image: "/technologies/acoustique.png",
   },
 ];
 </script>
@@ -131,12 +131,6 @@ const technoInfos: TechnoInfos[] = [
         :techno-info="technoInfo"
       />
     </div>
-
-    <TechnologiesNavigation
-      id="navigation"
-      v-if="isNavigationVisible"
-      :links="technoInfos.map((info) => info.link)"
-    />
   </GlobalWrapper>
 </template>
 

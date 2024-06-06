@@ -12,14 +12,10 @@ const { technoInfo } = defineProps<{
       :title="technoInfo.title"
       :image="technoInfo.image ?? ''"
       :image-alt="technoInfo.title"
+      is-small
     />
 
-    <CardPresentation
-      :card-infos="{
-        title: technoInfo.title,
-        description: technoInfo.shortDescription,
-      }"
-    />
+    <p>{{ technoInfo.shortDescription }}</p>
 
     <CardPresentation
       :card-infos="{
