@@ -17,11 +17,12 @@ const ROLE_RADIO = [
   },
 ];
 
-const props = defineProps<{ user: User; isNew?: boolean }>();
+const props = defineProps<{ user: User; isNew?: boolean; addUser: (user: User) => void }>();
 
 watch(
   () => props.user,
   (user) => {
+    state.email = user.email;
     state.role = user.role;
     state.password = "";
     state.confirmPassword = "";
@@ -60,12 +61,12 @@ const state = reactive<Schema>({
 
 const onSubmit = async () => {
   if (props.isNew) {
-    await useFetchWithToast(
+    await useFetchWithToast<User>(
       "/api/users",
       {
         successMessage: {
           title: "Utilisateur ajouté",
-          description: "L'utilisateur a bien été ajouté",
+          description: "L'utilisateur a bien été ajouté"
         },
         errorMessage: {
           title: "Erreur",
@@ -80,7 +81,13 @@ const onSubmit = async () => {
           password: sha256(state.password).toString(),
         }),
       },
-    );
+    ).then((data: User|void) => {
+      props.addUser((data) as User);
+      state.email = "";
+      state.role = ROLE_ENUM[0];
+      state.password = "";
+      state.confirmPassword = "";
+    });
   } else {
     await useFetchWithToast(
       "/api/users",
@@ -125,10 +132,10 @@ if (props.isNew) {
     <UFormGroup label="Rôle" name="role">
       <URadioGroup v-model="state.role" :options="ROLE_RADIO" />
     </UFormGroup>
-    <UFormGroup label="Mot de passe" name="password">
+    <UFormGroup :label="props.isNew ? 'Mot de passe' : 'Nouveau mot de passe'" name="password">
       <UInput v-model="state.password" type="password" />
     </UFormGroup>
-    <UFormGroup label="Confirmer le mot de passe" name="confirmPassword">
+    <UFormGroup :label="props.isNew ? 'Confirmer le mot de passe' : 'Confirmer le nouveau mot de passe'" name="confirmPassword">
       <UInput v-model="state.confirmPassword" type="password" />
     </UFormGroup>
 

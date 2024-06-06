@@ -1,7 +1,7 @@
 import { User } from "~/models/user";
 import { UserRepository } from "~/server/repository/UserRepository";
 
-export default defineEventHandler(async (event): Promise<User | undefined> => {
+export default defineEventHandler(async (event): Promise<Error | User | undefined> => {
   const body: User = await readBody(event);
 
   try {

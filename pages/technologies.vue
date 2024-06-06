@@ -1,20 +1,153 @@
 <script setup lang="ts">
-const links = [
+definePageMeta({
+  auth: false,
+});
+
+export type TechnoInfos = {
+  title: string;
+  shortDescription: string;
+  image?: string;
+  link: string;
+  functioningDescription: string;
+  functioningImage?: string;
+  installDescription: string;
+  installImage?: string;
+};
+
+const isNavigationVisible = ref<boolean>(false);
+
+const onScroll = () => {
+  if (window.scrollY > 100) {
+    isNavigationVisible.value = true;
+  } else {
+    isNavigationVisible.value = false;
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", onScroll);
+
+  return () => {
+    window.removeEventListener("scroll", onScroll);
+  };
+});
+
+const technoInfos: TechnoInfos[] = [
   {
-    label: "Magasin Connecté 4.0",
-    to: "/",
+    title: "LI-FI",
+    image: "technologies/lifi.png",
+    shortDescription:
+      "Utilise la lumière pour transmettre des données, offrant une alternative rapide et sécurisée au Wi-Fi traditionnel.",
+    functioningImage: "screenshots/LIFI.png",
+    installImage: "",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "lifi",
   },
   {
-    label: "Technologies",
+    title: "VLC",
+    shortDescription:
+      "Le VLC (Visible Light Communication) est une technologie de transmission de données unidirectionnelle via la lumière LED.",
+    functioningImage: "screenshots/VLC.png",
+    installImage: "",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "vlc",
+    image: "technologies/vlc.png",
+  },
+  {
+    title: "Drones",
+    shortDescription:
+      "Les drones sont des appareils sans équipage, pilotés automatiquement ou à distance, utilisés dans le civil ou par les forces armées et de sécurité.",
+    functioningImage: "screenshots/drone.jpg",
+    installImage: "",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "drones",
+    image: "technologies/drone.png",
+  },
+  {
+    title: "Diffuseur de Parfum",
+    shortDescription:
+      "Crée une ambiance olfactive agréable dans le magasin, enrichissant l'expérience des visiteurs.",
+    functioningImage: "/technologies/diffuseur_parfum.png",
+    installImage: "",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "cso",
+    image: "/technologies/diffuseur_parfum.png",
+  },
+  {
+    title: "RFID",
+    shortDescription:
+      "Facilitent la gestion et le suivi des stocks grâce à l'identification par radiofréquence, améliorant ainsi l'efficacité logistique.",
+    functioningImage: "/screenshots/RFID.png",
+    installImage: "",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "rfid",
+    image: "/technologies/rfid.png",
+  },
+  {
+    title: "Acoustique",
+    shortDescription:
+      "Améliorent l'acoustique de l'espace, réduisant les nuisances sonores et créant un environnement propice à la concentration et à l'apprentissage.",
+    functioningImage: "/screenshots/acoustique.png",
+    installImage: "",
+    functioningDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    installDescription:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, nobis. Corporis quod deleniti repellat deserunt ratione expedita dicta rem odit, culpa, ipsa esse doloribus tenetur doloremque, dolorem quisquam repellendus? Sunt",
+    link: "acoustique",
+    image: "/technologies/acoustique.png",
   },
 ];
 </script>
 
 <template>
-  <h1>Technologies</h1>
-  <UBreadcrumb :links="links">
-    <template #divider>
-      <span class="w-8 h-1 rounded-full bg-neutral-700 dark:bg-neutral-300" />
-    </template>
-  </UBreadcrumb>
+  <GlobalWrapper>
+    <MainTitle text="Nos technologies" />
+
+    <div class="content-techno">
+      <TechnologiesCardInfo
+        v-for="technoInfo in technoInfos"
+        :techno-infos="technoInfo"
+      />
+    </div>
+
+    <div class="content-description">
+      <TechnologiesDescription
+        v-for="technoInfo in technoInfos"
+        :techno-info="technoInfo"
+      />
+    </div>
+  </GlobalWrapper>
 </template>
+
+<style>
+.content-techno {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.content-description {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  margin-top: 150px;
+}
+</style>

@@ -26,7 +26,7 @@ const items = ref<Item[]>(createItems(shops.value || []));
 
 <template>
   <GlobalWrapper class="shop-wrapper">
-    <MainTitle text="Epicerie solidaire" title="Epicerie solidaire" />
+    <MainTitle text="Epicerie solidaire" />
 
     <p class="introduction">
       La Fédération Aix-Marseille Interasso (FAMI) a été créée en 2012 pour défendre les droits des étudiants et

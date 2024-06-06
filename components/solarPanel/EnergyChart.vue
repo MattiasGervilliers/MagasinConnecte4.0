@@ -9,13 +9,14 @@ import tailwindConfig from "~/tailwind.config";
 
 const filters = ref<Filters>({
   // use moment to get the current date minus 7 days
-  startDate: moment().subtract(7, 'days').toDate(),
+  startDate: moment().subtract(7, "days").toDate(),
   // today date
   endDate: new Date(),
   timeUnit: "HOUR",
 });
 
-const { formatDateTime, formatWeatherValue } = useEnergyChartData()
+const { formatDateTime, formatWeatherValue } = useEnergyChartData();
+const toast = useToast();
 
 let energyDetails: EnergyDetails = {
   timeUnit: "HOUR",
@@ -24,17 +25,57 @@ let energyDetails: EnergyDetails = {
 };
 
 const theoreticalProduction = ref<SolarPanelTheoreticalProduction[]>([{
-  date: '0000-00-00 00:00:00',
+  date: "0000-00-00 00:00:00",
   production: 0,
 }]);
 
 async function getData() {
-  const [energyDetailsResponse, theoreticalProductionResponse] = await Promise.all([
-    $fetch<EnergyDetails>(`/api/solarPanel/v1/energyDetails?timeUnit=${filters.value.timeUnit}&startTime=${formatDateTime(filters.value.startDate)}&endTime=${formatDateTime(filters.value.endDate)}`, {
-      method: "GET",
-    }),
-    formatWeatherValue(filters.value)
-  ]);
+  let energyDetailsResponse: EnergyDetails = {
+    timeUnit: "HOUR",
+    unit: "kWh",
+    meters: [],
+  };
+  let theoreticalProductionResponse: SolarPanelTheoreticalProduction[] = [{
+    date: "0000-00-00 00:00:00",
+    production: 0,
+  }];
+
+  try {
+    const results = await Promise.allSettled([
+      $fetch<EnergyDetails>(`/api/solarPanel/v1/energyDetails?timeUnit=${filters.value.timeUnit}&startTime=${formatDateTime(filters.value.startDate)}&endTime=${formatDateTime(filters.value.endDate)}`, {
+        method: "GET",
+      }),
+      formatWeatherValue(filters.value),
+    ]);
+
+    if (results[0].status === "fulfilled") {
+      energyDetailsResponse = results[0].value as EnergyDetails;
+    } else {
+      console.error("Failed to fetch energy details:", results[0].reason);
+      toast.add({
+        title: "Une erreur est survenue lors de la récupération des détails énergétiques",
+        icon: "i-heroicons-exclamation-circle",
+        color: "red",
+      });
+    }
+
+    if (results[1].status === "fulfilled") {
+      theoreticalProductionResponse = results[1].value as SolarPanelTheoreticalProduction[];
+    } else {
+      console.error("Failed to fetch theoretical production:", results[1].reason);
+      toast.add({
+        title: "Une erreur est survenue lors de la récupération de la production théorique",
+        icon: "i-heroicons-exclamation-circle",
+        color: "red",
+      });
+    }
+  } catch (error) {
+    toast.add({
+      title: "Une erreur générale est survenue lors de la récupération des données",
+      icon: "i-heroicons-exclamation-circle",
+      color: "red",
+    });
+  }
 
   energyDetails = energyDetailsResponse;
   theoreticalProduction.value = theoreticalProductionResponse;
@@ -60,10 +101,19 @@ function getStringByTimeUnit(timeUnit: string) {
 }
 
 function updateChartContext() {
-  const productionData = energyDetails.meters.find((meter: EnergyDetailsMeter) => meter.type === "Production")?.values.map((v: EnergyDetailsData) => ({ x: v.date, y: v.value ?? 0 })) || [];
-  const consumptionData = energyDetails.meters.find((meter: EnergyDetailsMeter) => meter.type === "Consumption")?.values.map((v: EnergyDetailsData) => ({ x: v.date, y: v.value ?? 0 })) || [];
+  const productionData = energyDetails.meters.find((meter: EnergyDetailsMeter) => meter.type === "Production")?.values.map((v: EnergyDetailsData) => ({
+    x: v.date,
+    y: v.value ?? 0,
+  })) || [];
+  const consumptionData = energyDetails.meters.find((meter: EnergyDetailsMeter) => meter.type === "Consumption")?.values.map((v: EnergyDetailsData) => ({
+    x: v.date,
+    y: v.value ?? 0,
+  })) || [];
   const differenceData = productionData.map((v, i) => ({ x: v.x, y: (v.y ?? 0) - (consumptionData[i]?.y ?? 0) }));
-  const theoreticalData = theoreticalProduction.value.map((v: SolarPanelTheoreticalProduction) => ({ x: v.date, y: v.production }));
+  const theoreticalData = theoreticalProduction.value.map((v: SolarPanelTheoreticalProduction) => ({
+    x: v.date,
+    y: v.production,
+  }));
 
   chartContext.value.datasets[0].data = productionData;
   chartContext.value.datasets[1].data = theoreticalData;
@@ -88,7 +138,7 @@ const chartContext = ref({
       label: `Production théorique de l'énergie par ${getStringByTimeUnit(energyDetails.timeUnit)} (${energyDetails.unit})`,
       backgroundColor: colors.black,
       borderColor: tailwindConfig?.theme?.extend?.colors?._primary[200],
-      data: theoreticalProduction.value.map((v: SolarPanelTheoreticalProduction) => ({ x: v.date, y: v.production }))
+      data: theoreticalProduction.value.map((v: SolarPanelTheoreticalProduction) => ({ x: v.date, y: v.production })),
     },
     {
       label: `Consommation de l'énergie par ${getStringByTimeUnit(energyDetails.timeUnit)} (${energyDetails.unit})`,
@@ -127,6 +177,12 @@ watch(filters, () => {
     <div class="filters-wrap">
       <SolarPanelChartFilters :filters="filters" />
     </div>
+
+    <div class="refresh-wrap">
+      <UTooltip text="Rafraîchit les données">
+        <UButton @click="getData" variant="link" size="xl"><UIcon name="i-heroicons-arrow-path" /></UButton>
+      </UTooltip>
+    </div>
   </div>
 </template>
 
@@ -138,7 +194,19 @@ watch(filters, () => {
 .filters-wrap {
   position: absolute;
   top: 0;
+  right: 75px;
+  z-index: 11;
+}
+
+.refresh-wrap {
+  position: absolute;
+  top: 0;
   right: 25px;
   z-index: 11;
+
+  button {
+    padding: 12px;
+    font-size: 1.2em;
+  }
 }
 </style>
