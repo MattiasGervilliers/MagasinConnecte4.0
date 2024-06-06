@@ -29,7 +29,6 @@ const week = ref(weeks[0].value);
         <p class="shop__select">
           Semaine :
           <USelect
-            color="primary"
             v-model="week"
             :options="weeks"
             option-attribute="name"

@@ -1,5 +1,3 @@
-/* TODO: global wrapper for width */
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -14,7 +12,6 @@
 }
 
 .navbar-scrolled {
-  background-color: theme("colors.white");
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -22,8 +19,16 @@
   color: theme("colors.black");
 }
 
+html.dark .navbar-scrolled h1 {
+  color: theme("colors.white");
+}
+
 .navbar-scrolled .menu-icon {
   color: theme("colors.black");
+}
+
+html.dark .navbar-scrolled .menu-icon {
+  color: theme("colors.white");
 }
 
 .menu-icon {
@@ -68,5 +73,13 @@
     z-index: 10;
     /* bottom box shadow */
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  html.dark .menu {
+    background-color: theme("colors.black");
+  }
+
+  .menu {
+      color: theme("colors.black");
   }
 }

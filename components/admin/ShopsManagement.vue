@@ -74,7 +74,6 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
     <p class="shop__select">
       Semaine :
       <USelect
-        color="primary"
         v-model="week"
         :options="weeks"
         option-attribute="name"
