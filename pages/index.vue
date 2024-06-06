@@ -12,19 +12,19 @@ const cardsNavigationInfos: CardNavigationInfos[] = [
     title: "Technologies",
     description: "Découvrez les dernières technologies",
     path: "/technologies",
-    iconUrl: "i-heroicons-camera-solid",
+    iconUrl: "i-heroicons-cpu-chip",
   },
   {
     title: "Photovoltaïque",
     description: "Découvrez les panneaux solaires",
     path: "/photovoltaique",
-    iconUrl: "i-heroicons-camera-solid",
+    iconUrl: "i-heroicons-table-cells",
   },
   {
-    title: "Epicerie-solidaire",
+    title: "Epicerie solidaire",
     description: "Découvrez notre épicerie solidaire",
     path: "/epicerie-solidaire",
-    iconUrl: "i-heroicons-camera-solid",
+    iconUrl: "i-heroicons-shopping-cart",
   },
 ];
 
