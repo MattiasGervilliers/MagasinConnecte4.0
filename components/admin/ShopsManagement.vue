@@ -60,9 +60,10 @@ const onSubmit = async (event: FormSubmitEvent<Shop[]>) => {
         body: JSON.stringify(shopsCopy),
       },
     );
-    isLoading.value = false;
   } catch (error) {
     console.error(error);
+  } finally {
+    isLoading.value = false;
   }
 };
 </script>
