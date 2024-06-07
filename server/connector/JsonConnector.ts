@@ -6,7 +6,7 @@ export class JsonConnector {
       .writeFile(filePath, JSON.stringify(data, null, 2), "utf8")
       .catch((error) => {
         console.error(error);
-        throw new Error("Error writing to file");
+        throw new Error(`Error writing to file ${error}`);
       });
   }
 
