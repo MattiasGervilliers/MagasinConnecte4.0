@@ -1,10 +1,30 @@
 <script setup lang="ts">
 import type { Benefit } from "~/models/solarPanel/benefit";
+const toast = useToast();
+let benefit: Benefit = {
+  gasEmissionSaved: {
+    co2: 0,
+    so2: 0,
+    nox: 0,
+    units: "",
+  },
+  treesPlanted: 0,
+  lightBulbs: 0,
+};
 
-const benefits = await $fetch('/api/solarPanel/v1/benefit', {
-  method: 'GET',
-});
-const benefit: Benefit = benefits.envBenefits;
+try {
+  const benefits = await $fetch('/api/solarPanel/v1/benefit', {
+    method: 'GET',
+  });
+  benefit = benefits.envBenefits;
+} catch (error) {
+  console.error(error);
+  toast.add({
+    title: "Une erreur est survenue lors de la récupération de données. Veuillez réessayer plus tard.",
+    icon: "i-heroicons-information-circle",
+    color: "red",
+  });
+}
 </script>
 
 <template>
