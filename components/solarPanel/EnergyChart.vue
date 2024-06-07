@@ -195,7 +195,7 @@ watch(filters, () => {
   position: absolute;
   top: 0;
   right: 75px;
-  z-index: 11;
+  z-index: 9;
 }
 
 @media screen and (max-width: 768px) {
@@ -209,7 +209,7 @@ watch(filters, () => {
   position: absolute;
   top: 0;
   right: 25px;
-  z-index: 11;
+  z-index: 9;
 
   button {
     padding: 12px;
